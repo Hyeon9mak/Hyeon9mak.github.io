@@ -34,6 +34,7 @@ toc: true
 - HTML
 - PHP
 - CSS
+- Assembly
 
 ## 진행 프로젝트
 - 2018-1 객체지향프로그래밍 설계 프로젝트 : KW연락처 검색 시스템
