@@ -32,6 +32,7 @@ toc: true
 - Python
 - HTML
 - PHP
+- CSS
 
 ## 진행 프로젝트
 - 2018-1 객체지향프로그래밍 설계 프로젝트 : KW연락처 검색 시스템
@@ -41,8 +42,8 @@ toc: true
 - 2018-2 디지털논리회로2 프로젝트 : MATRIX in Verilog
 - 2018-2 어셈블리프로그램설계및실습 : Bilinear Interpolation
 - 2019-1 시스템프로그래밍 및 실습 : pool management pre-forked socket programming
-- 2019-2 운영체제 및 실습 : 
-- 2020-1 임베디드시스템S/W설계 :
+- 2019-2 운영체제 및 실습 : -
+- 2020-1 임베디드시스템S/W설계 : -
 
 ## 교육 이수
 - C프로그래밍 / 고급 C프로그래밍
@@ -64,4 +65,3 @@ toc: true
 - 임베디드시스템S/W설계
 - 산학협력캡스톤설계1
 - 소프트웨어공학
-- 
