@@ -1,0 +1,123 @@
+---
+title: "개발 가이드 탐색의 중요성과 업무 효율"
+date: 2020-05-06 17:30:00
+categories:
+    - PHP
+tags:
+    - PHP
+    - FTP
+    - NICE본인인증
+    - 나이스본인인증
+    - JSP
+    - JavaScript
+toc: true
+toc_sticky: true
+toc_label: "[Python 재무제표 크롤링 #5]"
+---
+OpenDART에서 제공해준 API들을 추가적으로 조사해보다가, 굳이 기업별로 재무정보를 확인할 필요 없이 
+상장되어 있는 전체 기업들의 재무정보를 한꺼번에 확인할 수 있는 txt파일의 다운로드를 제공한다는 것을 확인했다.  
+얼마전 차장님께서 진행해주신 ERP 관련 교육 때, ERP 내부 데이터베이스에 기업들의 재무정보를 기입해두면 
+재무팀쪽에서 매번 번거롭게 DART 전자공시 사이트를 확인할 필요 없이 곧장 ERP 프로그램에서 확인할 수 있으므로 
+큰 도움이 될거라고 말씀해주셨던 부분이 떠올라, 곧장 차장님께 해당 부분에 대해 보고를 드렸다.  
+  
+보고를 받으신 차장님께서 **"해당 txt파일에 불필요한 컬럼들을 지우고, 추가로 몇 가지 컬럼을 기입해서 tsv파일로 변환할 수 있겠느냐"** 라는 요청을 주셨고,
+항상 일단 해보자라는 마인드인 나는 당연히 **"해보겠습니다!"** 라고 자신있게 대답을 드렸다.  
+우렁찬 대답에 차장님께선 기뻐하셨지만, 전혀 생각해보지 않았던 영역을 시도해야했던 나는 똥줄이 타들어갔다!  
+이래서 사람은 분수에 맞게 행동해야 하는건데... 나는 왜 알면서도 이렇게 욕심이 많을까...   
+정말 다행스럽게도 크게 어려운 부분 없이 개발이 진행되었다.  
+
+## 분석 및 설계
+- OpenDART에서 제공되는 추가 API 확인
+    - 기업별이 아닌 전체 기업 재무정보파일(.txt) 제공 API
+    - 기업별 정보들이 엑셀의 컬럼 형식으로 정리되어 있음
+    - 간격이 공백과 탭으로 뒤섞여 구분되어 있음
+- 차장님께 보고후, 요청사항 전달 받음
+    - 불필요한 정보 컬럼 제거
+    - 추가 정보 컬럼 기입
+    - 간격을 탭으로 통일
+    - tsv 파일로 변환
+
+## 작성 코드
+```python
+from urllib.request import urlopen    # for html request/respone
+from bs4 import BeautifulSoup
+import pandas as pd
+import os
+from selenium import webdriver
+
+def download_files():
+    XML_RESULT = BeautifulSoup(urlopen("https://opendart.fss.or.kr/disclosureinfo/fnltt/dwld/main.do").read(), 'html.parser')
+    down_option = XML_RESULT.find_all('a', onclick=())
+    print(lambda x: "Y" if "\'FY\'," in x else "No.\n", down_option)
+```
+OpenDART에서 제공하는 모든 기업의 재무정보 txt 압축파일을 다운로드 하는 함수.  
+그러나 실질적으로 압축파일로 제공되기 때문에, 압축을 해제하는 함수까지 구현했어야 했으나, 
+연간 업데이트 되는 정보로 매번 새로이 다운로드 받을 필요가 없었으므로 내 귀찮음이나 경제적으로나 
+필요가 없어 버려진 함수다.
+
+```python
+def main() :
+    #download_files() 사실상 버려진 함수
+
+    CWD = os.getcwd()               # 현재 디렉토리 위치 잡기
+    file_list = os.listdir(CWD)    # 현재 Python이 실행된 디렉토리 내부 파일들 가져오기
+    dir_list = []
+    for file in file_list :         # 현재 파일목록 탐색
+        if "BS" in file or "PL" in file :   # 이름에 BS 또는 PL이 포함되는 경우
+            if os.path.isdir(file) :        # BS 또는 PL에, 디렉토리인 경우
+                dir_list.append(file)       # dir_list 에 추가
+
+    for dir in dir_list :                   # dir_list 탐색
+        fa_file_list = []                   # fa_file_list 초기화
+        file_list = os.listdir(dir)         # dir 경로 내부 파일들 가져오기
+
+        for file in file_list :             # dir 파일 목록 탐색
+            if "사업보고서" in file :       # 이름에 사업보고서가 포함된 경우
+                fa_file_list.append(file)   # fa_file_list 에 추가
+```
+여기까지 이미 다운로드 되고 압축이 해제되어 있는 BS/PL(재무정보) 파일들을 탐색해낸다.  
+프로그램이 실행되는 곳과 크게 벗어나지 않는 경로에 압축해제된 두었다면, 파일들을 성공적으로 찾아낸다.
+  
+```python
+        for fa_file in fa_file_list :       # fa_file_list 탐색
+            TSV_TABLE = pd.read_csv(dir + "\\" + fa_file, sep="\t", encoding="cp949") #한글 인코딩, 탭단위 구분으로 읽어오기
+            TSV_TABLE.rename(columns={"재무제표종류":"결산연도"}, inplace=True) # 재무제표종류 컬럼을 결산연도로 변경
+            TSV_TABLE.rename(columns={"항목코드":"LEVEL"}, inplace=True)       # 항목코드 컬럼을 LEVEL로 변경
+            TSV_TABLE.insert(loc=11, column="총계구분", value='')              # 총계구분 컬럼 추가
+            del TSV_TABLE["업종"], TSV_TABLE["업종명"], TSV_TABLE["결산기준일"], TSV_TABLE["시장구분"]  
+                                # 업종, 업종명, 결산기준일, 시장구분 컬럼 제거
+            for del_unnamed in TSV_TABLE.columns :          # 공백으로 채워진 컬럼 제거
+                if "Unnamed:" in del_unnamed : del TSV_TABLE[del_unnamed]
+
+            TSV_TABLE["결산연도"] = fa_file[0:4]    # 결산연도 컬럼 값 채우기
+            TSV_TABLE["LEVEL"] = list(map(lambda x: len(x) - len(x.lstrip()), TSV_TABLE["항목명"])) # LEVEL컬럼 값 채우기
+            TSV_TABLE["총계구분"] = list(map(lambda x: "Y" if "총계" in x else "N", TSV_TABLE["항목명"])) #총계구분 컬럼 값 채우기   
+            
+            TSV_TABLE.to_csv("TSV___"+ fa_file.split('.')[0] + '.tsv', index=False, sep="\t")   # .tsv 파일로 저장
+            TSV_TABLE.to_csv("TXT___"+ fa_file.split('.')[0] + '.txt', index=False, sep="\t")   # .txt 파일로 저장
+            print(fa_file.split('.')[0] + "\t파일 변환 완료")   # 파일 당 성공여부 출력
+
+main()
+print("모든 TXT to TSV 변환이 완료되었습니다!") # 프로그램 정상종료 출력
+```
+pandas 모듈을 이용해 엑셀 형식으로 파일 내부를 읽어오고, 불필요한 정보들을 제거하며 새로이 필요한 정보들을 기입한다. 
+그 후 .tsv 파일로 저장하는 과정을 거치는데, .txt 파일이 필요한 경우도 생길 것 같아서 함께 저장하도록 했다.
+사실 .tsv파일과 .txt파일의 차이가 거의 없긴 한데... 클라이언트가 부르는 대로 불러드리는게 인지상정이겠지.  
+
+  
+## 고찰 및 후기
+이렇게해서 실질적으로 인턴십 프로그램을 진행하며 요청 받았던 프로젝트를 모두 완료하였다.  
+대단한 프로그램은 존재하지 않지만, 제안서를 작성하면서 어떤 프로그램을 구현할지 좀 더 깊게 고민하고, 
+WBS를 기록해가면서 지금까지 내가 계획해온 일정과 비슷하게 일을 처리하고 있는지, 그보다 더 빠른지, 혹은 그보다 더 느린지에 대해 
+알아볼 수 있는 시간들이었다. (대부분은 내가 계획했던 일정보다 느리게 끝냈지만...)  
+  
+**WBS를 통해 얻을 수 있는 가장 큰 수확은 '이런 일들은 이정도 시간에 끝나는구나!' 라는 감을 잡을 수 있게 된 것** 이었다. 계속해서 반복되는 영역에 오랜 시간이 끌린다는 것을 파악하고 
+앞으로 일을 해나감에 있어 정확히 어느정도의 시간이 소요되는지 요일 단위의 값으로 측정할 수 있다는게 얼마나 큰 자원인지, 겪어본 사람만 아는 것 같다. (삶의 질이 달라진다.)  
+나중가면 시간 단위로도 측정할 수 있다고 대리님께서 조언을 주셨는데, 본인도 아직은 그 경지에 이르지는 못했다고 하셨다. 빌게이츠가 분 단위로 움직인다고 하던데, 
+시간 단위로만 움직여도 얼마나 밀도 높은 삶을 살게 될까 ㅋㅋㅋ.  
+  
+앞으로의 기간 동안에는 지금까지 진행한 프로젝트 내용들에 대해 총 정리하고, 차장님과 과장님, 대리님 앞에서 최종 발표를 진행할 계획이다.  
+비록 단단히 다져진 프로세스 위에서 일을 해본것은 아니지만 제안서 작성부터 최종발표 진행까지, 회사에서 겪어볼 수 있는 IS업무 프로젝트를 모두 경험해볼 기회를 준비해주신 
+사수대리님께 무한한 감사를 드리고 싶다. (어쩌면 이 글을 읽고 계실지도 모르겠다.)  
+
+이번 포스팅은 여기서 끝!
