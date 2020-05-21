@@ -24,8 +24,8 @@ description              : "프로젝트 기록, 기술."
 url                      : "https://Hyeon9mak.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : "/assets/images/weng_profile.png" # 500x300px
-logo                     : "/assets/images/weng_profile.png" # 88x88px
+teaser                   : "/assets/images/9git.png" # 500x300px
+logo                     : "/assets/images/9git.png" # 88x88px
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
