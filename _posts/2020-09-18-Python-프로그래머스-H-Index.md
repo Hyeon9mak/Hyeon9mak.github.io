@@ -115,4 +115,4 @@ def solution(citations):
 enumerate를 map으로 묶어버린 것과,  
 enumerate를 1부터 시작시키는 옵션값을 넣은 것도 너무 대단했다.  
   
-파이썬은 항상 봐도봐도 놀랍다.  
+파이썬은 봐도봐도 놀랍다.  
