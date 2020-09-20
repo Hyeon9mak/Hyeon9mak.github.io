@@ -20,7 +20,7 @@ title                    : "현구막 기술 블로그"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "현구막"
-description              : "프로젝트 기록, 기술."
+description              : "단순하게, 보기좋게, 알기쉽게."
 url                      : "https://Hyeon9mak.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -109,7 +109,7 @@ analytics:
 author:
   name             : "현구막"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "프로젝트 기록, 기술."
+  bio              : "단순하게, 보기좋게, 알기쉽게."
   location         : "Seoul/South Korea"
   email            : "jinha3507@gmail.com"
   links:
