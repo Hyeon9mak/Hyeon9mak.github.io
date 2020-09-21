@@ -18,7 +18,6 @@ toc_label: "[Python : 프로그래머스] H-Index"
 
 ## 문제
 [https://programmers.co.kr/learn/courses/30/lessons/42747](https://programmers.co.kr/learn/courses/30/lessons/42747)
-
 ## 풀이
 ```python
 def solution(citations):
