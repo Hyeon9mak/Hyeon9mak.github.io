@@ -18,7 +18,7 @@ toc_label: "Spring과 Javascript Frameworks 공부"
 ## 요즘 잘나간다는 프레임워크들의 특징을 알고 싶다.
 라는 생각으로 시작하게 된 개인 프로젝트다.  
   
-![image1](https://sarthaksrivastavablog.files.wordpress.com/2017/12/logopit_15129271173991609984785.png){.align-center}
+![image1](https://sarthaksrivastavablog.files.wordpress.com/2017/12/logopit_15129271173991609984785.png){: .align-center}
 개인적으로 백엔드는 Node.js가 가볍고 배우기도 쉽고, 가장 익숙해서 더 선호하지만  
 정형화된 패턴과 그로 인한 안정성을 가진 Spring을 두고 클라이언트의 입장에서 비교했을 때,  
 '과연 내가 클라이언트라면 안정성과 빠른 개발속도 중에 무엇을 더 선호할까?' 라는 질문을 던지면  
@@ -26,8 +26,8 @@ toc_label: "Spring과 Javascript Frameworks 공부"
   
 이렇게 백엔드는 Spring으로 결정한 후, 프론트엔드 프레임워크는 무엇을 고르냐라는 고민이 생겼는데  
 요즘 가장 잘나간다는 Javascript 프레임워크 세 가지 **React.js, Vue.js, Angular.js** 가 후보에 올랐다.  
-![image2](https://kruschecompany.com/wp-content/uploads/2020/06/angular-vs-react-vs-vuejs.png){.align-center}
-![image](https://user-images.githubusercontent.com/37354145/94518400-cf218e00-0264-11eb-927d-a3b857779a0b.png){.align-center}
+![image2](https://kruschecompany.com/wp-content/uploads/2020/06/angular-vs-react-vs-vuejs.png){: .align-center}
+![image](https://user-images.githubusercontent.com/37354145/94518400-cf218e00-0264-11eb-927d-a3b857779a0b.png){: .align-center}
 우선 Github repository 기준으로 인기를 비교해봐도, 비교가 상당히 어려운 것을 알 수 있다.  
   
 그 외에 찾아본 비교사항으로는
