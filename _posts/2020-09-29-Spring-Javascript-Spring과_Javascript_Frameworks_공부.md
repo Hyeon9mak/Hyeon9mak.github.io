@@ -24,7 +24,7 @@ toc_label: "Spring과 Javascript Frameworks 공부"
 '과연 내가 클라이언트라면 안정성과 빠른 개발속도 중에 무엇을 더 선호할까?' 라는 질문을 던지면 
 'Spring을 선택할 수 밖에 없구나.' 라고 깨닫게 된다.  
   
-이렇게 백엔드는 Spring으로 결정한 후, 프론트엔드 프레임워크는 무엇을 고르냐라는 고민이 생겼는데  
+이렇게 백엔드는 Spring으로 결정한 후, 프론트엔드 프레임워크는 무엇을 고르냐라는 고민이 생겼는데 
 요즘 가장 잘나간다는 Javascript 프레임워크 세 가지 **React.js, Vue.js, Angular.js** 가 후보에 올랐다.  
 ![image2](https://kruschecompany.com/wp-content/uploads/2020/06/angular-vs-react-vs-vuejs.png){: .align-center}
 ![image](https://user-images.githubusercontent.com/37354145/94518400-cf218e00-0264-11eb-927d-a3b857779a0b.png){: .align-center}
