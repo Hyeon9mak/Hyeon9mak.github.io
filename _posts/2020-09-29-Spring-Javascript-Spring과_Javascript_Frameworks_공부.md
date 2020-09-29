@@ -15,7 +15,7 @@ toc: true
 toc_sticky: true
 toc_label: "Spring과 Javascript Frameworks 공부"
 ---
-## 요즘 잘나간다는 프레임워크들의 특징을 알고 싶다.
+**요즘 잘나간다는 프레임워크들의 특징을 알고 싶다.**  
 라는 생각으로 시작하게 된 개인 프로젝트다.  
   
 ![image1](https://sarthaksrivastavablog.files.wordpress.com/2017/12/logopit_15129271173991609984785.png){: .align-center}
