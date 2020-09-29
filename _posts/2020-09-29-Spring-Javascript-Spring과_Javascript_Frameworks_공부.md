@@ -20,8 +20,8 @@ toc_label: "Spring과 Javascript Frameworks 공부"
   
 ![image1](https://sarthaksrivastavablog.files.wordpress.com/2017/12/logopit_15129271173991609984785.png){: .align-center}
 개인적으로 백엔드는 Node.js가 가볍고 배우기도 쉽고, 가장 익숙해서 더 선호하지만  
-정형화된 패턴과 그로 인한 안정성을 가진 Spring을 두고 클라이언트의 입장에서 비교했을 때,  
-'과연 내가 클라이언트라면 안정성과 빠른 개발속도 중에 무엇을 더 선호할까?' 라는 질문을 던지면  
+정형화된 패턴과 그로 인한 안정성을 가진 Spring을 두고 클라이언트의 입장에서 비교했을 때, 
+'과연 내가 클라이언트라면 안정성과 빠른 개발속도 중에 무엇을 더 선호할까?' 라는 질문을 던지면 
 'Spring을 선택할 수 밖에 없구나.' 라고 깨닫게 된다.  
   
 이렇게 백엔드는 Spring으로 결정한 후, 프론트엔드 프레임워크는 무엇을 고르냐라는 고민이 생겼는데  
@@ -33,7 +33,8 @@ toc_label: "Spring과 Javascript Frameworks 공부"
 그 외에 찾아본 비교사항으로는
 
 > React와 Angular는 러닝커브가 굉장히 가파르다.  
-> Vue.js의 Templates한 특징은 서비스 규모가 커지면 잦은 에러가 발생한다...  
+> Vue.js의 Templates한 특징은 서비스 규모가 커지면 잦은 에러가 발생한다.  
+> 등등..
 
 결정장애를 일으킬만한 이야기들만 수두룩 하다. 내가 원하는 답은 "이걸로 하세요!" 인데!  
   
