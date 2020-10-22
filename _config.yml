@@ -25,7 +25,7 @@ url                      : "https://Hyeon9mak.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : "/assets/images/9git.png" # 500x300px
-logo                     : "/assets/images/9git.png" # 88x88px
+logo                     : "/assets/images/9git_logo.png" # 88x88px
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
@@ -108,7 +108,7 @@ analytics:
 # Site Author
 author:
   name             : "현구막"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/9vatar.png"
   bio              : "단순하게, 보기좋게, 알기쉽게."
   location         : "Seoul/South Korea"
   email            : "jinha3507@gmail.com"
