@@ -24,7 +24,7 @@ VSCODE에 Gruvbox테마를 적용해서 사용해왔다.
   
 그런데 Java는 VSCODE로 통합 IDE를 대체하기엔 너무 포기하는게 많았다.  
 아니, 정확히 말하면 통합 IDE가 제공해주는 여러가지 기능이 너무 강력해보였다.  
-특히 이번에 이펙티브자바 공부를 시작하면서, 책에 나오는 예제로 실험을 진행하는데  
+특히 이번에 이펙티브자바 공부를 시작하면서, 책에 나오는 예제로 실험을 진행하는데 
 통합 IDE의 편의성이 절실해져서, 설치를 고려하게 됐다.  
 
 흔히 Java 통합 IDE의 양대산맥으로 Eclipse와 IntelliJ를 뽑는다.  
@@ -44,7 +44,7 @@ Eclipse는 학부에서 사용할 때, 똑같은 JVM 버전으로 똑같은 코�
 ![image](https://user-images.githubusercontent.com/37354145/98428383-8de29080-20e4-11eb-8a65-eafa44ada4ee.png){: .align-center}
 
 Status 학생인증이니까 **I'm a student** 선택.  
-Level of study는 **Undergraduate(자핵상)** 선택.  
+Level of study는 **Undergraduate(재학생)** 선택.  
 (컴퓨터과학, 컴퓨터공학이 니 주전공이냐? 는 그냥 설문조사인듯)  
   
 Graduation date는 졸업 혹은 졸업예정 날짜인데,  
