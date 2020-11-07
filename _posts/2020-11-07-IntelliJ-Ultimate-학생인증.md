@@ -37,7 +37,11 @@ Eclipse는 학부에서 사용할 때, 똑같은 JVM 버전으로 똑같은 코�
 ## #1 JetBrains 학생인증
 [JetBrains 학생인증 사이트](https://www.jetbrains.com/community/education/#students)에 접속한다.  
 
+---
+
 ![image](https://user-images.githubusercontent.com/37354145/98428199-c6ce3580-20e3-11eb-95ec-b94ac376714b.png){: .align-center}
+
+---
 
 **For students and teachers** - **Apply now**를 클릭!  
 
@@ -54,12 +58,20 @@ Graduation date는 졸업 혹은 졸업예정 날짜인데,
 Email address에는 **개인 메일 주소가 아닌 학교 메일 주소**를 입력해야한다.  
 주의해서 입력하고, 신청을 진행하자.  
 
+---
+
 ![image](https://user-images.githubusercontent.com/37354145/98428444-dbf79400-20e4-11eb-96f1-65213bfbed6f.png){: .align-center}
+
+---
 
 신청서를 모두 작성하면 학교 메일로 무언가 전송했다는 메세지가 보인다.  
 학교 메일함을 확인해보자.  
 
+---
+
 ![image](https://user-images.githubusercontent.com/37354145/98428475-fa5d8f80-20e4-11eb-9bc5-ee41b9c8c85d.png){: .align-center}
+
+---
 
 메일함에 JetBrains로부터 새로운 메일이 와있다.  
 **follow this link**를 클릭하면, 주의사항 등 동의를 요구하는 페이지로 넘어간다.  
@@ -69,7 +81,11 @@ Email address에는 **개인 메일 주소가 아닌 학교 메일 주소**를 �
 스크롤을 마지막까지 내리면 **I Accept**가 활성화 된다. 클릭!  
 그리고 다시 학교 메일함을 확인해보자.  
 
+---
+
 ![image](https://user-images.githubusercontent.com/37354145/98428499-22e58980-20e5-11eb-9a6b-96c281e6ea79.png){: .align-center}
+
+---
 
 학생 메일 인증이 완료됐다는 메일이다.  
 이제 IntelliJ 인증에 사용할 계정 가입을 진행해야 한다.  
@@ -83,7 +99,11 @@ IntelliJ 인증에 사용할 계정 회원가입을 진행해야한다.
 **Create JetBrains Account**에 사용할 개인 이메일을 입력하자.  
 학교 이메일을 그대로 사용해도 된다.  
 
+---
+
 ![image](https://user-images.githubusercontent.com/37354145/98428532-52949180-20e5-11eb-8da8-ac4b3d54c958.png){: .align-center}
+
+---
 
 입력한 메일주소의 메일함을 확인해보면 회원가입용 링크가 전달되어있다.  
 **Confirm your account**를 클릭해서 회원가입 페이지로 넘어가자.  
@@ -122,5 +142,7 @@ License는 어차피 본인 계정을 사용하면 알아서 적용되므로 굳
 ---
 
 설치를 성공적으로 마쳤다면, 아마도 졸업예정일로 입력한 기간까지 무료 이용이 가능할 것이다.  
-IntelliJ Ultimate 버전 1년 구독 금액이 와우 6개월 요금제를 2번 결제금액한 금액보다 더 싸다.  
 편법을 쓰는 사람들을 막을 순 없지만, 그래도 정당하게 사용하는걸 장려해야하는거니까.. 🤔
+한 가지 비교군을 두자면, IntelliJ Ultimate 버전 1년 구독 금액이 와우 6개월 요금제를 2번 결제금액한 금액보다 더 싸다!  
+  
+선택은 자신의 몫이다.
