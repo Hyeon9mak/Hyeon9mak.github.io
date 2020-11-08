@@ -47,22 +47,57 @@ Java 관련 어시스트 기능을 제공하는 IDE에서 위와 같은 코드�
 ### 이유 2. 만일 해당 코드가 루프안에 속할 경우, 루프 횟수만큼 인스턴스가 생성된다.
 
 ![image](https://user-images.githubusercontent.com/37354145/98439872-2bb37b00-2138-11eb-9c99-53d3e9a34100.png){: .align-center}
-(String 객체는 주소 출력이 어려워서, 따로 객체를 만들어서 테스트를 진행했다.)  
+*(String 객체는 주소 출력이 어려워서, 따로 객체를 만들어서 테스트를 진행했다.)*  
 루프가 반복될 때마다 인스턴스가 새로 생성된다는 것을 확인할 수 있다.  
   
 ---
-### 그럼 루프 속에서도 불필요한 객체 생성을 막는 방식은?
+### 루프 속에서도 불필요한 객체 생성을 막는 방식은?
 ```java
     String s = "bikini";  // 문자열 리터럴 생성 방식
 ```
 저자가 권장하는 형태. 이미 생성된 객체(인스턴스)를 재활용 하라는 뜻이다.  
 하나의 String 인스턴스만 사용하는 것을 보장할 수 있다.  
 
-### 💡 아이템 1을 잘 활용하면 객체 생성 패턴을 고민 할 필요가 없다.
-아이템 1
-  
-[생성자 대신 정적 팩터리 매서드](https://hyeon9mak.github.io/effective-java/Effective-Java-item1/)를 
-제공하는 불변 클래스에서는 불필요한 객체 생성을 피할 수 있다. 가변 클래스여도 사용 도중에 변하지 않음을 알고 있다면? 
+## 💡 아이템 1을 잘 활용하면 객체 생성 패턴을 고민 할 필요가 없다.
+[생성자 대신 정적 팩터리 매서드(아이템 1)](https://hyeon9mak.github.io/effective-java/Effective-Java-item01/)를 
+제공하는 불변 클래스에서는 불필요한 객체 생성을 피할 수 있다. (즉, 어차피 new 생성자가 사용되지 않으므로 객체 재활용 보장)  
+대표적인 예시로, 자바 9에서는 Boolean(String) 생성자 대신 **Boolean.valueOf(String) 팩터리 메서드를 사용하도록 권장**되고 있다.
+
+![image](https://user-images.githubusercontent.com/37354145/98465868-58869180-220f-11eb-8488-21dc9f3697a7.png){: .align-center}
+
+실제 테스트를 진행해보면, **"생성자를 사용하는 것은 적절치 않으며, valueOf 메서드나 static 필드 TRUE, FALSE 형태로 사용하라."** 라고 제안 되고 있다.
+
+![image](https://user-images.githubusercontent.com/37354145/98466079-9932da80-2210-11eb-9ee9-76ac18e0e6fb.png){: .align-center}
+*따라서 위와 같이 사용하는 것이 바람직하다.*
+
+## 💡 생성 비용이 비싼 객체에 안성맞춤이다.
+아래는 문자열이 로마 숫자인지 확인하는 메서드다.
+```java
+static boolean isRomanNumeral(String s){
+    return s.matches("^(?=.)M*(C[MD]|D?C{0,3})"
+                + "(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$");
+}
+```
+정규표현식을 제외하고 **String.matches**만 살펴보면, 굉장히 쉽고 간단하게 느껴진다. 
+심지어 루프를 돌려도 안전할 것 같다.  
+그러나, 실제 String.matches 메서드의 내부를 살펴보면 아래와 같다.
+
+```java
+public static boolean matches(String regex, CharSequence input) {
+  Pattern p = Pattern.compile(regex);
+  Matcher m = p.matcher(input);
+  return m.matches();
+}
+
+public static Pattern compile(String regex) {
+	return new Pattern(regex, 0);   // <-- new 생성자
+}
+```
+String.matches 내부에서 Pattern 객체로 compile 메서드를 호출하고 있으며, 
+compile 메서드 내부에서는 **Pattern 객체를 new 생성자로 생성**하고 있다.  
+isRomanNumeral
+
+가변 클래스여도 사용 도중에 변하지 않음을 알고 있다면? 
 당연히 이역시도 불필요한 객체 생성을 피할 수 있다.
 
 > 이번 아이템을 "객체 생성은 비싸니 피해야한다"로 오해하면 안 된다. 
