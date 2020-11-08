@@ -58,7 +58,7 @@ Java 관련 어시스트 기능을 제공하는 IDE에서 위와 같은 코드�
 저자가 권장하는 형태. 이미 생성된 객체(인스턴스)를 재활용 하라는 뜻이다.  
 하나의 String 인스턴스만 사용하는 것을 보장할 수 있다.  
 
-## 💡 아이템 1을 잘 활용하면 객체 생성 패턴을 고민 할 필요가 없다.
+## 💡 아이템 1을 활용하면 애초에 고민 할 필요가 없다.
 [생성자 대신 정적 팩터리 매서드(아이템 1)](https://hyeon9mak.github.io/effective-java/Effective-Java-item01/)를 
 제공하는 불변 클래스에서는 불필요한 객체 생성을 피할 수 있다. (즉, 어차피 new 생성자가 사용되지 않으므로 객체 재활용 보장)  
 대표적인 예시로, 자바 9에서는 Boolean(String) 생성자 대신 **Boolean.valueOf(String) 팩터리 메서드를 사용하도록 권장**되고 있다.
@@ -70,7 +70,7 @@ Java 관련 어시스트 기능을 제공하는 IDE에서 위와 같은 코드�
 ![image](https://user-images.githubusercontent.com/37354145/98466079-9932da80-2210-11eb-9ee9-76ac18e0e6fb.png){: .align-center}
 *따라서 위와 같이 사용하는 것이 바람직하다.*
 
-## 💡 생성 비용이 비싼 객체에 안성맞춤이다.
+## 💡 생성비용이 비싼 객체의 경우, 무조건 객체 생성을 막아야 한다.
 아래는 문자열이 로마 숫자인지 확인하는 메서드다.
 ```java
 static boolean isRomanNumeral(String s){
@@ -95,7 +95,7 @@ public static Pattern compile(String regex) {
 ```
 String.matches 내부에서 Pattern 객체로 compile 메서드를 호출하고 있으며, 
 compile 메서드 내부에서는 **Pattern 객체를 new 생성자로 생성**하고 있다.  
-isRomanNumeral 메서드가 루프에 포함된다면, **매 루프마다 Pattern 객체가 생성되고 곧바로 버려져 GC의 대상**이 되어 오버헤드가 점점 커진다.  
+isRomanNumeral 메서드가 루프에 포함된다면, **매 루프마다 Pattern 객체가 생성된다. 그리고 그 객체는 곧바로 버려져 GC의 대상**이 되어 오버헤드가 점점 커진다.  
   
 ---
 
@@ -113,7 +113,30 @@ public class RomanNumerals{
 mathces 메서드의 오버헤드를 줄이기 위해선 위와 같이 Pattern 인스턴스를 정적 초기화 해두고(캐싱) 활용한다. 
 Pattern 객체 compile 메서드가 1회만 사용됨이 확실하기 때문에, 인스턴스 재활용 또한 보장된다.  
 또한 개선 전에는 **존재조차 몰랐던 Pattern 인스턴스의 존재**를 static final 필드로 정적 초기화해서 
-이름까지 지어주었으므로 코드의 의미가 훨씬 잘 드러나게 된다.
+이름까지 지어주었으므로 코드의 의미가 훨씬 잘 드러나게 된다.  
+  
+> 책에선 정성껏 정적 초기화한 isRomanNumberals 메서드가 한 번도 호출되지 않는 낭비를 방지하기 위해 지연 초기화
+> (Lazy Initialization, 아이템 83) 방식을 이야기하는데, 결론은 지연 초기화를 추천하지 않는다.  
+> 성능은 크게 개선되지 않고 코드만 복잡해지는 경우가 많기 때문(아이템 67)이다.
+
+지연 초기화(Lazy Initialization, 아이템 83) 예시
+```java
+    // 객체 필드 일반적인 초기화
+    private final Field field = something();
+
+    // 객체 필드 지연 초기화
+    private Field field;
+
+    private synchronized Field getField() {
+    if (field == null) {
+        field = something();
+    }
+    return field;
+  }
+```
+아이템 83에서도, 어지간하면 지연 초기화를 사용하지 말라고 한다.  
+
+
 
 가변 클래스여도 사용 도중에 변하지 않음을 알고 있다면? 
 당연히 이역시도 불필요한 객체 생성을 피할 수 있다.
