@@ -95,7 +95,25 @@ public static Pattern compile(String regex) {
 ```
 String.matches 내부에서 Pattern 객체로 compile 메서드를 호출하고 있으며, 
 compile 메서드 내부에서는 **Pattern 객체를 new 생성자로 생성**하고 있다.  
-isRomanNumeral
+isRomanNumeral 메서드가 루프에 포함된다면, **매 루프마다 Pattern 객체가 생성되고 곧바로 버려져 GC의 대상**이 되어 오버헤드가 점점 커진다.  
+  
+---
+
+```java
+public class RomanNumerals{
+    private static final Pattern ROMAN = pattern.compile(
+        "^(?=.)M*(C[MD]|D?C{0,3})"
+        + "(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$");
+    
+    static boolean isRomanNumeral(String s){
+        return ROMAN.matcher(s).matches();
+    }
+}
+```
+mathces 메서드의 오버헤드를 줄이기 위해선 위와 같이 Pattern 인스턴스를 정적 초기화 해두고(캐싱) 활용한다. 
+Pattern 객체 compile 메서드가 1회만 사용됨이 확실하기 때문에, 인스턴스 재활용 또한 보장된다.  
+또한 개선 전에는 **존재조차 몰랐던 Pattern 인스턴스의 존재**를 static final 필드로 정적 초기화해서 
+이름까지 지어주었으므로 코드의 의미가 훨씬 잘 드러나게 된다.
 
 가변 클래스여도 사용 도중에 변하지 않음을 알고 있다면? 
 당연히 이역시도 불필요한 객체 생성을 피할 수 있다.
