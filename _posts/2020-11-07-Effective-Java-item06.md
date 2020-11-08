@@ -22,23 +22,19 @@ toc_label: "아이템 6. 불필요한 객체 생성을 피하라"
 ```
 책에선 위와 같은 String객체 생성을 저어어얼대 해선 안된다고 한다.
 왜 위 같이 String객체를 생성하면 안된다고 하는 것일까? 이유는 크게 두 가지가 있다.
-
----
-
-### 이유 1. 생성자 매개변수로 넘겨진 "bikini"와, 생성된 객체s의 기능이 완전히 동일하다.
-
+  
+**이유 1. 생성자 매개변수로 넘겨진 "bikini"와, 생성된 객체s의 기능이 완전히 동일하다.**
 ![image](https://user-images.githubusercontent.com/37354145/98439869-28b88a80-2138-11eb-9af8-e02c7dbe6f74.png){: .align-center}
 Java 관련 어시스트 기능을 제공하는 IDE에서 위와 같은 코드를 작성하면 부적절(불필요)하다는 알림이 뜰 정도.
   
-
-### 이유 2. 만일 해당 코드가 루프안에 속할 경우, 루프 횟수만큼 인스턴스가 생성된다.
-
+  
+**이유 2. 만일 해당 코드가 루프안에 속할 경우, 루프 횟수만큼 인스턴스가 생성된다.**
 ![image](https://user-images.githubusercontent.com/37354145/98439872-2bb37b00-2138-11eb-9c99-53d3e9a34100.png){: .align-center}
 *(String 객체는 주소 출력이 어려워서, 따로 객체를 만들어서 테스트를 진행했다.)*  
 루프가 반복될 때마다 인스턴스가 새로 생성된다는 것을 확인할 수 있다.  
   
 ---
-### 불필요한 String 객체 생성을 막는 방법
+**불필요한 String 객체 생성을 막는 방법**
 ```java
     String s = "bikini";  // 문자열 리터럴 생성 방식
 ```
@@ -184,21 +180,12 @@ keySet() 메서드는 Map 객체 안의 key들을 모두 담은 객체를 반환
 ## 💡 오토박싱(auto boxing)을 통한 객체 사용
 오토박싱(auto boxing)은 기본 타입과 참조 타입을 자동으로 상호 변환해주는 기술이다.
   
-**기본 타입 (Primitive Type)**
-- int
-- long
-- short
-- double
-- char
-- boolean
-
+**기본 타입 (Primitive Type)**  
+int, long, short, double, char, boolean  
+  
 **참조 타입 (Reference Type)**
-- String
-- Integer
-- Long
-- Double
-- Boolean
-
+String, Integer, Long, Double, Boolean  
+  
 오토박싱은 프로그래머에게 어마어마한 편의를 가져다주었지만, 성능에서는 크리티컬한 문제를 초래하곤 한다.  
 ```java
 private static long sum(){
