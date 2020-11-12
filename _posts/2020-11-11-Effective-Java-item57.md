@@ -1,6 +1,6 @@
 ---
 title: "[Effective-Java] 아이템 57. 지역변수의 범위를 최소화하라"
-date: 2020-11-12 18:55:38
+date: 2020-11-12 19:59:38
 categories:
     - effective-java
 tags:
@@ -114,9 +114,20 @@ __SYSCALL_DEFINEx(1, ftrace, pid_t, trace_task){
 컴파일 에러가 발생했기 때문에 어쩔 수 없이 짜인 코드다.  
 다행스럽게도 최근에는 대부분의 언어에서 **'가장 처음 사용될 때 선언하기'** 가 권장되고 있다.  
   
-
+  
 ### 유효 범위가 좁은 지역변수 예시
-![image](https://user-images.githubusercontent.com/37354145/98924036-bbca3980-2517-11eb-8cc0-12fb76c0f0de.png){: .align-center}
+```java
+    int i;
+    for(i = 0; i < 5; i++){
+        doSomeThing();
+    }
+    System.out.println(i); // 5 출력
+
+    for(int j = 0; j < 5; j++){
+        doSomeThing();
+    }
+    System.out.println(j); // 에러!
+```
 
 'i'변수는 for 코드블럭 이전에 선언이 되었다.  
 이 때문에 for 코드블럭 이후에 'i'변수를 사용해도 정상 컴파일이 되어 오류를 찾아내기 어렵다.  
@@ -131,8 +142,95 @@ __SYSCALL_DEFINEx(1, ftrace, pid_t, trace_task){
 
 초기화에 필요한 정보가 충분하지 않다면, 충분해질 때까지 선언을 미뤄야 한다.  
 
-## 지역변수 유효 범위를 쪼금 늘리는 예외 상황
+### 지역변수 유효 범위를 쪼금 늘리는 예외 예시
 try-catch문은 앞서 말한 두 가지 규칙에서 예외다.  
 변수를 초기화하는 표현식에서 검사 예외를 던질 가능성이 있다면, 
 변수의 초기화를 try 블록 안에서 진행해야만 하기 떄문이다.  
 또한, 변수 값을 try 블록 이후에도 사용해야 한다면 당연하게 try 블록 이전에 선언을 해야한다.
+
+```java
+    Class<? extends Set<String>> cl = null;
+    try{
+        cl = (Class<? extends Set<String>>) Class.forName(args[0]);
+    }catch(ClassNotFoundException e){
+        fatalError("클래스를 찾을 수 없습니다.");
+    }
+```
+
+## for vs while
+for 형태든 for-each 형태든, for키워드는 반복 변수의 범위를 for 키워드와 몸체 사이의 괄호 안으로 제한된다. 
+따라서 반복 변수의 값을 반복문 이후에도 사용할 것이 아니라면, for문은 반복 변수 지정이 가능하므로 while문보다 for문을 사용하는 편이 낫다.  
+
+### 왜 for문인가? 1. 오류 찾기 용이함
+**while문 예시**
+```java
+Iterator<Element> i = c.iterator();
+while(i.hasNext()){
+    doSomething(i.next());
+}
+...
+
+Iterator<Element> i2 = c2.iterator();
+while(i.hasNext()){
+    doSomethingElse(i2.next());
+}
+```
+위 while문 예시 코드에는 오류가 하나 섞여있다. 2번째 while키워드 내부 반복변수로 
+'i2'가 아닌 'i'가 사용되고 있기 때문이다. 불행히도 'i'의 유효범위는 끝나지 않으므로, 
+컴파일도 잘 되고 실행 중에도 문제를 찾아낼 수 없다. 프로그램 오류가 겉으로 검출되지 않기 때문에 
+찾아내는데 오랜 기간이 걸릴 수 있는 문제다.  
+  
+동일한 의미의 코드를 for문으로 작성하면 컴파일 단계에서 에러가 발생한다.  
+  
+**for문 예시**
+```java
+// i 반복변수를 사용하여 정상 컴파일
+for (Iterator<Element> i = c.iterator(); i.hasNext(); ){
+    Element e = i.next();
+    ... // e 와 i로 무언가 동작
+}
+// i 반복변수가 선언되지 않았으므로 에러 발생!
+for (Iterator<Element> i2 = c.iterator(); i.hasNext(); ){
+    Element e = i2.next();
+    ... // e2 와 i2로 무언가 동작
+}
+```
+
+### 왜 for문인가? 2. 세련됨
+for문이 추천되는 이유는 또 있다. 반복 변수의 범위가 for문 내부로 제한되기 때문에, 
+똑같은 이름의 변수를 여러 반복문에서 사용해도 서로 아무런 영향을 주지 않는다.  
+
+### 왜 for문인가? 3. 더 짧음
+```java
+for(int i = 0, n = expensiveComputation(); i < n; i++){
+    ... // i로 뭔가 하겠지
+}
+```
+반복 여부를 결정짓는 변수 'i'의 한계값을 변수 n에 저장하여, 
+반복 때마다 다시 계산해야하는 비용을 없앴다.  
+같은 값을 반환하는 메서드를 매번 호출한다면, 이 관용구를 사용하길 추천하고 있다.  
+
+### for vs for-each
+```java
+// for-each문
+for(Element e : c){
+    ... // e로 무언가를 초기화
+}
+// for문
+for (Iterator<Element> i = c.iterator(); i.hasNext(); ){
+    Element e = i.next();
+    ... // e 와 i로 무언가 동작
+}
+```
+위 코드에서 for 키워드 내부에서 반복 변수 지정을 모두 끝내는 걸 확인 할 수 있다. 
+이 때문에 반복 변수를 따로 사용하지 않을 경우 while문보다 for문이 더 낫다고 볼 수 있다.  
+  
+또한 위 코드에서 for-each문과 for문은 반복자(Iterator)를 사용하는 것에 차이를 보이는데, 
+반복자를 사용하지 않을 경우 for-each문이 훨씬 가독성이 뛰어나지만, 반복자를 사용할 경우(반복자의 remove메서드를 쓴다던가) 
+for문을 사용하는 것이 더 낫다는 걸 알 수 있다.
+
+## 지역변수 유효 범위를 줄이는데 가장 중요한 것
+바로 메서드를 작게 유지하고 한 가지 기능에 집중하는 것이다.  
+한 메서드에서 여러 가지 기능을 처리한다면 그 중 한 기능과만 관련된 지역변수라도 
+다른 기능을 수행하는 코드에서 접근할 수 있게 된다.  
+해결책은 간단하다. 매 기능별로 메서드를 모두 쪼개면 된다.  
