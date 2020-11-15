@@ -156,7 +156,7 @@ try-catch문은 앞서 말한 두 가지 규칙에서 예외다.
 변수의 초기화를 try 블록 안에서 진행해야만 하기 떄문이다.  
 또한, 변수 값을 try 블록 이후에도 사용해야 한다면 당연하게 try 블록 이전에 선언을 해야한다.  
   
-## 💡 for 🆚 while
+## 💡 for vs while
 for 형태든 for-each 형태든, for키워드는 반복 변수의 범위를 for 키워드와 몸체 사이의 괄호 안으로 제한된다. 
 따라서 **반복 변수의 값을 반복문 이후에도 사용할 것**이 아니라면, for문은 반복 변수 지정이 가능하므로 while문보다 for문을 사용하는 편이 낫다.  
 
@@ -216,7 +216,7 @@ for(int i = 0, n = expensiveComputation(); i < n; i++){
 
 ---
 
-### 🤔 for 🆚 for-each
+### 🤔 for vs for-each
 ```java
 // for-each문
 for(Element e : c){
