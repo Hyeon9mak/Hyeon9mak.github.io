@@ -23,6 +23,7 @@ for(Iterator<element> i = c.iterator(); i.hasNext();){
     Element e = i.next();
     ... // e로 무언가를 한다.
 }
+
 // 컬렉션 순회하기 2 - int i(인덱스 변수) 사용
 for(int i = 0; i < a.length; i++){
     ... // a[i]로 무언가를 한다.
@@ -81,7 +82,7 @@ suit의 for문 반복마다 호출되어야 하는데, ranks의 for문 반복에
   
 위 예시의 경우 그나마 Exception이 던져지지만, 만일 suits의 원소 개수가 ranks 원소 개수의 배수였다면 
 이 반복문은 Exception을 던지지 않고 정상적으로 수행된다. 물론, 우리가 원하는 결과를 내지 않은 채로.  
-해당 예시를 바로 아래 코드를 통해 살펴보자.
+해당 예시를 바로 아래 주사위 조합 생성 코드를 통해 살펴보자.
 ```java
 enum Face { ONE, TWO, THREE, FOUR, FIVE, SIX }
 ...
@@ -91,7 +92,15 @@ for (Iterator<Face> i = faces.iterator(); i.hasNext(); )
     for (Iterator<face> j = faces.iterator(); j.hasNext(); )
         System.out.println(i.next() + " " + j.next());
 ```
-
+이 프로그램은 Exception을 던지지는 않지만, 우리가 원하는 36쌍 조합을 출력하지 않고  
+"ONE ONE"  
+"TWO TWO"  
+"THREE THREE"  
+"FOUR FOUR"  
+"FIVE FIVE"  
+"SIX SIX"  
+6쌍 조합만 출력하고 반복문을 끝낸다.  
+카드 덱 구성 코드와 주사위 조합 생성 코드의 문제를 for 문으로 해결하기 위해선 아래와 같이 상위 반복자를 관리해주어야 한다.
 ```java
 for (Iterator <Suit> i = suits.iterator(); i.hasNext(); ){
     Suit suit = i.next();
@@ -99,15 +108,21 @@ for (Iterator <Suit> i = suits.iterator(); i.hasNext(); ){
         deck.add(new Card(suit, j.next()));
 }
 ```
-
+하지만 for-each 문을 사용한다면?
 ```java
 for (Suit suit : suits)
     for (Rank rank : ranks)
         deck.add(new Card(suit, rank));
 ```
-
+문제가 해결됨은 물론 코드가 놀라울 만큼 간결해진다.
 
 ## for-each 문을 사용할 수 없는 상황
+이토록 완벽한 for-each 문이 등장했음에도, for 문이 사라지지 않은 것에는 이유가 있다.  
+for-each 문을 사용할 수 없는 3가지 상황이 존재한다.
+
+- 파괴적인 필터링(destructive filtering)
+- 변형(transforming)
+- 병렬 반복(parallel iteration)
 ```java
 public interface Iterable<E>{
     // 이 객체의 원소들을 순회하는 반복자를 반환한다.
