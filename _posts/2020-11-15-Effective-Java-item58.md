@@ -1,6 +1,6 @@
 ---
 title: "[Effective-Java] 아이템 58. 전통적인 for 문보다는 for-each 문을 사용하라"
-date: 2020-11-15 17:29:38
+date: 2020-11-15 19:29:38
 categories:
     - effective-java
 tags:
@@ -124,15 +124,173 @@ for (Suit suit : suits)
 이토록 완벽한 for-each 문이 등장했음에도, for 문이 사라지지 않은 것에는 이유가 있다.  
 for-each 문을 사용할 수 없는 3가지 상황이 존재한다.
 
-- 파괴적인 필터링(destructive filtering)
-- 변형(transforming)
-- 병렬 반복(parallel iteration)
+### 1. 파괴적인 필터링(destructive filtering)
+컬렉션을 순회(탐색)하면서 선택된 원소를 제거해야 한다면, 반복자(iterator)의 remove 메서드를 사용해야한다.  
+```java
+public static void main(String[] args) {
+        List<Fruit> fruits = new ArrayList<>();
+
+        fruits.add(new Fruit(1000));
+        fruits.add(new Fruit(2000));
+        fruits.add(new Fruit(3000));
+        fruits.add(new Fruit(4000));
+        fruits.add(new Fruit(5000));
+
+        for (Fruit fruit : fruits){
+            if (fruit.price == 3000){
+                fruits.remove(fruit);
+            }
+        }
+    }
+    // Exception in thread "main" java.util.ConcurrentModificationException
+```
+for-each 문을 통해서 파괴적인 필터링을 할 경우, **ConcurrentModificationException**이 던져진다. 
+다행스럽게도 Collection의 removIf 메서드를 활용해 컬렉션을 명시적으로 순회할 필요는 없으며, 
+Java 8버전 이상을 사용하는 IDE에서도 Collection.removIf 메서드로 교체할 것을 권장하고 있다.  
+Collection의 removIf 메서드를 사용하는 코드는 아래와 같다.
+```java
+public static void main(String[] args) {
+        List<Fruit> fruits = new ArrayList<>();
+
+        fruits.add(new Fruit(1000));
+        fruits.add(new Fruit(2000));
+        fruits.add(new Fruit(3000));
+        fruits.add(new Fruit(4000));
+        fruits.add(new Fruit(5000));
+
+        fruits.removeIf(fruit -> fruit.price == 3000);
+    }
+```
+그리고 이런 편리함을 제공해주는 removeIf 메서드의 내부에서는 반복자(iterator)를 이용해서 순회를 진행하고 있다. 
+```java
+default boolean removeIf(Predicate<? super E> filter){
+    Object.requireNonNull(filter);
+    boolean removed = false;
+    final Iterator<E> each = iterator();
+    while (each.hasNext()) {
+        if (filter.test(each.next())) {
+            each.remove();
+            removed = true;
+        }
+    }
+    return removed;
+}
+```
+
+### 2. 변형(transforming)
+리스트나 배열을 순회하면서 그 원소 일부/전체를 교체해야 한다면 리스트의 반복자나 배열의 인덱스를 사용해야 한다.
+```java
+public static void main(String[] args) {
+        List<Fruit> fruits = new ArrayList<>();
+
+        fruits.add(new Fruit(1000));
+        fruits.add(new Fruit(2000));
+        fruits.add(new Fruit(3000));
+        fruits.add(new Fruit(4000));
+        fruits.add(new Fruit(5000));
+
+        System.out.println("init fruits");
+        printFruits(fruits);
+
+        for (Fruit fruit : fruits){
+            if (fruit.price == 3000){
+                fruit = new Fruit(9000);
+            }
+        }
+
+        System.out.println("\n\nfor-each fruits");
+        printFruits(fruits);
+
+        for (int i = 0; i < fruits.size(); i++){
+            if(fruits.get(i).price == 3000){
+                fruits.set(i, new Fruit(9000));
+            }
+        }
+
+        System.out.println("\n\nfor fruits");
+        printFruits(fruits);
+    }
+    /*
+    init fruits
+    1000 2000 3000 4000 5000 
+
+    for-each fruits
+    1000 2000 3000 4000 5000 
+
+    for fruits
+    1000 2000 9000 4000 5000 
+    */
+```
+출력 결과를 보면 for-each 문을 통한 원소 교체가 이루어지지 않음을 확인할 수 있다.
+
+### 3. 병렬 반복(parallel iteration)
+> 여러 컬렉션을 병렬로 순회해야 한다면 각각의 반복자와 인덱스 변수를 사용해 엄격하고 명시적으로 제어해야 한다.
+
+라고 책에 나와있었는데, 번역이 이상하게 된건지 도저히 무슨 뜻인지 이해하는데 시간이 조금 걸렸다.  
+결국 **하나의 인덱스로 2개 이상의 컬렉션(혹은 리스트)을 순회할 때**를 의미하는 것 같다.
+
+```java
+    public static void main(String[] args) {
+        List<Fruit> fruits = new ArrayList<>();
+        List<Bread> breads = new ArrayList<>();
+        fruits.add(new Fruit(1000));
+        fruits.add(new Fruit(2000));
+
+        breads.add(new Bread(1111));
+        breads.add(new Bread(2222));
+
+        System.out.println("for-each");
+        for(Fruit fruit : fruits){
+            for(Bread bread : breads){
+                System.out.println("fruit: " + fruit.price + " bread: " + bread.price);
+            }
+        }
+
+        System.out.println("\nfor #1");
+        for(int i = 0; i < fruits.size(); i++){
+            System.out.println("fruit: " + fruits.get(i).price + " bread: " + breads.get(i).price);
+        }
+
+        System.out.println("\nfor #2");
+        for(Iterator f = fruits.iterator(), b = breads.iterator(); f.hasNext() && b.hasNext();){
+            Fruit fruit = (Fruit) f.next();
+            Bread bread = (Bread) b.next();
+            System.out.println("fruit: " + fruit.price + " bread: " + bread.price);
+        }
+    }
+
+    /*
+    for-each
+    fruit: 1000 bread: 1111
+    fruit: 1000 bread: 2222
+    fruit: 2000 bread: 1111
+    fruit: 2000 bread: 2222
+
+    for #1
+    fruit: 1000 bread: 1111
+    fruit: 2000 bread: 2222
+
+    for #2
+    fruit: 1000 bread: 1111
+    fruit: 2000 bread: 2222
+    */
+```
+for-each 문을 사용하면 병렬 반복이 어려워진다.
+
+## for-each 문은 컬렉션과 배열에서만?
+for-each 문은 상단의 3가지 사례를 제외하면 모든 경우에 적용이 가능하다. 
+컬렉션과 배열은 물론, **Iterable 인터페이스를 구현한 객체**라면 모두 순회가 가능하다.  
+  
+Iterable 인터페이스는 아래와 같이 **iterator()** 메서드만 갖고 있다.
 ```java
 public interface Iterable<E>{
     // 이 객체의 원소들을 순회하는 반복자를 반환한다.
     Iterator<E> iterator();
 }
 ```
+Iterable 인터페이스를 활용해서 원소들의 묶음을 표현한다면 for-each 문의 사용이 가능해질 것이고, 
+놀랍도록 간단해지는 코드 덕분에 본인은 물론 같이 일하는 팀원 모두가 Iterable를 구현했던 사람에게 감사해 할 것이다.
 
+## 결론
 전통적인 for 문과 비교했을 때 for-each 문은 명료하고, 유연하고, 버그를 예방해준다. 
-성능 저하도 없다. 가능한 모든 곳에서 for 무이 아닌 for-each 문을 사용하자.
+성능 저하도 없다. 가능한 모든 곳에서 for-each 문을 사용하자.
