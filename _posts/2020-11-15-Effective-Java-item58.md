@@ -16,7 +16,7 @@ toc_label: "아이템 58. 전통적인 for 문보다는 for-each 문을 사용�
 ---
 전체적인 스터디 내용은 [JunHyeok96/effective-java](https://github.com/JunHyeok96/effective-java)에서 확인 가능! 
 
-## while 문보다는 낫지만, 조금은 아쉬운 for 문
+## 💡 while 문보다는 낫지만, 조금은 아쉬운 for 문
 ```java
 // 컬렉션 순회하기 1 - iterator(반복자) 사용
 for(Iterator<element> i = c.iterator(); i.hasNext();){
@@ -40,7 +40,7 @@ for(int i = 0; i < a.length; i++){
 
 다행인것은, 3가지 단점 모두 for-each문을 사용하면 말끔하게 해결된다!
 
-## 향상된 for 문 (enhanced for statement)
+## 💡 향상된 for 문 (enhanced for statement)
 ```java
 for(Element e : elements){
     ...// e로 무언가를 한다.
@@ -53,7 +53,7 @@ for(Element e : elements){
 컬렉션과 배열 모두 같은 관용구를 사용하기 때문에, 코드를 재해석 할 필요도 없다. 
 for-each 문은 사람이 손으로 최적화한 것과 사실상 같기 때문에, 속도도 그대로다.  
   
-## for vs for-each
+## 💡 for vs for-each
 책에서는 중첩 반복문을 만든다면 for-each의 장점이 더욱 커진다고 하는데, 
 사실 for-each의 장점이 커진다기보다 **'기존 for 문의 단점이 부각되어 보인다'**는 표현이 맞을 것 같다.  
 아래 for 문을 이용해 작성된 중첩 반복문 예시를 살펴보자.
@@ -120,7 +120,7 @@ for (Suit suit : suits)
 ```
 문제가 해결됨은 물론 코드가 놀라울 만큼 간결해진다.
 
-## for-each 문을 사용할 수 없는 상황
+## 💡 for-each 문을 사용할 수 없는 상황
 이토록 완벽한 for-each 문이 등장했음에도, for 문이 사라지지 않은 것에는 이유가 있다.  
 for-each 문을 사용할 수 없는 3가지 상황이 존재한다.
 
@@ -277,7 +277,7 @@ public static void main(String[] args) {
 ```
 for-each 문을 사용하면 병렬 반복이 어려워진다.
 
-## for-each 문은 컬렉션과 배열에서만?
+## 💡 for-each 문은 컬렉션과 배열에서만?
 for-each 문은 상단의 3가지 사례를 제외하면 모든 경우에 적용이 가능하다. 
 컬렉션과 배열은 물론, **Iterable 인터페이스를 구현한 객체**라면 모두 순회가 가능하다.  
   
@@ -291,6 +291,6 @@ public interface Iterable<E>{
 Iterable 인터페이스를 활용해서 원소들의 묶음을 표현한다면 for-each 문의 사용이 가능해질 것이고, 
 놀랍도록 간단해지는 코드 덕분에 본인은 물론 같이 일하는 팀원 모두가 Iterable를 구현했던 사람에게 감사해 할 것이다.
 
-## 결론
+## 💡 결론
 전통적인 for 문과 비교했을 때 for-each 문은 명료하고, 유연하고, 버그를 예방해준다. 
 성능 저하도 없다. 가능한 모든 곳에서 for-each 문을 사용하자.
