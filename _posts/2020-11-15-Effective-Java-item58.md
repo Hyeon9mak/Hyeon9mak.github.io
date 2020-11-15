@@ -92,15 +92,19 @@ for (Iterator<Face> i = faces.iterator(); i.hasNext(); )
     for (Iterator<face> j = faces.iterator(); j.hasNext(); )
         System.out.println(i.next() + " " + j.next());
 ```
-이 프로그램은 Exception을 던지지는 않지만, 우리가 원하는 36쌍 조합을 출력하지 않고  
+이 프로그램은 Exception을 던지지는 않지만, 우리가 원하는 36쌍 조합을 출력하지 않고
+
+```
 "ONE ONE"  
 "TWO TWO"  
 "THREE THREE"  
 "FOUR FOUR"  
 "FIVE FIVE"  
 "SIX SIX"  
-6쌍 조합만 출력하고 반복문을 끝낸다.  
-카드 덱 구성 코드와 주사위 조합 생성 코드의 문제를 for 문으로 해결하기 위해선 아래와 같이 상위 반복자를 관리해주어야 한다.
+```
+
+6쌍 조합만 출력하고 반복문을 끝낸다. 카드 덱 구성 코드와 주사위 조합 생성 코드의 문제를 for 문으로 해결하기 위해선 아래와 같이 상위 반복자를 관리해주어야 한다.
+
 ```java
 for (Iterator <Suit> i = suits.iterator(); i.hasNext(); ){
     Suit suit = i.next();
