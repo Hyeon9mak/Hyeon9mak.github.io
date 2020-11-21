@@ -223,8 +223,11 @@ Integer 인스턴스의 식별성끼리 비교가 진행된다. 이 때문에 �
         static final NaturalOrder INSTANCE = new NaturalOrder();
     }
 ```
-그러나 실제 위 메서드가 어떻게 활용 될지 예제를 확보하지 못해서... 나중에 다시 살펴보아야 할 것 같다.  
-  
+그러나 실제 위 메서드가 어떻게 활용 될지 예제를 확보하지 못해서...  
+나중에 다시 살펴보아야 할 것 같다.  
+
+---
+
 naturalOder() 메서드를 뒤로하고, 오답을 출력했던 예제를 정상적으로 동작시키기 위해선 어떡해야할까? 
 ```java
 import java.util.*;
@@ -246,4 +249,39 @@ import java.util.*;
 이렇게 하면 기본 타입에는 식별성이 없기 때문에, 오류가 발생하지 않는다.
 
 ## 차이점 2. NULL 소유 가능 유무
+```java
+public class Unbelievable {
+    static Integer i;
+
+    public static void main(String[] args) {
+        if (i == 42)
+            System.out.println("믿을 수 없군!");
+    }
+}
+/*
+    Exception in thread "main" java.lang.NullPointerException
+*/
+```
+위 코드에서 "믿을 수 없군!" 이라는 문장은 당연히 출력되지 않겠지만, NullPointerException이 던져진다.  
+이유는 간단하다. **거의 모든 경우에 기본 타입과 박싱된 기본 타입간의 혼용 연산에서는 박싱된 기본 타입이 자동으로 언박싱 되어 기본 타입이 된다.**  
+박싱된 기본 타입(참조 타입)은 NULL을 가질 수 있지만, 기본 타입은 NULL을 가질 수 없으므로 자연스럽게 벌어진 현상이다.  
+  
+해결 방법 또한 간단하다. 코드의 *static Integer i* 를 *static int i* 로 변경해주면 끝이다.
+
 ## 차이점 3. 시간/메모리 사용 효율성
+아이템6에서 살펴보았던 코드를 다시 살펴보자.
+
+```java
+private static long sum(){
+	Long sum = 0L;
+	for(long i = 0; i <= Integer.MAX_VALUE; i++){
+		sum += i;
+	}
+	return sum;
+}
+```
+
+위 코드는 올바르게 동작하긴 하나, sum변수에 의해 성능이 크게 저하된 상태다.  
+**long 타입인 i가 더해질 때 마다 long->Long 오토박싱이 매 루프마다 발생**된다.  
+
+
