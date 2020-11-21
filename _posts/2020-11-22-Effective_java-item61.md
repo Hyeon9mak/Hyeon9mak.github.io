@@ -20,7 +20,7 @@ toc_label: "아이템 61. 박싱된 기본 타입보다는 기본 타입을 사�
 **기본 타입 (Primitive Type)**  
 int, long, short, double, char, boolean  
   
-**참조 타입 (Reference Type)**
+**참조 타입 (Reference Type)**  
 String, Integer, Long, Double, Boolean  
   
 **박싱된 기본 타입: 기본 타입에 대응 되는 참조 타입**  
@@ -32,9 +32,7 @@ int -> Integer, double -> Double 등...
 > <참고>  
 > 오토박싱(auto boxing)은 기본 타입과 참조 타입을 자동으로 상호 변환해주는 기술이다.
 
-
-## 기본 타입과 박싱된 기본 타입의 차이 3가지
-### 1. 식별성(identity) 유무
+## 차이점 1. 식별성(identity) 유무
 박싱된 기본 타입은 값 이외에 식별성 또한 갖게 된다.
 
 - 기본 타입: 값
@@ -245,5 +243,5 @@ import java.util.*;
 언박싱한 기본 타입 지역변수를 이용해서 비교를 진행하면 된다. 
 이렇게 하면 기본 타입에는 식별성이 없기 때문에, 오류가 발생하지 않는다.
 
-### 2. NULL 소유 가능 유무
-### 3. 시간/메모리 사용 효율성
+### 차이점 2. NULL 소유 가능 유무
+### 차이점 3. 시간/메모리 사용 효율성
