@@ -167,9 +167,11 @@ Integer 클래스는 기본 타입이 아닌 참조 타입이기 때문에 기�
 Comparator의 compare 메서드를 오버라이드 하여 객체(인스턴스)의 값(value) 끼리 비교가 가능해졌기 때문에 
 'Integer는 그 자체로 순서가 있다.' 라는 표현이 사용된 것으로 보인다.  
 즉, **Integer 클래스는 이미 compare 메서드가 구현되어 있기 때문에 그 자체로 순서를 가진다.**  
-추가적으로 Comparable의 compareTo 메서드와 동일한 이름의 메서드를 구현한 덕분에 기본 타입(int)과 자연스럽게 섞어쓸 수 있게 되는 것 또한 눈여겨 볼만 하다.
+(추가적으로 Comparable의 compareTo 메서드와 동일한 이름의 메서드를 구현한 덕분에 기본 타입(int)과 자연스럽게 섞어쓸 수 있게 되는 것 또한 눈여겨 볼만 하다.)
   
-두 인터페이스의 차이를 이해했다면, 다시 책으로 돌아와 compare 메서드를 사용한 비교자(Comparator) 예시부터 살펴보자.
+---
+
+다시 책으로 돌아와 compare 메서드를 사용한 비교자(Comparator) 예시부터 살펴보자.
 ```java
 import java.util.*;
     public static void main(String[] args) {
@@ -186,16 +188,62 @@ import java.util.*;
     결과는 '1'
     */
 ```
-*'compare() 메서드에 인스턴스가 2개 생성되어 들어갔으니 당연히 식별성이 비교되어 1이 출력된거 아니야?'*  
-라고 생각했다면, 절반은 맞춘 것이다. 중요한 것은 (i < j) 부분이다.  
+*'compare() 메서드에 인스턴스가 2개 생성되어 들어갔으니 당연히 식별성이 비교되어 오답이 출력된거 아니야?'*  
+라고 생각했다면, 절반은 맞춘 것이다. 자세히 알아보면 반전이 존재한다.  
   
 (i < j) 비교연산자에서, i와 j가 참조하는 오토박싱된 Integer 인스턴스는 기본 타입 값으로 오토언박싱 된다. 
 즉 인스턴스의 식별성이 아닌 실제 정수값 끼리의 대소 비교를 정상적으로 진행한다!  
 정상적으로 정수값 대소비교를 마친 후 (i == j) 비교연산을 진행하는데, 안타깝게도 이번엔 오토언박싱 되지 않고 
 Integer 인스턴스의 식별성끼리 비교가 진행된다. 이 때문에 비교 결과는 false가 되고, 비교자는 1을 반환한다.  
   
-즉 박싱된 기본 타입끼리 '< , >'  연산자는 오토언박싱이 진행되지만, '==' 연산자는 식별성 비교가 진행되어 값 비교가 불가능하다!
+즉 **박싱된 기본 타입끼리 '< , >'  연산자는 오토언박싱이 진행되지만, '==' 연산자는 식별성 비교가 진행되어 값 비교가 불가능**하다!
+  
+이후에 책에선 실무에서 이처럼 기본 타입을 다루는 비교자(Comparator)가 필요하다면 Comparator.naturalOder()를 사용하라고 권한다. 
+```java
+/**
+     * A comparator that implements the natural ordering of a group of
+     * mutually comparable elements. May be used when a supplied
+     * comparator is null. To simplify code-sharing within underlying
+     * implementations, the compare method only declares type Object
+     * for its second argument.
+     *
+     * Arrays class implementor's note: It is an empirical matter
+     * whether ComparableTimSort offers any performance benefit over
+     * TimSort used with this comparator.  If not, you are better off
+     * deleting or bypassing ComparableTimSort.  There is currently no
+     * empirical case for separating them for parallel sorting, so all
+     * public Object parallelSort methods use the same comparator
+     * based implementation.
+     */
+    static final class NaturalOrder implements Comparator<Object> {
+        @SuppressWarnings("unchecked")
+        public int compare(Object first, Object second) {
+            return ((Comparable<Object>)first).compareTo(second);
+        }
+        static final NaturalOrder INSTANCE = new NaturalOrder();
+    }
+```
+그러나 실제 위 메서드가 어떻게 활용 될지 예제를 확보하지 못해서... 나중에 다시 살펴보아야 할 것 같다.  
+  
+naturalOder() 메서드를 뒤로하고, 오답을 출력했던 예제를 정상적으로 동작시키기 위해선 어떡해야할까? 
+```java
+import java.util.*;
+    public static void main(String[] args) {
+        Comparator<Integer> naturalOrder = (iBoxed, jBoxed) -> {
+            int i = iBoxed, j = jBoxed; // 오토언박싱
+            return i < j ? -1 : (i == j ? 0 : 1);
+        };
 
+        int result = naturalOrder.compare(new Integer(42), new Integer(42));
+        System.out.println(result);
+    }
+    /*
+    결과는 '0'
+    */
+```
+위 코드와 같이 지역변수 2개를 두어 각각 기본 타입 int로 언박싱하고, 
+언박싱한 기본 타입 지역변수를 이용해서 비교를 진행하면 된다. 
+이렇게 하면 기본 타입에는 식별성이 없기 때문에, 오류가 발생하지 않는다.
 
 ### 2. NULL 소유 가능 유무
 ### 3. 시간/메모리 사용 효율성
