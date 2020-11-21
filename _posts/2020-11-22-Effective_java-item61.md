@@ -70,7 +70,7 @@ public static void main(String[] args) {
 ```
 
 서로 다른 인스턴스간 '==' 연산자의 오류는 워낙 유명한 문제로, 
-해결 방법 **.equals()** 가 익히 잘 알려져있다.
+해결 방법으로 **.equals()** 가 익히 잘 알려져있다.
 
 ```java
 public static void main(String[] args) {
@@ -97,17 +97,77 @@ public static void main(String[] args) {
     박싱된 기본 타입은 서로 같아요!
     */
 ```
+책에서는 equals() 메서드 외에 프로그래머가 헷갈릴 수 있는 상황을 고려하기 위해 식별성 문제를 거론하고 있었다.  
+equals() 메서드는 잠시 잊어두자.
 
-그러나 책에서는 equals() 메서드 외에 굳이 식별성 문제를 거론하고 있었다. 
-
+## Integer 값을 오름차순으로 정렬하는 비교자
 > 다음은 Integer 값을 오름차순으로 정렬하는 비교자(Comparator)다.  
 > 기본적으로 비교자의 compare() 메서드는 첫 번째 원소가 두 번째 원소보다 작으면 음수, 같으면 0, 크면 양수를 반환한다.  
 > Integer는 그 자체로 순서가 있으니 이 비교자가 실질적인 의미는 없지만, 아주 흥미로운 점을 하나 보여준다.
 
 **'Integer는 그 자체로 순서가 있다.'** 라는 무슨 말일지 한참 고민해 보았는데, 처음에는 인스턴스의 식별성(identity)에 따른 순서를 말하는 것 같았다.  
-그러나 Comparator, Comparable 인터페이스의 차이를 말하는게 아닐까 생각한다. Integer가 Comparable 인터페이스의 기준을 통해 순서가 구현된 클래스이므로 '그 자체로 순서가 있다.' 라는 표현을 사용한 것 같다.  
-Comparator, Comparable 의 차이는 [[Java] Comparable와 Comparator의 차이와 사용법](https://gmlwjd9405.github.io/2018/09/06/java-comparable-and-comparator.html) 에서 살펴보자.  
-요약하자면 **기본적인 오름차순 규칙을 적용하고 싶으면 Comparable, 새로운 규칙을 적용하고 싶으면 Comparator** 다.
+그러나 조사해보니 Integer 클래스가 Comparator 인터페이스를 상속 받는 점을 말하는 것으로 보였다.  
+Comparator 인터페이스를 공부하다보니 Comparable 인터페이스도 자연스럽게 접하게 되었는데, 둘의 차이는 
+[[Java] Comparable와 Comparator의 차이와 사용법](https://gmlwjd9405.github.io/2018/09/06/java-comparable-and-comparator.html) 에서 자세히 살펴보자. 요약하자면 아래와 같다.
+
+- 기본적인 정렬 규칙이 자연스럽게 적용되면 Comparable
+    - compareTo() 메서드를 오버라이드 하여 구현한다.
+- 새로운 정렬 규칙이 필요하면 Comparator
+    - compare() 메서드를 오버라이드 하여 구현한다.
+
+그렇다면 Integer 클래스는 Comparable 인터페이스를 상속 받는게 아닌데, 어떠한 이유로 순서를 가진다는 말일까?  
+정확한 이해를 위해서 IDE를 이용해 Integer 클래스를 뜯어보았다.
+
+```java
+public final class Integer extends Number
+        implements Comparable<Integer>, Constable, ConstantDesc {
+    /**
+     * A constant holding the minimum value an {@code int} can
+     * have, -2<sup>31</sup>.
+     *
+     *  중략
+     */
+     
+    /**
+     * Compares two {@code Integer} objects numerically.
+     *
+     * @param   anotherInteger   the {@code Integer} to be compared.
+     * @return  the value {@code 0} if this {@code Integer} is
+     *          equal to the argument {@code Integer}; a value less than
+     *          {@code 0} if this {@code Integer} is numerically less
+     *          than the argument {@code Integer}; and a value greater
+     *          than {@code 0} if this {@code Integer} is numerically
+     *           greater than the argument {@code Integer} (signed
+     *           comparison).
+     * @since   1.2
+     */
+    public int compareTo(Integer anotherInteger) {
+        return compare(this.value, anotherInteger.value);
+    }
+
+    /**
+     * Compares two {@code int} values numerically.
+     * The value returned is identical to what would be returned by:
+     * <pre>
+     *    Integer.valueOf(x).compareTo(Integer.valueOf(y))
+     * </pre>
+     *
+     * @param  x the first {@code int} to compare
+     * @param  y the second {@code int} to compare
+     * @return the value {@code 0} if {@code x == y};
+     *         a value less than {@code 0} if {@code x < y}; and
+     *         a value greater than {@code 0} if {@code x > y}
+     * @since 1.7
+     */
+    public static int compare(int x, int y) {
+        return (x < y) ? -1 : ((x == y) ? 0 : 1);
+    }
+```
+Integer 클래스는 기본 타입이 아닌 참조 타입이기 때문에 기본 정렬 규칙이 적용되지 않아 Comparable 인터페이스를 상속 받지만, 
+Comparator의 compare 메서드를 오버라이드 하여 객체(인스턴스)의 값(value) 끼리 비교가 가능해졌기 때문에 
+'Integer는 그 자체로 순서가 있다.' 라는 표현이 사용된 것으로 보인다.  
+즉, **Integer 클래스는 이미 compare 메서드가 구현되어 있기 때문에 그 자체로 순서를 가진다.**  
+추가적으로 Comparable의 compareTo 메서드와 동일한 이름의 메서드를 구현한 덕분에 기본 타입(int)과 자연스럽게 섞어쓸 수 있게 되는 것 또한 눈여겨 볼만 하다.
   
 두 인터페이스의 차이를 이해했다면, 다시 책으로 돌아와 compare 메서드를 사용한 비교자(Comparator) 예시부터 살펴보자.
 ```java
