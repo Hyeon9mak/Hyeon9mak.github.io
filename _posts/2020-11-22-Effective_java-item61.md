@@ -16,7 +16,7 @@ toc_label: "아이템 61. 박싱된 기본 타입보다는 기본 타입을 사�
 ---
 전체적인 스터디 내용은 [JunHyeok96/effective-java](https://github.com/JunHyeok96/effective-java)에서 확인 가능! 
 
-## 박싱된 기본 타입?
+## 🤔 박싱된 기본 타입?
 **기본 타입 (Primitive Type)**  
 int, long, short, double, char, boolean  
   
@@ -32,7 +32,7 @@ int -> Integer, double -> Double 등...
 > <참고>  
 > 오토박싱(auto boxing)은 기본 타입과 참조 타입을 자동으로 상호 변환해주는 기술이다.
 
-## 차이점 1. 식별성(identity) 유무
+## 👉 차이점 1. 식별성(identity) 유무
 박싱된 기본 타입은 값 이외에 식별성 또한 갖게 된다.
 
 - 기본 타입: 값
@@ -248,7 +248,7 @@ import java.util.*;
 언박싱한 기본 타입 지역변수를 이용해서 비교를 진행하면 된다. 
 이렇게 하면 기본 타입에는 식별성이 없기 때문에, 오류가 발생하지 않는다.
 
-## 차이점 2. NULL 소유 가능 유무
+## 👉 차이점 2. NULL 소유 가능 유무
 ```java
 public class Unbelievable {
     static Integer i;
@@ -268,7 +268,7 @@ public class Unbelievable {
   
 해결 방법 또한 간단하다. 코드의 *static Integer i* 를 *static int i* 로 변경해주면 끝이다.
 
-## 차이점 3. 시간/메모리 사용 효율성
+## 👉 차이점 3. 시간/메모리 사용 효율성
 아이템6에서 살펴보았던 코드를 다시 살펴보자.
 
 ```java
@@ -285,7 +285,7 @@ private static long sum(){
 **long 타입인 i가 더해질 때 마다 long->Long 오토박싱이 매 루프마다 발생**된다.  
 
 
-## 박싱된 기본 타입(참조 타입)은 언제 쓰는가?
+## 🤔 박싱된 기본 타입(참조 타입)은 언제 쓰는가?
 위 3가지 차이점을 살펴보면 거의 무조건 기본 타입을 이용해야할 것 같다. 
 다행히 박싱된 기본 타입이 적절히 사용되는 사례가 크게 2 가지 있다.  
   
@@ -301,7 +301,7 @@ List<Integer> listB = new ArrayList<Integer>(); // 잘 됨.
 2. 리플렉션(relection)을 통해 메서드를 호출할 때도 박싱된 기본 타입을 사용해야 한다.
     컬렉션과 같은 이치다.
 
-## 핵심 정리
+## 🎯 핵심 정리
 가능하면 기본 타입을 사용하자. 기본 타입은 간단하고 빠르다.  
 박싱된 기본 타입을 써야한다면 주의해서 사용하자.  
 **오토박싱/언박싱은 편의를 줄 뿐, 위험요소까지 제거해주지 않는다.**  
