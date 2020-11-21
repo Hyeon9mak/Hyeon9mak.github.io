@@ -1,6 +1,6 @@
 ---
 title: "[Effective-Java] 아이템 61. 박싱된 기본 타입보다는 기본 타입을 사용하라"
-date: 2020-11-22 19:29:38
+date: 2020-11-22 02:29:38
 categories:
     - effective-java
 tags:
@@ -16,7 +16,7 @@ toc_label: "아이템 61. 박싱된 기본 타입보다는 기본 타입을 사�
 ---
 전체적인 스터디 내용은 [JunHyeok96/effective-java](https://github.com/JunHyeok96/effective-java)에서 확인 가능! 
 
-## 크게 2 가지로 나뉘는 자바의 데이터 타입
+## 박싱된 기본 타입?
 **기본 타입 (Primitive Type)**  
 int, long, short, double, char, boolean  
   
@@ -285,3 +285,23 @@ private static long sum(){
 **long 타입인 i가 더해질 때 마다 long->Long 오토박싱이 매 루프마다 발생**된다.  
 
 
+## 박싱된 기본 타입(참조 타입)은 언제 쓰는가?
+위 3가지 차이점을 살펴보면 거의 무조건 기본 타입을 이용해야할 것 같다. 
+다행히 박싱된 기본 타입이 적절히 사용되는 사례가 크게 2 가지 있다.  
+  
+1. 컬렉션(Collection)의 원소, 키, 값으로 사용
+    컬렉션은 매개변수화 타입이나 매개변수화 메서드를 사용하는데, 자바에서 기본 타입을 이용한 매개변수화를 지원하지 않기 때문에 
+    박싱된 기본 타입이 사용된다.
+
+```java
+List<int> listA = new ArrayList<int>();         // 컴파일 에러.
+List<Integer> listB = new ArrayList<Integer>(); // 잘 됨.
+```
+
+2. 리플렉션(relection)을 통해 메서드를 호출할 때도 박싱된 기본 타입을 사용해야 한다.
+    컬렉션과 같은 이치다.
+
+## 핵심 정리
+가능하면 기본 타입을 사용하자. 기본 타입은 간단하고 빠르다.  
+박싱된 기본 타입을 써야한다면 주의해서 사용하자.  
+**오토박싱/언박싱은 편의를 줄 뿐, 위험요소까지 제거해주지 않는다.**  
