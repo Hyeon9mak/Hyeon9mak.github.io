@@ -7,7 +7,7 @@ tags:
     - 이펙티브자바
     - effective-java
     - 스터디
-    - 아이템6
+    - 아이템57
     - Java
     - 자바
 toc: true
