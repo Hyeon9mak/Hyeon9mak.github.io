@@ -12,7 +12,7 @@ tags:
     - 자바
 toc: true
 toc_sticky: true
-toc_label: ""
+toc_label: "An Agile Overview"
 ---
 
 ## 소프트웨어를 만들 때 항상 따라야 하는 절차
