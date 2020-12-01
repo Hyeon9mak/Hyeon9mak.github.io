@@ -2,7 +2,7 @@
 title: "[Agile Java] TDD 시작"
 date: 2020-12-01 14:44:38
 categories:
-    - Agile Java
+    - Agile-Java
 tags:
     - 애자일자바
     - agile java

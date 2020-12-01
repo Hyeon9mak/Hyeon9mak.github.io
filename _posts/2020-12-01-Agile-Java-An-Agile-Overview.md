@@ -2,7 +2,7 @@
 title: "[Agile Java] An Agile Overview"
 date: 2020-12-01 11:29:38
 categories:
-    - Agile Java
+    - Agile-Java
 tags:
     - 애자일자바
     - agile java
