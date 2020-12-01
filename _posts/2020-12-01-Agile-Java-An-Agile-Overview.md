@@ -2,10 +2,10 @@
 title: "[Agile Java] An Agile Overview"
 date: 2020-12-01 11:29:38
 categories:
-    - Agile-Java
+    - Agile Java
 tags:
     - 애자일자바
-    - agile-java
+    - agile java
     - 지름길로 빠르게 배울 수 있는 자바 프로그래밍
     - Jeff Langr
     - Java
