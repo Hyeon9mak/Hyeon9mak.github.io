@@ -1,6 +1,6 @@
 ---
 title: "[Effective-Java] 아이템 14. Comparable을 구현할지 고려하라"
-date: 2020-11-30 16:06:38
+date: 2020-12-01 10:02:38
 categories:
     - effective-java
 tags:
@@ -402,7 +402,7 @@ static Comparator<Object> hashCodeOrder =
         Comparator.comparingInt(o -> o.hashCode());
 ```
 
-## 핵심 정리
+## 🎯 핵심 정리
 1. 순서를 고려해야 하는 값 클래스를 작성한다면 꼭 Comparable 인터페이스를 상속받아 구현하자.  
 이를 통해 인스턴스들을 쉽게 정렬하고, 검색하고, 비교 기능을 제공하는 컬렉션들과 어우러지게 사용할 수 있다.  
   
