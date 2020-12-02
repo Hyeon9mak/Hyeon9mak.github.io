@@ -15,9 +15,7 @@ toc_sticky: true
 toc_label: "Lesson01 시작하기"
 ---
 
-![image](https://user-images.githubusercontent.com/37354145/100823294-4a870200-3497-11eb-9632-02d5ee738fdf.png){: .align-center}
-
-실습 내용 저장소: https://github.com/Hyeon9mak/student-information-system
+실습 내용 저장소: [https://github.com/Hyeon9mak/student-information-system](https://github.com/Hyeon9mak/student-information-system)
 
 ## 테스트 클래스는 명세 클래스에 종속적이다.
 **StudentTest -> Student**  
