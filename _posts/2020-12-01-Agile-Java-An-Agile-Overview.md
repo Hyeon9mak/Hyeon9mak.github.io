@@ -15,6 +15,10 @@ toc_sticky: true
 toc_label: "An Agile Overview"
 ---
 
+![image](https://user-images.githubusercontent.com/37354145/100823294-4a870200-3497-11eb-9632-02d5ee738fdf.png){: .align-center}
+
+실습 내용 저장소: https://github.com/Hyeon9mak/student-information-system
+
 ## 소프트웨어를 만들 때 항상 따라야 하는 절차
 - 분석 : 소프트웨어가 어때야 하는지 요구사항을 모으고 교정해서 만듦새 결정
 - 계획 : 개발이 얼마나 오래 걸릴지 판단
