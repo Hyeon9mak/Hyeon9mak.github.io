@@ -18,6 +18,20 @@ toc_label: "Lesson03 문자열과 패키지"
 실습 내용 저장소: [https://github.com/Hyeon9mak/student-information-system](https://github.com/Hyeon9mak/student-information-system)
 
 ## 문자열은 생성자를 사용하지 마라
+### 이유 1. 생성자 매개변수로 넘겨진 문자열과, 생성된 객체의 기능이 완전히 동일하다.
+![image](https://user-images.githubusercontent.com/37354145/98439869-28b88a80-2138-11eb-9af8-e02c7dbe6f74.png){: .align-center}
+Java 관련 어시스트 기능을 제공하는 IDE에서는 생성자를 사용하면 부적절(불필요)하다는 알림이 뜰 정도다.
+  
+
+### 이유 2. 만일 해당 코드가 루프안에 속할 경우, 루프 횟수만큼 인스턴스가 생성된다.
+![image](https://user-images.githubusercontent.com/37354145/98439872-2bb37b00-2138-11eb-9c99-53d3e9a34100.png){: .align-center}
+
+### 해결 방법
+```java
+    String s = "bikini";  // 문자열 리터럴 생성 방식
+```
+그냥 간단하게 리터럴하게 사용하면 된다.  
+  
 자세한 내용은 [이펙티브 자바 아이템06](https://hyeon9mak.github.io/effective-java/Effective-Java-item06/)을 참고하자!
 
 <br>
