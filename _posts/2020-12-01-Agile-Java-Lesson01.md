@@ -24,6 +24,8 @@ StudentTest 클래스는 Student 클래스에 영향을 받는다.
 Student 클래스는 StudentTest 클래스에 영향을 받으면 안된다.  
 TDD 지만, 절대 테스트에 종속적인 명세가 만들어지면 안된다.
 
+<br>
+
 ## 디자인: 명세의 시작 방법
 디자인의 시작은 자세한 명세를 구상하는 것이 아닌, 상위 디자인을 구상하는 것부터 시작한다. 
 그래야 하는 이유는 크게 2가지가 있다.
@@ -32,6 +34,8 @@ TDD 지만, 절대 테스트에 종속적인 명세가 만들어지면 안된다
 - 자바 코드로 옮기는 과정에서 상세한 내용이 얼마든지 바뀔 수 있다.
 
 객체지향 개발방법에는 변화에 따라 디자인을 얼마든지 수정할 수 있는 유연함이 존재한다. 이 유연함을 적극 활용하자.
+
+<br>
 
 ## 테스트 코드 작성하기
 - Junit은 반환 받을 내용이 없으므로 반환 타입이 void 다.
@@ -49,6 +53,8 @@ public class StudentTest extends junit.framework.TestCase {
 ```
 
 Junit 프레임워크의 TestCase 클래스를 상속받아 TestCase 클래스가 가진 기능을 활용한다.
+
+<br>
 
 ## 객체의 범위(scope)
 ```java
@@ -69,6 +75,8 @@ public class StudentTest extends junit.framework.TestCase {
 testCreate 메서드에서 생성된 Student 객체는 testCreate 메서드가 수행되는 동안만 유지된 후, 소멸된다.  
 이를 **Student 객체는 testCreate 메서드의 범위(scope) 내에 존재한다**고 표현한다.
 
+<br>
+
 ## 확인하기(Assertion)
 ```java
 public class StudentTest extends junit.framework.TestCase {
@@ -80,6 +88,8 @@ public class StudentTest extends junit.framework.TestCase {
 }
 ```
 assert* 메서드를 이용한다. (다만 최근에는 **assertThat을 이용하는 추세**다.)
+
+<br>
 
 ## 재구성하기(Refactoring)
 ### StudentTest.java
@@ -119,6 +129,8 @@ public class StudentTest extends junit.framework.TestCase {
 특히 상수 값 하드코딩의 경우 작업량의 늘리는 주 원인이 되므로, 항상 상수 변수화 시켜서 사용하는 습관을 들여야 한다.
 
 ---
+
+<br>
 
 ### Student.java
 ```java
