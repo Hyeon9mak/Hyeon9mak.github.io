@@ -1,8 +1,4 @@
 ---
-tagline: "This is a custom tagline content which overrides the default page excerpt."
-header:
-  overlay_image: https://t1.daumcdn.net/cfile/blog/1629F547503F7BB618
-  caption: "Photo credit: [**테스트냐옹**](테스트다옹)"
 title: "[Agile Java] Lesson03 문자열과 패키지"
 date: 2020-12-08 12:30:38
 categories:
