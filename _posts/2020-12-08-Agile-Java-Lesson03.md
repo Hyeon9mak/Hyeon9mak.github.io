@@ -16,6 +16,7 @@ toc_label: "Lesson03 문자열과 패키지"
 ---
 
 실습 내용 저장소: [https://github.com/Hyeon9mak/student-information-system](https://github.com/Hyeon9mak/student-information-system)
+{: .notice}
 
 ## 문자열은 생성자를 사용하지 마라
 ### 이유 1. 생성자 매개변수로 넘겨진 문자열과, 생성된 객체의 기능이 완전히 동일하다.

@@ -16,6 +16,7 @@ toc_label: "Lesson02 자바의 기초"
 ---
 
 실습 내용 저장소: [https://github.com/Hyeon9mak/student-information-system](https://github.com/Hyeon9mak/student-information-system)
+{: .notice}
 
 ## 클래스 필드는 추상화로부터
 클래스가 가질 필드는 추상화를 통해 불필요한 특징을 배제하고 

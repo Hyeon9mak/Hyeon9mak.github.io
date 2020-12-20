@@ -15,6 +15,7 @@ toc_sticky: true
 toc_label: "아이템 14. Comparable을 구현할지 고려하라"
 ---
 전체적인 스터디 내용은 [JunHyeok96/effective-java](https://github.com/JunHyeok96/effective-java)에서 확인 가능! 
+{: .notice}
 
 ## Comparable.compareTo
 Comparable 인터페이스는 **compareTo 단 하나의 메서드만** 가지고 있다. 

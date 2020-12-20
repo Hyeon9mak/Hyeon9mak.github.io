@@ -16,6 +16,7 @@ toc_label: "An Agile Overview"
 ---
 
 실습 내용 저장소: [https://github.com/Hyeon9mak/student-information-system](https://github.com/Hyeon9mak/student-information-system)
+{: .notice}
 
 ## 소프트웨어를 만들 때 항상 따라야 하는 절차
 - 분석 : 소프트웨어가 어때야 하는지 요구사항을 모으고 교정해서 만듦새 결정

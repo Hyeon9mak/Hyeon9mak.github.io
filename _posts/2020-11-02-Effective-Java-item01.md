@@ -15,7 +15,7 @@ toc_sticky: true
 toc_label: "아이템 1. 생성자 대신 정적 팩터리 메서드를 고려하라"
 ---
 전체적인 스터디 내용은 [JunHyeok96/effective-java](https://github.com/JunHyeok96/effective-java)에서 확인 가능!  
-  
+{: .notice}
 
 ## 👍 장점 1. 이름을 가질 수 있다.
 ### 이름을 통해 생성자가 입력 받는 매개변수가 어떻게 사용될지 객체의 특성 묘사가 가능해진다.

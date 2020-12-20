@@ -15,6 +15,7 @@ toc_sticky: true
 toc_label: "아이템 61. 박싱된 기본 타입보다는 기본 타입을 사용하라"
 ---
 전체적인 스터디 내용은 [JunHyeok96/effective-java](https://github.com/JunHyeok96/effective-java)에서 확인 가능! 
+{: .notice}
 
 ## 🤔 박싱된 기본 타입?
 **기본 타입 (Primitive Type)**  

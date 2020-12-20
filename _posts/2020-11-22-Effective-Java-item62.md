@@ -15,6 +15,7 @@ toc_sticky: true
 toc_label: "아이템 62. 다른 타입이 적절하다면 문자열 사용을 피하라"
 ---
 전체적인 스터디 내용은 [JunHyeok96/effective-java](https://github.com/JunHyeok96/effective-java)에서 확인 가능! 
+{: .notice}
 
 ## 🙅‍♂️ 문자열은 다른 값 타입을 대신하기에 적합하지 않다.
 파일, 네트워크, 키보드 입력으로부터 데이터를 받을 때 주로 문자열을 사용하지만, 

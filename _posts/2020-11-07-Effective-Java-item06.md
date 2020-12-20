@@ -15,6 +15,7 @@ toc_sticky: true
 toc_label: "아이템 6. 불필요한 객체 생성을 피하라"
 ---
 전체적인 스터디 내용은 [JunHyeok96/effective-java](https://github.com/JunHyeok96/effective-java)에서 확인 가능!  
+{: .notice}
 
 ## 💡 String 객체 생성 패턴
 ```java

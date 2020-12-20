@@ -15,6 +15,7 @@ toc_sticky: true
 toc_label: "아이템 57. 지역변수의 범위를 최소화하라"
 ---
 전체적인 스터디 내용은 [JunHyeok96/effective-java](https://github.com/JunHyeok96/effective-java)에서 확인 가능!  
+{: .notice}
 
 ## 💡 지역변수의 유효 범위를 최소로 줄이면 코드 가독성과 유지보수성이 높아지고 오류 가능성은 낮아진다.
 흔히 지역변수라 하면 함수 내부에 속한 변수만을 떠올리겠지만, 

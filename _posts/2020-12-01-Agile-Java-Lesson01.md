@@ -16,6 +16,7 @@ toc_label: "Lesson01 시작하기"
 ---
 
 실습 내용 저장소: [https://github.com/Hyeon9mak/student-information-system](https://github.com/Hyeon9mak/student-information-system)
+{: .notice}
 
 ## 테스트 클래스는 명세 클래스에 종속적이다.
 **StudentTest -> Student**  

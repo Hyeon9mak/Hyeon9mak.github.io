@@ -15,6 +15,7 @@ toc_sticky: true
 toc_label: "아이템 58. 전통적인 for 문보다는 for-each 문을 사용하라"
 ---
 전체적인 스터디 내용은 [JunHyeok96/effective-java](https://github.com/JunHyeok96/effective-java)에서 확인 가능! 
+{: .notice}
 
 ## 💡 while 문보다는 낫지만, 조금은 아쉬운 for 문
 ```java
