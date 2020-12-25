@@ -25,7 +25,7 @@ url                      : "https://Hyeon9mak.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : "/assets/images/9git.png" # 500x300px
-logo                     : "/assets/images/9git_logo.png" # 88x88px
+logo                     : /assets/images/9git_logo.png # 88x88px
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
@@ -116,6 +116,10 @@ author:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/Hyeon9mak/"
+
+# Site Header
+header:
+  image: /assets/images/img.jpg
 
 # Site Footer
 footer:
