@@ -9,7 +9,7 @@ tags:
     - 키보드 교체
     - 키보드 서비스 프로그램
     - MacBook Pro
-toc: false
+toc: true
 toc_sticky: true
 toc_label: "MacBook Pro (15-inch, 2017) 키보드 교체 후기"
 ---
