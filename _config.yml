@@ -264,7 +264,7 @@ defaults:
       type: posts
     values:
       header:
-        image: /assets/images/img.jpg
+        image: /assets/images/header_image.jpg
       show_date: true
       layout: single
       author_profile: true
@@ -279,7 +279,7 @@ defaults:
       type: pages
     values:
       header:
-        image: "/assets/images/img.jpg"
+        image: /assets/images/header_image.jpg
       show_date: true
       layout: single
       author_profile: true
