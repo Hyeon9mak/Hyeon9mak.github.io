@@ -97,8 +97,8 @@ TUVA 건대점에 21일 월요일 오후로 예약을 잡고, 곧바로 수리�
 수리가 완료되었다는 안내전화를 받고 오늘 곧장 맥북을 받아왔다. 
 5~7일 걸린다고 안내 받았지만 실 소요일은 3일이었다. 
 
-![image](https://user-images.githubusercontent.com/37354145/103130165-e2ff5380-46de-11eb-99a3-bca1141f9725.png){: .align-center}  
-*<center>새로 붙인 스티커. 특히 왼쪽이 너무 귀엽다!</center>*  
+![image](https://user-images.githubusercontent.com/37354145/103130165-e2ff5380-46de-11eb-99a3-bca1141f9725.png)  
+새로 붙인 스티커. 특히 왼쪽이 너무 귀엽다!{: .align-center}  
   
 수리 후 한 시간동안 사용해보면서 달라진 점을 정리해보았다.
 
