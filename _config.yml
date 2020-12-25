@@ -264,7 +264,7 @@ defaults:
       type: posts
     values:
       header:
-        image: "/assets/images/img.jpg"
+        image: /assets/images/img.jpg
       show_date: true
       layout: single
       author_profile: true
