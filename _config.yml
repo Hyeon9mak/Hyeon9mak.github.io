@@ -117,10 +117,6 @@ author:
       icon: "fab fa-fw fa-github"
       url: "https://github.com/Hyeon9mak/"
 
-# Site Header
-header:
-  image: "/assets/images/img.jpg"
-
 # Site Footer
 footer:
   links:
@@ -267,6 +263,8 @@ defaults:
       path: ""
       type: posts
     values:
+      header:
+        image: "/assets/images/img.jpg"
       show_date: true
       layout: single
       author_profile: true
