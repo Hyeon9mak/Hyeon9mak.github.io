@@ -72,7 +72,7 @@ toc_label: "MacBook Pro (15-inch, 2017) 키보드 교체 후기"
 <br>
 
 ## 🛠️ 수리 맡기기
-![image](https://user-images.githubusercontent.com/37354145/103130008-3d4be480-46de-11eb-9c64-c9cb876b411c.png){: width="10%" height="10%"}
+![image](https://user-images.githubusercontent.com/37354145/103130008-3d4be480-46de-11eb-9c64-c9cb876b411c.png){: width="50%" height="50%" .align-center}
 
 TUVA 건대점에 21일 월요일 오후로 예약을 잡고, 곧바로 수리를 맡길 수 있었다.  
   
