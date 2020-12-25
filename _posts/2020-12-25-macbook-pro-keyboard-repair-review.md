@@ -9,7 +9,7 @@ tags:
     - 키보드 교체
     - 키보드 서비스 프로그램
     - MacBook Pro
-toc: true
+toc: false
 toc_sticky: true
 toc_label: "MacBook Pro (15-inch, 2017) 키보드 교체 후기"
 ---
@@ -52,9 +52,10 @@ toc_label: "MacBook Pro (15-inch, 2017) 키보드 교체 후기"
 계속해서 불편함을 감수하기엔 너무 자주 흐름이 끊겨서, 결국 키보드 수리를 알아보았다. 
 그런데 이 문제가 나비식 키보드가 적용된 모든 맥북에서 공통적으로 발생하는 현상이었다! 
 
-> ![image](https://user-images.githubusercontent.com/37354145/103128631-65851480-46d9-11eb-9c47-e135a7438da1.png) {: .align-center}
-> https://support.apple.com/ko-kr/keyboard-service-program-for-mac-notebooks  
-> *내 얘기잖아?* 
+![image](https://user-images.githubusercontent.com/37354145/103128631-65851480-46d9-11eb-9c47-e135a7438da1.png)
+{: .align-center}  
+https://support.apple.com/ko-kr/keyboard-service-program-for-mac-notebooks  
+*내 얘기잖아?* 
 
 무상 교체가 가능하다는 소식에 당장이라도 교체를 진행하고 싶었지만 
 후기들을 찾아보니 1~2주는 소요된다는 후기가 대부분이었고, 
