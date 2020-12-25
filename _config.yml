@@ -265,6 +265,8 @@ defaults:
     values:
       header:
         overlay_image: /assets/images/header_image.jpg
+        overlay_filter: 0.5
+        show_overlay_excerpt: false
       show_date: true
       layout: single
       author_profile: true
@@ -280,6 +282,8 @@ defaults:
     values:
       header:
         overlay_image: /assets/images/header_image.jpg
+        overlay_filter: 0.5
+        show_overlay_excerpt: false
       show_date: true
       layout: single
       author_profile: true
