@@ -1,6 +1,6 @@
 ---
 title: "[Effective-Java] 아이템 58. 전통적인 for 문보다는 for-each 문을 사용하라"
-date: 2020-11-15 19:29:38
+date: 2020-11-15
 categories:
     - effective-java
 tags:

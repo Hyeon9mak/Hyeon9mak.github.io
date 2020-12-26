@@ -1,6 +1,6 @@
 ---
 title: "IntelliJ Gruvbox 테마 적용하기"
-date: 2020-11-07 16:11:38
+date: 2020-11-07
 categories:
     - Etc
 tags:

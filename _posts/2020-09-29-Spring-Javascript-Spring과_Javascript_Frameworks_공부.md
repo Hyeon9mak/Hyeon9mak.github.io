@@ -1,6 +1,6 @@
 ---
 title: "Spring과 Javascript Frameworks 공부"
-date: 2020-09-29 15:13:00
+date: 2020-09-29
 categories:
     - Spring & Javascript Frameworks
 tags:

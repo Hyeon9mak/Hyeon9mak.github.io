@@ -1,6 +1,6 @@
 ---
 title: "[Agile Java] Lesson02 자바의 기초"
-date: 2020-12-05 20:02:38
+date: 2020-12-05
 categories:
     - Agile-Java
 tags:

@@ -1,6 +1,6 @@
 ---
 title: "[Effective-Java] 아이템 57. 지역변수의 범위를 최소화하라"
-date: 2020-11-12 19:59:38
+date: 2020-11-12
 categories:
     - effective-java
 tags:

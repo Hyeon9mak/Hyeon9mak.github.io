@@ -1,6 +1,6 @@
 ---
 title: "[Effective-Java] 아이템 1. 생성자 대신 정적 팩터리 메서드를 고려하라"
-date: 2020-11-02 23:05:38
+date: 2020-11-02
 categories:
     - effective-java
 tags:

@@ -1,6 +1,6 @@
 ---
 title: "[Effective-Java] 아이템 61. 박싱된 기본 타입보다는 기본 타입을 사용하라"
-date: 2020-11-22 02:29:38
+date: 2020-11-22
 categories:
     - effective-java
 tags:

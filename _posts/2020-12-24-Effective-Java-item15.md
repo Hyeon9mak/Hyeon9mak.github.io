@@ -1,6 +1,6 @@
 ---
 title: "[Effective-Java] 아이템 15. 클래스와 멤버의 접근 권한을 최소화하라"
-date: 2020-12-24 19:15:09
+date: 2020-12-24
 categories:
     - effective-java
 tags:

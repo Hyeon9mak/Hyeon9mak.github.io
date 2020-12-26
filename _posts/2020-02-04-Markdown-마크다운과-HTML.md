@@ -1,6 +1,6 @@
 ---
 title: "마크다운과 HTML"
-date: 2020-02-04 15:59:00
+date: 2020-02-04
 categories:
     - Markdown
 tags:

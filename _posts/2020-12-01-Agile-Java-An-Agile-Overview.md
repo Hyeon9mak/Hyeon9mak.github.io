@@ -1,6 +1,6 @@
 ---
 title: "[Agile Java] An Agile Overview"
-date: 2020-12-01 11:29:38
+date: 2020-12-01
 categories:
     - Agile-Java
 tags:

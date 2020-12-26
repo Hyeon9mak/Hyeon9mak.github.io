@@ -1,6 +1,6 @@
 ---
 title: "[SQL : 프로그래머스] DATETIME에서 DATE로 형 변환"
-date: 2020-10-08 11:20:00
+date: 2020-10-08
 categories:
     - MySQL
 tags:

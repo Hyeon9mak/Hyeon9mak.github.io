@@ -1,6 +1,6 @@
 ---
 title: "[Agile Java] Lesson03 문자열과 패키지"
-date: 2020-12-08 12:30:38
+date: 2020-12-08
 categories:
     - Agile-Java
 tags:

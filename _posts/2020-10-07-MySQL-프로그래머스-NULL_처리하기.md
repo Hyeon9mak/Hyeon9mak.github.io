@@ -1,6 +1,6 @@
 ---
 title: "[SQL : 프로그래머스] NULL 처리하기"
-date: 2020-10-07 19:50:00
+date: 2020-10-07
 categories:
     - MySQL
 tags:

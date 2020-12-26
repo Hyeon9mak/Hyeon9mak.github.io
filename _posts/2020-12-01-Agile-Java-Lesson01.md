@@ -1,6 +1,6 @@
 ---
 title: "[Agile Java] Lesson01 시작하기"
-date: 2020-12-01 14:44:38
+date: 2020-12-01
 categories:
     - Agile-Java
 tags:
