@@ -65,8 +65,46 @@ toc_label: "아이템 17. 변경 가능성을 최소화하라"
 
 ---
 
-장황해보이지만 간단하게 정리하면 클래스를 `final`, 필드를 `private final`로 제한하고 
+단, 3번 규칙의 경우 성능을 위해서 조금의 예외가 존재한다. 몇몇 불변 클래스는 
+계산 비용이 큰 값을 생성 단계에 계산하지 않고 나중(처음 사용할 때)에 계산 후
+`final`이 아닌 필드에 캐싱(Cashing) 해놓기도 한다. 
+똑같은 값을 다시 요청하면 캐싱해둔 값을 반환하여 계산 비용을 절감하는 것이다. 
+실제 `String` 클래스에서도 예외가 적용된 캐싱이 사용되고 있다.
+
+```java
+
+public final class String ... {
+
+    // 실제 String 클래스에서 유일하게 final 이 아닌 필드들
+    private int hash;           // Default to 0
+    private boolean hashIsZero; // Default to false;
+    
+    // hash 필드가 사용되는 곳은 오직 hashCode() 메서드 뿐이다.
+    public int hashCode() {
+        int h = hash;
+        if (h == 0 && !hashIsZero) {
+            h = isLatin1() ? StringLatin1.hashCode(value)
+                           : StringUTF16.hashCode(value);
+            if (h == 0) {
+                hashIsZero = true;
+            } else {
+                hash = h;
+            }
+        }
+        return h;
+    }
+```
+
+이 묘수는 객체가 불변임을 보장하기 때문에 적용될 수 있는 것이다!
+  
+장황해보이지만 간단하게 정리하면 클래스 상속을 잘 막고, 중요한 필드를 `private final`로 제한 한 뒤 
 메서드를 통해서만 접근이 가능하도록 하면 된다.
+
+추가로 직렬화(Serializable)를 진행한다면, 불변 클래스 내부의 가변 객체를 참조하는 필드를 
+반드시 `readObject`, `readResolve` 메서드를 제공하거나 
+`ObjectOutputStream.writeUnshared`, `ObjectInputStream.readUnshared` 메서드를 사용해서 
+직렬화/역직렬화를 진행해야 한다. 그렇지 않을 경우 불변 클래스로부터 가변 인스턴스를 만들어낼 수 있다.
+{: .notice}
 
 <br>
 
@@ -301,3 +339,27 @@ public static BigInteger safeInstance(BigInteger val) {
 
 `BigInteger`, `BigDecimal` 클래스는 현재까지도 하위 호환성이 발목을 잡아 
 해당 문제를 고치지 못하고 있다.
+
+<br>
+
+## ✏️ 최종 정리
+
+- **클래스는 꼭 필요한 경우가 아니라면 불변이어야 한다.**
+    - 단점보다 장점이 훨씬 많다.
+- setter 메서드를 무조건 제공해선 안된다.
+- **단순한 값 객체를 항상 불변으로 만들자.**
+    - 이를 위해선 단순한 값을 객체로 감싸(Wrapping)야 한다.
+- `String`이나 `BigInteger`처럼 무거운 값 객체도 불변을 고려하자.
+    - 성능 저하가 우려된다면, 가변 동반 클래스를 `public`으로 제공하자.
+
+---
+
+모든 클래스를 불변으로 만들 순 없을 것이다. 그렇다 해도 
+변경할 수 있는 영역을 최소한으로 줄여보자. 객체가 가질 수 있는 상태의 수가 줄면 
+객체를 예측하기 쉬워지고 오류가 줄어든다. 다른 합당한 이유가 없다면 모든 필드는 
+`private final`이 적합하다.  
+  
+생성자는 불변식 설정(초기화)이 모두 완료된 완벽한 상태의 객체를 생성해야 한다. 
+확실한 이유가 없다면 생성자와 정적 팩터리 외에는 그 어떤 초기화(setter) 메서드도 
+`public`으로 제공해서는 안된다. 객체(인스턴스)를 재활용할 목적이더라도 안된다. 
+복잡성만 커지고 성능의 이점은 거의 없다. (요즘 GC의 성능이 워낙 뛰어나기 때문)
