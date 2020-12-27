@@ -155,10 +155,10 @@ public final class Complex {    // final 선언
 
 <br>
 
-## ⛑ 불변 객체의 장점 7가지
+## ⛑ 불변 객체의 장점
 불변 객체는 단순하고, 안전하다. 사실 불변 객체는 클래스를 
 스레드간 침범으로부터 안전하게 만드는 가장 쉬운 방법이기도 하다. 
-불변 객체에는 수 많은 다양한 장점이 존재한다. 
+불변 객체에는 다양한 장점이 존재한다. 
 
 ---
 
@@ -177,7 +177,7 @@ public final class Complex {    // final 선언
     
     ```java
     public static final Complex ZERO = new Complex(0, 0);
-    public static final Complex One  = new Complex(1, 0);
+    public static final Complex ONE  = new Complex(1, 0);
     public static final Complex I    = new Complex(0, 1);
     ```
 
@@ -215,4 +215,42 @@ public final class Complex {    // final 선언
     해당 자료구조들은 원소 값이 바뀌면 불변식이 허물어지는데, 불변 객체를 원소로 사용하면 그런 걱정을 할 필요가 없다.
 
 7. **불변 객체 자체로 원자성(atomicity)을 제공한다.**  
-상태가 절대 변하지 않으니 불일치 상태에 빠질 가능성 자체가 존재하지 않는다.
+메서드 동작 중 예외가 발생하더라도 객체의 상태가 절대 변하지 않으니 
+불일치 상태에 빠질 가능성 자체가 존재하지 않는다.
+
+<br>
+
+## ⛑ 불변 클래스의 단점
+이렇게 완벽해보이는 불변 클래스에도 단점은 존재한다. 
+**값이 다르면 반드시 독립된 객체로 새로 만들어야 한다는 것**이다. 
+값의 가짓수가 다양하고 많다면 이들을 모두 만드는데 큰 비용을 감당해야 한다.  
+  
+1,000,000 비트짜리 `BigInteger`에서 비트 하나를 바꾼다고 가정해보자.
+```java
+BigInteger moby = ...;
+moby = moby.flipBit(0);
+```
+`flipBit` 메서드는 새로운 `BigInteger` 인스턴스를 생성하게 될 것이다. 
+원본과 단 하나의 비트만 차이나는 1,000,000 크기의 인스턴스를 생성하는 것이다. 
+시간과 공간 모든 영역에서 손해를 일으키는 동작이다.  
+  
+치명적인 불변 클래스의 단점을 보완할 수 있는 방법이 2가지 있다.
+
+---
+1. **가변 동반 클래스 제공**  
+    흔하게 쓰일 다단계 연산(multistep-operation)을 예측하여 기본 기능으로 제공하는 것이다. 
+    `BigInteger` 예시로, 지수연산 같은 다단계 연산시 발생하는 불변 클래스의 
+    문제점을 보완하기 위해 다단계 연산들을 묶음으로 제공하는 클래스를 제공하자.
+    
+    ![image](https://user-images.githubusercontent.com/37354145/103164467-db5ebc80-484e-11eb-93ff-79032cf43fac.png)
+    
+    실제 `BigInteger` 클래스가 포함된 `Math` 패키지 구조를 살펴보면 위와 같이 추가적인 
+    클래스들을 `package-private` 형태로 제공하고 있다. 
+    이 클래스들을 **가변 동반 클래스(companion-class)** 라고 부른다.
+
+2. **가변 동반 클래스 제공 + 불변 클래스를 `public` 으로 제공**  
+    만일 클라이언트들이 원하는 복잡한 연산을 예측할 수 없다면 
+    불변 클래스를 `public`으로 제공하는 것이 최선이다.  
+      
+    자바 플랫폼 라이브러리에서 이에 해당하는 대표적인 예가 바로 `String` 이다! 
+    `String`은 가변 동반 클래스로 `StringBuilder, StringBuffer`를 제공하고 있다.
