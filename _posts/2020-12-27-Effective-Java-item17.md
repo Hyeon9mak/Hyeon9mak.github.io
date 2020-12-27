@@ -39,8 +39,6 @@ toc_label: "아이템 17. 변경 가능성을 최소화하라"
 
 ## ⛑️ 불변 클래스를 만들기 위한 5가지 규칙
 
----
-
 1. **객체의 상태를 변경하는 메서드(`setter`)를 제공하지 않는다.**
 
 2. **클래스를 확장(상속) 할 수 없도록 한다.**  
@@ -168,4 +166,21 @@ public final class Complex {    // final 선언
 불변 객체는 단순하고, 안전하다. 사실 불변 객체는 클래스를 
 스레드간 침범으로부터 안전하게 만드는 가장 쉬운 방법이기도 하다.  
   
-따라서 
+따라서 불변 클래스라면 한 번 맏는 인스턴스를 최대한 재활용하기를 권장한다. 
+우리가 가장 흔하게 재활용 할 수 있는 방법은 자주 쓰이는 값들을 상수로 제공하는 것이다.
+
+```java
+public static final Complex ZERO = new Complex(0, 0);
+public static final Complex One  = new Complex(1, 0);
+public static final Complex I    = new Complex(0, 1);
+```
+
+또한 여기에 [정적 팩터리 메서드](https://hyeon9mak.github.io/effective-java/Effective-Java-item01/)
+를 적용하여 같은 인스턴스가 중복 생성되지 않도록 할 수도 있다. 이런 정적 팩터리를 사용하면 
+여러 클라이언트가 하나의 인스턴스를 공유하여 메모리 사용량과 가비지 컬렉션의 비용을 절감할 수 있다. 
+대표적으로 `Wrapper 클래스`들과 `BigInteger`클래스가 이것들을 적용한 사례다.  
+  
+불변 객체를 통한 자유로운 공유는 **방어적 복사**가 꼭 필요하지 않다는 결론이 자연스럽게 도출된다. 
+어차피 복사해봐야 원본과 절대 다르지 않으므로, 복사 자체가 의미가 없다. 그러므로 불변 클래스는 
+`clone` 메서드나 복사 생성자를 제공하지 않는 것이 좋다. [`String` 클래스의 복사 생성자](https://hyeon9mak.github.io/effective-java/Effective-Java-item06/)
+는 이 사실을 몰랐던 자바 초창기에 만들어진 것으로, 되도록 사용을 지양해야 한다.
