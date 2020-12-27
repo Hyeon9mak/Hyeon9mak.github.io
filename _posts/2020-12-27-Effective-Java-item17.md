@@ -363,3 +363,7 @@ public static BigInteger safeInstance(BigInteger val) {
 확실한 이유가 없다면 생성자와 정적 팩터리 외에는 그 어떤 초기화(setter) 메서드도 
 `public`으로 제공해서는 안된다. 객체(인스턴스)를 재활용할 목적이더라도 안된다. 
 복잡성만 커지고 성능의 이점은 거의 없다. (요즘 GC의 성능이 워낙 뛰어나기 때문)
+
+모든 원칙이 잘 적용된 사례로 `java.util.concurrent` 패키지의 `CountDownLatch` 클래스가 있다. 
+가변 클래스지만 가질 수 있는 상태의 수가 많지 않다.
+{: .notice}
