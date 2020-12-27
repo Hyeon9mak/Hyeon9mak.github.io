@@ -42,20 +42,26 @@ toc_label: "아이템 17. 변경 가능성을 최소화하라"
 1. **객체의 상태를 변경하는 메서드(`setter`)를 제공하지 않는다.**
 
 2. **클래스를 확장(상속) 할 수 없도록 한다.**  
-  상속을 막는 대표적인 방법은 클래스를 `final`로 선언하는 것이다.
+    상속을 막는 대표적인 방법은 클래스를 `final`로 선언하는 것이다. 
+    하지만 우리는 더 유연한 방법을 알고 있다. 바로 모든 생성자를 
+    `private` 혹은 `package-private` 으로 바꾼 뒤 
+    [정적 팩터리 메서드](https://hyeon9mak.github.io/effective-java/Effective-Java-item01/) 를 제공하는 것이다.  
+    
+    특히나 정적 팩터리 메서드를 이용하면 `package-private` 클래스를 자유롭게 만들어
+    활용 할 수 있다는 큰 장점이 존재하고, 객체 캐싱 기능을 추가하여 성능을 끌어 올릴 수도 있다.
 
 3. **모든 필드를 `final` 로 선언한다.**  
-  시스템이 강제하는 수단을 이용해 보장하는 것이자,  
-  설계자의 의도를 명확히 하는 도구이다.
+    시스템이 강제하는 수단을 이용해 보장하는 것이자,  
+    설계자의 의도를 명확히 하는 도구이다.
 
 4. **모든 필드를 `private` 로 선언한다.**  
-  필드를 `public final` 로 선언하는 것도 불변을 보장해주지만,  
-  [불변 보장 외에 여러가지 문제점이 남게 된다.](https://hyeon9mak.github.io/effective-java/Effective-Java-item16/#final-키워드를-추가한-예시)
+    필드를 `public final` 로 선언하는 것도 불변을 보장해주지만,  
+    [불변 보장 외에 여러가지 문제점이 남게 된다.](https://hyeon9mak.github.io/effective-java/Effective-Java-item16/#final-키워드를-추가한-예시)
 
 5. **자신 외에는 내부 가변 컴포넌트에 접근할 수 없도록 한다.**  
-  가변 객체를 참조하는 필드가 하나라도 있다면  
-  클라이언트에서 그 객체의 참조를 얻을 수 없도록 무조건 막아내야 한다.  
-  생성자, 접근자, readObject 등 모든 곳에서 방어적 복사를 수행 해라.
+    가변 객체를 참조하는 필드가 하나라도 있다면  
+    클라이언트에서 그 객체의 참조를 얻을 수 없도록 무조건 막아내야 한다.  
+    생성자, 접근자, readObject 등 모든 곳에서 방어적 복사를 수행 해라.
 
 ---
 
@@ -155,7 +161,7 @@ public final class Complex {    // final 선언
 
 <br>
 
-## ⛑ 불변 객체의 장점
+## ⛑ 불변 클래스(객체)의 장점
 불변 객체는 단순하고, 안전하다. 사실 불변 객체는 클래스를 
 스레드간 침범으로부터 안전하게 만드는 가장 쉬운 방법이기도 하다. 
 불변 객체에는 다양한 장점이 존재한다. 
@@ -220,7 +226,7 @@ public final class Complex {    // final 선언
 
 <br>
 
-## ⛑ 불변 클래스의 단점
+## ⛑ 불변 클래스(객체)의 단점
 이렇게 완벽해보이는 불변 클래스에도 단점은 존재한다. 
 **값이 다르면 반드시 독립된 객체로 새로 만들어야 한다는 것**이다. 
 값의 가짓수가 다양하고 많다면 이들을 모두 만드는데 큰 비용을 감당해야 한다.  
@@ -254,3 +260,44 @@ moby = moby.flipBit(0);
       
     자바 플랫폼 라이브러리에서 이에 해당하는 대표적인 예가 바로 `String` 이다! 
     `String`은 가변 동반 클래스로 `StringBuilder, StringBuffer`를 제공하고 있다.
+
+<br>
+
+## 🔥 불변 규칙을 지키지 못해 생기는 문제들
+`BigInteger`와 `BigDecimal`은 설계 당시엔 
+불변 객체가 `final`이어야 한다는 생각이 널리 퍼지지 않아 규칙이 지켜지지 않았다. 
+결국 두 클래스의 메서드들은 모두 재정의(상속 오버라이딩)가 가능해졌고 
+이로 인해 두 클래스의 객체를 인자로 받을 때마다 
+**진짜 `BigInteger` (혹은 `BigDecimal`)** 인지 확인해야하는 문제가 발생하고 있다.
+
+```java
+@Test
+public void test_상속으로_장난치기() {
+    // 원본 BigInteger는 signum 필드에 직접 접근이 불가능하고,
+    // signum 필드가 final 로 선언되어 있다.
+    BigInteger oBigInteger = new BigInteger("123");    
+    assertThat(oBigInteger.signum()).isEqualTo(1);
+    oBigInteger.signum = 5; // <-- 동작 되지 않는 코드
+    assertThat(oBigInteger.signum()).isNotEqualTo(5);
+
+    // 상속 후 오버라이드 한 ChildBigInteger 는 그런 제약이 없다.
+    ChildBigInteger cBigInteger = new ChildBigInteger("123");
+    assertThat(cBigInteger.signum).isEqualTo(1);
+    cBigInteger.signum = 5;
+    assertThat(cBigInteger.signum).isEqualTo(5);
+}
+```
+
+`BigInteger`를 상속 받은 하위 클래스에서 동일한 필드 데이터를 위와 같이 바꿀시 
+불변이 깨지게 된다. 이 때문에 `BigInteger`를 상속받은 하위 클래스의 인스턴스를 신뢰할 수 없다면 
+모두 가변이라고 가정한 후 아래처럼 방어적으로 복사시켜서 사용해야 한다.
+
+```java
+public static BigInteger safeInstance(BigInteger val) {
+    return val.getClass() == BigInteger.class ?
+        val : new BigInteger(val.toByteArray());
+}
+```
+
+`BigInteger`, `BigDecimal` 클래스는 현재까지도 하위 호환성이 발목을 잡아 
+해당 문제를 고치지 못하고 있다.
