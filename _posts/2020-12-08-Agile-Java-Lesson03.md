@@ -49,6 +49,18 @@ StringBuilder의 효능에 대해서는 함께 이펙티브 자바 스터디를 
 
 <br>
 
+## 다양한 플랫폼(OS)에서 개행
+개행에 단순히 `\n`을 이용할 경우 다양한 플랫폼으로 이식이 어렵다. 
+유닉스에서 의미하는 `\n`은 윈도우즈에서 `\r\n`으로 해석된다. 
+플랫폼간 차이를 보충하기 위해서 시스템 특성 값인 `line.separator`를 사용하자
+
+```java
+private static final String NEW_LINE =
+    System.getProperty("line.separator");
+```
+
+<br>
+
 ## 단일 역할의 원칙
 > 클래스를 수정하는데에는 오직 한 가지 이유만 있어야 한다.
 
