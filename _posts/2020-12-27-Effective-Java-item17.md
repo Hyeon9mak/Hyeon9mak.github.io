@@ -299,6 +299,8 @@ moby = moby.flipBit(0);
     자바 플랫폼 라이브러리에서 이에 해당하는 대표적인 예가 바로 `String` 이다! 
     `String`은 가변 동반 클래스로 `StringBuilder, StringBuffer`를 제공하고 있다.
 
+[그 외 가변 동반 클래스 사용에 대한 내용은 이슈를 참고하자.](https://github.com/JunHyeok96/effective-java/issues/15)
+
 <br>
 
 ## 🔥 불변 규칙을 지키지 못해 생기는 문제들
