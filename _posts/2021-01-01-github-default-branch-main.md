@@ -27,7 +27,7 @@ error: failed to push some refs to
 따로 개설한 branch가 있는 것도 아닌데, `master` branch가 없다고 에러가 발생했다. 
 자세히 살펴보니 default branch가 `master`가 아닌 `main`으로 잡혀 있었다.
 
-```git
+```
 ~/student-information-system main ⇡
 ```
 
@@ -44,11 +44,7 @@ Github 측에서 [조지 플로이드 사건](https://ko.wikipedia.org/wiki/%EC%
 추가적으로 모든 사용자에게 default branch 이름을 설정할 수 있는 기능을 제공하고 있으며, 
 default branch 이름을 결정하지 않을 경우 자동으로 `main` branch 가 제공된다.
 
-<br>
-
 ---
-
-<br>
 
 컴퓨터 구조 관련해서는 이미 오래전부터 `master`,`slave` 네이밍이 자주 쓰여 왔기 때문에 
 Github 서비스에 꼭 나쁜 시선이 닿지는 않았을 것인데, 발 빠르게 대응한 것이 눈에 띈다. 
