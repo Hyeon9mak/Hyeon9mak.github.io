@@ -13,7 +13,7 @@ toc: false
 toc_sticky: true
 toc_label: "Github default branch 가 main으로 나온다."
 ---
-## `master` 가 아니라 `main` 이네?
+
 2020년 11월 개설한 Agile Java 실습 Repository에 처음 push를 진행할 때였다. 
 
 ```
