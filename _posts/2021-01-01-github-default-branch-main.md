@@ -37,14 +37,14 @@ Repository도 default branch가 `master` 로 잡혀있었기 때문이다.
 무슨 일일까 궁금해서 **["Github default branch main"](https://www.google.com/search?newwindow=1&ei=FbHuX5itLIio-QaPsLKwAw&q=Github+default+branch+main&oq=Github+default+branch+main&gs_lcp=CgZwc3ktYWIQAzICCAAyAggAMgIIADIGCAAQCBAeMgYIABAIEB46BQgAEM0CUL_vLVi_7y1gt4MuaAFwAHgAgAGHAogBoQOSAQUwLjEuMZgBAKABAqABAaoBB2d3cy13aXrAAQE&sclient=psy-ab&ved=0ahUKEwjYi-es_vntAhUIVN4KHQ-YDDYQ4dUDCA0&uact=5)** 키워드로 구글링을 해보았다. 
 그리고 곧바로 이유를 확인 할 수 있었다.  
 
----
+<br>
   
 Github 측에서 [조지 플로이드 사건](https://ko.wikipedia.org/wiki/%EC%A1%B0%EC%A7%80_%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C_%EC%82%AC%EB%A7%9D_%EC%82%AC%EA%B1%B4) 
 에 발맞춰 `master`, `slave` 용어를 더 이상 사용하지 않기로 결정한 것. 
 추가적으로 모든 사용자에게 default branch 이름을 설정할 수 있는 기능을 제공하고 있으며, 
 default branch 이름을 결정하지 않을 경우 자동으로 `main` branch 가 제공된다.
 
----
+<br>
 
 컴퓨터 구조 관련해서는 이미 오래전부터 `master`,`slave` 네이밍이 자주 쓰여 왔기 때문에 
 Github 서비스에 꼭 나쁜 시선이 닿지는 않았을 것인데, 발 빠르게 대응한 것이 눈에 띈다. 
