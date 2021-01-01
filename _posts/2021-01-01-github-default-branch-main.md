@@ -31,6 +31,9 @@ error: failed to push some refs to
 ~/student-information-system main ⇡
 ```
 
+~/student-information-system main ⇡
+{% highlight %} 
+
 당시엔 *'으잉? 별 일이네.'* 하고 간단히 넘겼지만, 여유가 생긴 오늘 천천히 깃허브를 살펴보며 
 그 때 일을 회상해보니 참 특이한 일이었다. 2020년 10월 말에 개설한 이펙티브 자바 스터디 
 Repository도 default branch가 `master` 로 잡혀있었기 때문이다. 
