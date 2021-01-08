@@ -41,7 +41,7 @@ toc_label: "Lesson04 클래스 메서드와 필드"
 생성자를 `private`로 선언하면 클래스 내부의 코드에서만 새로운 인스턴스를 생성할 수 있다. 
 불필요한 인스턴스가 중복 생성되는 것을 막을 수 있을 뿐만 아니라, 팩터리 메서드를 통해 
 생성자가 인자를 통해 어떤 필드 데이터를 초기화 하는지까지 메서드 네이밍을 통해 밝힐 수 있다. 
-자세한 내용은 [이펙티브 자바 아이템 1](https://hyeon9mak.github.io/effective-java/Effective-Java-item01/) 을 참고하면 좋다.
+자세한 내용은 [이펙티브 자바 아이템 1](https://hyeon9mak.github.io/effective-java/Effective-Java-item1/) 을 참고하면 좋다.
 
 <br>
 

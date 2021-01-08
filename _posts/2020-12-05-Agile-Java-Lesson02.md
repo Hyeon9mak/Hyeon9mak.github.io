@@ -231,6 +231,6 @@ import 문의 수가 많아지기 시작하면 * 형태를 사용한다. 어떤 
 <br>
 
 ## 팩터리 메서드
-팩터리 메서드의 장점은 이미 [이펙티브 자바 아이템1](https://hyeon9mak.github.io/effective-java/Effective-Java-item01/)에서 충분히 알아보았다.  
+팩터리 메서드의 장점은 이미 [이펙티브 자바 아이템1](https://hyeon9mak.github.io/effective-java/Effective-Java-item1/)에서 충분히 알아보았다.  
 일반적인 생성자에 팩터리 메서드를 활용하여 술술 읽을 수 있는 코드를 만들자.
 
