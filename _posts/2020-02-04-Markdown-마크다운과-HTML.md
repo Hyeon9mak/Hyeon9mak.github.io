@@ -1,8 +1,6 @@
 ---
 title: "마크다운과 HTML"
 date: 2020-02-04
-categories:
-    - Markdown
 tags:
     - Markdown
     - 마크다운

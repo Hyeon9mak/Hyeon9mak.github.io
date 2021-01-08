@@ -1,8 +1,6 @@
 ---
 title: "[Effective-Java] 아이템 14. Comparable을 구현할지 고려하라"
 date: 2020-12-01
-categories:
-    - effective-java
 tags:
     - 이펙티브자바
     - effective-java

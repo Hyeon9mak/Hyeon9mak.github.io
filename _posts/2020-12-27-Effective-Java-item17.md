@@ -1,8 +1,6 @@
 ---
 title: "[Effective-Java] 아이템 17. 변경 가능성을 최소화하라"
 date: 2020-12-27
-categories:
-    - effective-java
 tags:
     - 이펙티브자바
     - effective-java

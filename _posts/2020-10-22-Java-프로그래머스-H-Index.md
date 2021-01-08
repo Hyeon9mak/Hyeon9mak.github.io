@@ -1,8 +1,6 @@
 ---
 title: "[Java : 프로그래머스] H-Index"
 date: 2020-10-22
-categories:
-    - Java
 tags:
     - Java
     - 자바

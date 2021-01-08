@@ -1,8 +1,6 @@
 ---
 title: "[Agile Java] Lesson04 클래스 메서드와 필드"
 date: 2021-01-01
-categories:
-    - Agile-Java
 tags:
     - 애자일자바
     - agile java

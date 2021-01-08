@@ -1,8 +1,6 @@
 ---
 title: "Github default branch 가 main으로 나온다."
 date: 2021-01-01
-categories:
-    - Etc
 tags:
     - 개발자
     - 깃허브

@@ -1,8 +1,6 @@
 ---
 title: "블로그 댓글 utterances로 변경하기"
 date: 2020-10-23
-categories:
-    - Etc
 tags:
     - 개발자
     - 블로그
