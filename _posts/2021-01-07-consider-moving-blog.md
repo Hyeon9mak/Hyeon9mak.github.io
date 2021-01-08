@@ -3,6 +3,9 @@ title: "블로그 이전에 대한 고민"
 date: 2021-01-01
 tags:
     - etc
+toc: true
+toc_sticky: true
+toc_label: "블로그 이전에 대한 고민"
 ---
 
 최근 블로그 포스팅이 뜸했다. 블로그 이전에 관해서 고민이 있었기 떄문이었다.  
