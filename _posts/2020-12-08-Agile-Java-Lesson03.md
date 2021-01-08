@@ -31,7 +31,7 @@ Java 관련 어시스트 기능을 제공하는 IDE에서는 생성자를 사용
 ```
 그냥 간단하게 리터럴하게 사용하면 된다.  
   
-자세한 내용은 [이펙티브 자바 아이템 6](https://hyeon9mak.github.io/effective-java/Effective-Java-item6/)을 참고하자!
+자세한 내용은 [이펙티브 자바 아이템 6](https://hyeon9mak.github.io/Effective-Java-item6/)을 참고하자!
 
 <br>
 

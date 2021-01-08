@@ -41,7 +41,7 @@ Java 관련 어시스트 기능을 제공하는 IDE에서 위와 같은 코드�
 하나의 String 인스턴스만 사용하는 것을 보장할 수 있다.  
 
 ## 💡 정적 팩터리 메서드를 활용하지 않은 생성 패턴
-[생성자 대신 정적 팩터리 매서드(아이템 1)](https://hyeon9mak.github.io/effective-java/Effective-Java-item1/) 를 
+[생성자 대신 정적 팩터리 매서드(아이템 1)](https://hyeon9mak.github.io/Effective-Java-item1/) 를 
 제공하는 불변 클래스에서는 불필요한 객체 생성을 피할 수 있다. (즉, 어차피 new 생성자가 사용되지 않으므로 객체 재활용 보장)  
 대표적인 예시로, 자바 9에서는 Boolean(String) 생성자 대신 **Boolean.valueOf(String) 팩터리 메서드를 사용하도록 권장**되고 있다.
 

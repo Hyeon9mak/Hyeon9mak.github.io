@@ -165,7 +165,7 @@ public final class Time {
 공개된 필드(public)에 final 키워드를 추가하여 불변을 보장하는 것은 
 당장 불변식은 보장할 수 있지만 API를 변경하지 않고는 표현 방식을 바꿀 수 없고, 
 필드를 읽을 때 부수 작업을 수행할 수 없다는 2가지 문제점을 여전히 매꿀 수 없다.
-[(게다가 해당 필드가 배열이라면 이야기가 다르다. **배열 원소의 불변식을 보장하지 못한다.**)](https://hyeon9mak.github.io/effective-java/Effective-Java-item15/#public-배열의-문제점)
+[(게다가 해당 필드가 배열이라면 이야기가 다르다. **배열 원소의 불변식을 보장하지 못한다.**)](https://hyeon9mak.github.io/Effective-Java-item15/#public-배열의-문제점)
 
 <br>
 

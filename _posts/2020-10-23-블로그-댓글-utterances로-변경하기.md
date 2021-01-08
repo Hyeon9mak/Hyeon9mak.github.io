@@ -14,7 +14,7 @@ toc_label: "블로그 댓글 utterances로 변경하기"
 ---
 ## 💡 utterances에 관심을 가지게 된 계기
 얼마전 내 블로그에 처음으로 댓글이 달렸다! 🎉🎉🎉  
-[[Python : 프로그래머스] 가장 큰 수](https://hyeon9mak.github.io/python/Python-프로그래머스-가장_큰_수/) 포스팅인데,  
+[[Python : 프로그래머스] 가장 큰 수](https://hyeon9mak.github.io/Python-프로그래머스-가장_큰_수/) 포스팅인데,  
 감사하게도 질문 댓글을 달아주셔서 다시 짚어볼 계기가 되었다.  
   
 풀이를 댓글로 설명하는 과정에서 Disqus의 마크업 작성방식이 굉장히 불편했는데,  

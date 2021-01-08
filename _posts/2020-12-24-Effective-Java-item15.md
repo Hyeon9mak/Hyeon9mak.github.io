@@ -117,7 +117,7 @@ toc_label: "아이템 15. 클래스와 멤버의 접근 권한을 최소화하�
 
 <br>
 
-## [`public` 클래스의 인스턴스 필드는 되도록 `public`이 아니어야 한다.](https://hyeon9mak.github.io/effective-java/Effective-Java-item16/)
+## [`public` 클래스의 인스턴스 필드는 되도록 `public`이 아니어야 한다.](https://hyeon9mak.github.io/Effective-Java-item16/)
 1. 필드에 담을 수 있는 값을 제한할 힘이 아예 없게 된다. (변경에 매우 취약) 
 2. `public` 가변 필드를 갖는 클래스는 일반적으로 스레드에 안전하지 않다.
   인스턴스 변수는 Heap에 할당되며 공유자원이다. 즉, 모든 스레드가 이 공유자원에 접근 할 수 있다.
