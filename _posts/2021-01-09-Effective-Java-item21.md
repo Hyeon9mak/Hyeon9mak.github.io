@@ -148,7 +148,7 @@ class RealTest implements DefaultTestable {
 자바 8에서는 핵심 컬렉션 인터페이스들에 다수의 default 메서드를 추가했다. 주로 `Lambda`를 활용하기 위해서다. 
 자바 라이브러리에 등록된 `default` 메서드들은 코드 품질이 높고 범용적이라 대부분의 상황에서 정상적으로 작동한다. 
 그러나 말 그대로 대부분의 상황에서지, **모든 상황에서 불변식을 지키진 못한다**. 
-(불변식의 중요성은 [아이템 17](https://hyeon9mak.github.io/effective-java/Effective-Java-item17/) 을 참고하자.)  
+(불변식의 중요성은 [아이템 17](https://hyeon9mak.github.io/Effective-Java-item17/) 을 참고하자.)  
   
 자바 8의 `Collection` 인터페이스에 추가된 `removeIf` 메서드를 예시로 보자.
 
