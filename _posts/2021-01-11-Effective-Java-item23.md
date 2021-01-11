@@ -1,6 +1,6 @@
 ---
 title: "[Effective-Java] 아이템 23. 태그 달린 클래스보다는 클래스 계층구조를 활용하라"
-date: 2021-01-09
+date: 2021-01-11
 tags:
     - 이펙티브자바
     - effective-java
