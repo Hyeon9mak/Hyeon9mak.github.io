@@ -9,6 +9,7 @@ toc_label: "비전공자에게 ROM 설명하기"
 ---
 
 ![그림1](https://user-images.githubusercontent.com/37354145/104699298-ddcd7b80-5755-11eb-8ff7-42e253a5ae9a.png)
+{: .align-center}
 
 중학교 동창들이 모여있는 단톡방에서 **"저장 장치가 가득 찼는데 왜 C만 가득차고 D는 안차냐?"** 
 는 독특한 소재의 이야기가 나왔다. 평소에도 컴퓨터 동작에 대해 관심과 질문이 많았던 친구라 여러차례 
@@ -23,7 +24,9 @@ toc_label: "비전공자에게 ROM 설명하기"
 <br>
 
 ## 비전공자에게 ROM 설명하기
-![슬라이드1](https://user-images.githubusercontent.com/37354145/104711539-d95c8f00-5764-11eb-81d0-85494a2619a7.png)
+![슬라이드1](https://user-images.githubusercontent.com/37354145/104712565-09586200-5766-11eb-9971-b98d54d90cf3.png)
+{: .align-center}
+
 일반적으로 컴퓨터의 `ROM(로컬 디스크)`을 나누는 방법은 2가지가 있다. 
 
 1. 메인보드에 `ROM`을 n개 장착하기
@@ -31,7 +34,8 @@ toc_label: "비전공자에게 ROM 설명하기"
 
 <br>
 
-![슬라이드2](https://user-images.githubusercontent.com/37354145/104711545-db265280-5764-11eb-9166-ab276f30dd04.png)
+![슬라이드2](https://user-images.githubusercontent.com/37354145/104712574-0c535280-5766-11eb-9e44-414c7a0a9562.png)
+{: .align-center}
 
 어떤 방법을 이용하건 컴퓨터 입장에선 **"ROM이 분리되어 있구나!"** 라고 생각하는 건 비슷하다. 
 편한 이해를 위해서 어피치가 물리적인 방법으로 `ROM`을 나누었다고 가정하고, 
@@ -39,7 +43,8 @@ toc_label: "비전공자에게 ROM 설명하기"
 
 <br>
 
-![슬라이드3](https://user-images.githubusercontent.com/37354145/104711550-dbbee900-5764-11eb-8e8f-9ecd6107b693.png)
+![슬라이드3](https://user-images.githubusercontent.com/37354145/104712577-0d847f80-5766-11eb-8b2b-7f60b832549b.png)
+{: .align-center}
 
 어피치 컴퓨터의 ROM 상태를 상상해보자. 현재 어피치 컴퓨터는 `C-ROM`만 가득 차있고, 
 `D-ROM`의 자리가 널널한 상태다.  
@@ -51,14 +56,16 @@ toc_label: "비전공자에게 ROM 설명하기"
 
 <br>
 
-![슬라이드4](https://user-images.githubusercontent.com/37354145/104711554-dcf01600-5764-11eb-9cfd-b30c45df5af4.png)
+![슬라이드4](https://user-images.githubusercontent.com/37354145/104712581-0e1d1600-5766-11eb-8933-83fbf5e0f9e4.png)
+{: .align-center}
 
 운영체제가 `ROM`을 어떻게 사용하는지 편한 이해를 위해 `D-ROM`은 잠시 머리 속에서 지워두고, 
 `C-ROM`을 집중적으로 살펴보자.
 
 <br>
 
-![슬라이드5](https://user-images.githubusercontent.com/37354145/104711556-dcf01600-5764-11eb-93e8-62ebe4fff7fc.png)
+![슬라이드5](https://user-images.githubusercontent.com/37354145/104712583-0eb5ac80-5766-11eb-88d7-01c84d481697.png)
+{: .align-center}
 
 현재 어피치의 컴퓨터 `C-ROM`에는 운영체제가 설치되어 있다. 
 
@@ -69,7 +76,8 @@ toc_label: "비전공자에게 ROM 설명하기"
 
 <br>
 
-![슬라이드6](https://user-images.githubusercontent.com/37354145/104711557-dd88ac80-5764-11eb-8875-806e96794784.png)
+![슬라이드6](https://user-images.githubusercontent.com/37354145/104712585-0eb5ac80-5766-11eb-93d4-eb9e74cb2577.png)
+{: .align-center}
 
 그리고 이 운영체제는, 우리가 컴퓨터를 사용하면서 당연하게 생각하는 대부분의 동작을 관리한다. 
 **바탕화면 띄워놓기, 브라우저 열기, 파일 다운로드 받기, 파일 저장하기, 설치하기 등...**  
@@ -78,7 +86,8 @@ toc_label: "비전공자에게 ROM 설명하기"
 
 <br>
 
-![슬라이드7](https://user-images.githubusercontent.com/37354145/104711559-de214300-5764-11eb-9b04-ece3f1b721e2.png)
+![슬라이드7](https://user-images.githubusercontent.com/37354145/104712587-0f4e4300-5766-11eb-8684-9a0e20829c3d.png)
+{: .align-center}
 
 운영체제가 대부분의 동작을 관리한다는 것을 이해했다면, 이제 우리가 흔하게 보았던 폴더(디렉토리)들을 떠올려 보자. 
 
@@ -92,12 +101,19 @@ toc_label: "비전공자에게 ROM 설명하기"
 우리가 흔히 보고 사용해왔던 폴더들 대부분이 운영체제가 자신이 속한 
 `C-ROM`의 여유분 영역을 임의로 나누어 이름을 붙인 것이다.
 
-![슬라이드8](https://user-images.githubusercontent.com/37354145/104711562-de214300-5764-11eb-90e1-abea8390e85e.png)
+
+<br>
+
+![슬라이드8](https://user-images.githubusercontent.com/37354145/104712589-0f4e4300-5766-11eb-8b01-fb00f49184ed.png)
+{: .align-center}
 
 어피치는 현재 그렇게 운영체제가 임의로 나누어 이름을 붙인 영역(폴더)들에만 파일을 저장 해온 것이다. 
 그래서 `C-ROM`이 가득차게 되었다.
 
-![슬라이드9](https://user-images.githubusercontent.com/37354145/104711563-deb9d980-5764-11eb-80d5-e1ece8b2a020.png)
+<br>
+
+![슬라이드9](https://user-images.githubusercontent.com/37354145/104712591-0fe6d980-5766-11eb-8e9e-69b53532d91c.png)
+{: .align-center}
 
 `D-ROM`은? 파일을 저장하지 않았으니 텅텅 비어있다. 
 그래서 현재 어피치가 **"저장 장치가 가득 찼는데 왜 C만 가득차고 D는 안차냐?"** 라는 말을 하게 된 것이다.
