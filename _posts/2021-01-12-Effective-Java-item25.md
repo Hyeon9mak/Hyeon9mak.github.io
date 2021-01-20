@@ -35,13 +35,13 @@ public class Main {
 }
 ```
 ```java
-// Desert.java
+// Utensil.java
 class Utensil {
-    static final String NAME = "pot";
+    static final String NAME = "pan";
 }
 
 class Dessert {
-    static final String NAME = "pie";
+    static final String NAME = "cake";
 }
 ```
 ```
@@ -55,13 +55,13 @@ javac Main.java Utensil.java
 <br>
 
 ```java
-// Utensil.java
+// Desert.java
 class Utensil {
-    static final String NAME = "pan";
+    static final String NAME = "pot";
 }
 
 class Dessert {
-    static final String NAME = "cake";
+    static final String NAME = "pie";
 }
 ```
 ```
