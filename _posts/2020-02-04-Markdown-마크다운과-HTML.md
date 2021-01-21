@@ -3,10 +3,7 @@ title: "마크다운과 HTML"
 date: 2020-02-04
 tags:
     - Markdown
-    - 마크다운
     - HTML
-    - HyperTextMarkupLanguage
-    - Markup
 toc: true
 toc_sticky: true
 toc_label: "마크다운과 HTML"
