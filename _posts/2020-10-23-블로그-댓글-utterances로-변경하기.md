@@ -2,12 +2,7 @@
 title: "블로그 댓글 utterances로 변경하기"
 date: 2020-10-23
 tags:
-    - 개발자
-    - 블로그
-    - 깃허브
-    - Github
-    - utterances
-    - 댓글
+    - blog
 toc: true
 toc_sticky: true
 toc_label: "블로그 댓글 utterances로 변경하기"

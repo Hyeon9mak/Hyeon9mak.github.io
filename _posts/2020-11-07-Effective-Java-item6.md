@@ -2,12 +2,9 @@
 title: "[Effective-Java] 아이템 6. 불필요한 객체 생성을 피하라"
 date: 2020-11-07
 tags:
-    - 이펙티브자바
-    - effective-java
-    - 스터디
-    - 아이템6
+    - reading books
+    - Effective Java
     - Java
-    - 자바
 toc: true
 toc_sticky: true
 toc_label: "아이템 6. 불필요한 객체 생성을 피하라"

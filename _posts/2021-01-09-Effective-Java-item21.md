@@ -2,10 +2,9 @@
 title: "[Effective-Java] 아이템 21. 인터페이스는 구현하는 쪽을 생각해 설계하라"
 date: 2021-01-09
 tags:
-    - 이펙티브자바
-    - effective-java
+    - reading books
+    - Effective Java
     - Java
-    - 자바
 toc: true
 toc_sticky: true
 toc_label: "아이템 21. 인터페이스는 구현하는 쪽을 생각해 설계하라"

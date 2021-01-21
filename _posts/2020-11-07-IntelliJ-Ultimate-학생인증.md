@@ -2,12 +2,7 @@
 title: "IntelliJ Ultimate버전 학생 인증 후 무료 설치"
 date: 2020-11-07
 tags:
-    - 개발자
-    - IntelliJ
-    - 인텔리제이
-    - 학생인증
-    - 대학생
-    - 공대생
+    - IDE
 toc: true
 toc_sticky: true
 toc_label: "IntelliJ Ultimate버전 학생 인증 후 무료 설치"

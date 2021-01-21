@@ -2,7 +2,7 @@
 title: "블로그 이전에 대한 고민"
 date: 2021-01-01
 tags:
-    - etc
+    - blog
 toc: true
 toc_sticky: true
 toc_label: "블로그 이전에 대한 고민"

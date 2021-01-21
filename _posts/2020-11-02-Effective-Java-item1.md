@@ -2,12 +2,9 @@
 title: "[Effective-Java] 아이템 1. 생성자 대신 정적 팩터리 메서드를 고려하라"
 date: 2020-11-02
 tags:
-    - 이펙티브자바
-    - effective-java
-    - 스터디
-    - 백엔드
+    - reading books
+    - Effective Java
     - Java
-    - 자바
 toc: true
 toc_sticky: true
 toc_label: "아이템 1. 생성자 대신 정적 팩터리 메서드를 고려하라"

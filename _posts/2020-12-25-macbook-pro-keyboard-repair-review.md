@@ -2,11 +2,7 @@
 title: "MacBook Pro (15-inch, 2017) 키보드 교체 후기"
 date: 2020-12-25
 tags:
-    - 맥북
-    - 맥프레
-    - 키보드 교체
-    - 키보드 서비스 프로그램
-    - MacBook Pro
+    - etc
 toc: true
 toc_sticky: true
 toc_label: "MacBook Pro (15-inch, 2017) 키보드 교체 후기"

@@ -2,12 +2,9 @@
 title: "[Effective-Java] 아이템 57. 지역변수의 범위를 최소화하라"
 date: 2020-11-12
 tags:
-    - 이펙티브자바
-    - effective-java
-    - 스터디
-    - 아이템57
+    - reading books
+    - Effective Java
     - Java
-    - 자바
 toc: true
 toc_sticky: true
 toc_label: "아이템 57. 지역변수의 범위를 최소화하라"

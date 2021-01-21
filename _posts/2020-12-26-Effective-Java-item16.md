@@ -2,12 +2,9 @@
 title: "[Effective-Java] 아이템 16. public 클래스에서는 public 필드가 아닌 접근자 메서드를 사용하라"
 date: 2020-12-26
 tags:
-    - 이펙티브자바
-    - effective-java
-    - 스터디
-    - 아이템16
+    - reading books
+    - Effective Java
     - Java
-    - 자바
 toc: true
 toc_sticky: true
 toc_label: "아이템 16. public 클래스에서는 public 필드가 아닌 접근자 메서드를 사용하라"

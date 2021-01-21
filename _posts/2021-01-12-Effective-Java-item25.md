@@ -2,10 +2,9 @@
 title: "[Effective-Java] 아이템 25. 톱레벨 클래스는 한 파일에 하나만 담으라"
 date: 2021-01-12
 tags:
-    - 이펙티브자바
-    - effective-java
+    - reading books
+    - Effective Java
     - Java
-    - 자바
 toc: true
 toc_sticky: true
 toc_label: "아이템 25. 톱레벨 클래스는 한 파일에 하나만 담으라"

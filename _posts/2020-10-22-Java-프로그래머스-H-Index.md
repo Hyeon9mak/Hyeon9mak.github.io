@@ -2,13 +2,9 @@
 title: "[Java : 프로그래머스] H-Index"
 date: 2020-10-22
 tags:
+    - problem solving
     - Java
-    - 자바
     - 프로그래머스
-    - 코테
-    - 코딩테스트
-    - 알고리즘
-    - 자료구조
 toc: true
 toc_sticky: true
 toc_label: "[Java : 프로그래머스] H-Index"

@@ -2,8 +2,7 @@
 title: "마크다운과 HTML"
 date: 2020-02-04
 tags:
-    - Markdown
-    - HTML
+    - etc
 toc: true
 toc_sticky: true
 toc_label: "마크다운과 HTML"

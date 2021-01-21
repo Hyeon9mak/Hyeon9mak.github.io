@@ -2,12 +2,9 @@
 title: "[Effective-Java] 아이템 62. 다른 타입이 적절하다면 문자열 사용을 피하라"
 date: 2020-11-22
 tags:
-    - 이펙티브자바
-    - effective-java
-    - 스터디
-    - 아이템62
+    - reading books
+    - Effective Java
     - Java
-    - 자바
 toc: true
 toc_sticky: true
 toc_label: "아이템 62. 다른 타입이 적절하다면 문자열 사용을 피하라"

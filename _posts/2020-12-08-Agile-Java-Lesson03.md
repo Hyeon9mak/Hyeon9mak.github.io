@@ -2,12 +2,9 @@
 title: "[Agile Java] Lesson03 문자열과 패키지"
 date: 2020-12-08
 tags:
-    - 애자일자바
-    - agile java
-    - 지름길로 빠르게 배울 수 있는 자바 프로그래밍
-    - Jeff Langr
+    - reading books
+    - Agile Java
     - Java
-    - 자바
 toc: true
 toc_sticky: true
 toc_label: "Lesson03 문자열과 패키지"

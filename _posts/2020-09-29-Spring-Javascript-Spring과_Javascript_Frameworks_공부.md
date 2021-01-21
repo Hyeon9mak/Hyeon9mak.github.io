@@ -2,13 +2,7 @@
 title: "Spring과 Javascript Frameworks 공부"
 date: 2020-09-29
 tags:
-    - Spring
-    - Javascript
-    - 스프링
-    - 자바스크립트
-    - Vue.js
-    - React.js
-    - Angular.js
+    - Spring frameworks
 toc: true
 toc_sticky: true
 toc_label: "Spring과 Javascript Frameworks 공부"
