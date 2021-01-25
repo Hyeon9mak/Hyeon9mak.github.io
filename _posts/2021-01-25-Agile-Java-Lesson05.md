@@ -1,6 +1,6 @@
 ---
 title: "[Agile Java] Lesson05 인터페이스와 폴리모피즘"
-date: 2021-01-01
+date: 2021-01-25
 tags:
     - reading books
     - Agile Java
