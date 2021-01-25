@@ -7,7 +7,7 @@ tags:
     - Java
 toc: true
 toc_sticky: true
-toc_label: "Lesson05 인터페이스와 폴리모피즘
+toc_label: "Lesson05 인터페이스와 폴리모피즘"
 ---
 
 실습 내용 저장소: [https://github.com/Hyeon9mak/student-information-system](https://github.com/Hyeon9mak/student-information-system)
