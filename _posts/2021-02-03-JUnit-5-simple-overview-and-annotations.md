@@ -9,6 +9,15 @@ toc_sticky: true
 toc_label: "[JUnit 5] 간단한 개요와 Annotations"
 ---
 
+현재 JUnit 5 버전을 사용중이므로, 5 버전을 기준으로 정리를 진행했다.
+{: .notice}  
+
+[JUnit 공식문서](https://junit.org/junit5/docs/current/user-guide/#overview-what-is-junit-5)
+에서 지루한 JUnit의 개요 등을 설명하는데... 그런건 필요할 때 공식 문서를 다시 참고하고, 
+사용해본 것들에 대해서만 계속 추가하면서 정리하자. 
+
+<br>
+
 ## main method vs JUnit
 main method는 우리가 흔하게 잘 알고 있는 그 main method를 말한다. 
 main method의 의 용도는 크게 2 가지가 있다.
@@ -44,13 +53,6 @@ main method의 의 용도는 크게 2 가지가 있다.
 강력하고 편리한 여러가지 기능을 제공하는 JUnit을 적극 활용해야 한다. 
 
 <br>
-
-현재 JUnit 5 버전을 사용중이므로, 5 버전을 기준으로 정리를 진행했다.
-{: .notice}  
-
-[JUnit 공식문서](https://junit.org/junit5/docs/current/user-guide/#overview-what-is-junit-5)
-에서 지루한 JUnit의 개요 등을 설명하는데... 그런건 필요할 때 공식 문서를 다시 참고하고, 
-사용해본 것들에 대해서만 계속 추가하면서 정리하자.  
 
 ## JDK 버전별 테스트
 JDK를 통해 컴파일이 완료된 코드들은 버전에 관계없이 테스트가 가능하지만, 
@@ -111,7 +113,7 @@ default class, default method 로도 테스트가 가능하게 업데이트 되�
   ```
   
 - **@AfterAll**  
-  현재 클래스의 마지막 테스트 실행 후 실행되는 모듈
+  현재 클래스의 마지막 테스트 실행 후 실행되는 모듈  
   해당 메서드는 `static` 키워드를 포함  
   이전 버전의 @AfterClass 를 대체
   ```java
