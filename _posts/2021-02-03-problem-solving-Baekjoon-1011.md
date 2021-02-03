@@ -23,33 +23,13 @@ toc_label: "[Baekjoon-1011] Fly me to the Alpha Centauri"
 
 이 때문에 첫 번째 시도로 점진적으로 증가하는 워프 속도 횟수의 절반까지만 구한 후, 
 이를 2배 곱하여 총 워프 횟수를 반환하는 것으로 코드를 작성했다. 코드를 작성하면서도 
-'택도 없이 느릴 것 같은데...' 라고 생각했고, 역시나 `시간 초과`가 발생했다.  
+'택도 없이 느릴 것 같은데...' 라고 생각했고, 역시나 시간 초과가 발생했다.  
   
 두 번째 시도로 제시된 이동거리(끝지점 - 시작지점)를 기준으로 최소 워프 횟수를 
 구하는 규칙을 찾아보려고 했다. 
 
-|이동거리|최소 워프 과정|워프 횟수|최대 속력|
-|:---:|:---:|:---:|:---:|
-|1|1|1|1|
-|2|11|2||
-|3|111|3||
-|4|121|3|2|
-|5|1211|4||
-|6|1221|4||
-|7|12211|5||
-|8|12221|5||
-|9|12321|5|3|
-|10|123211|6||
-|11|123221|6||
-|12|123321|6||
-|13|1233211|7||
-|14|1233221|7||
-|15|1233321|7||
-|16|1234321|7|4|
-|17|12343211|8||
-|18|12343221|8||
-|19|12343321|8||
-|20|12344321|8||
+![프레젠테이션1](https://user-images.githubusercontent.com/37354145/106682154-3d0c0680-6605-11eb-9bac-198f37213aed.png)
+{: .align-center}
 
 이동거리와 워프 횟수 간의 규칙은 찾아내지 못했으나, 
 노가다식으로 워프 과정을 적어보는 과정에서 **최대 속력**에 대한 규칙을 발견했다. 
@@ -90,7 +70,8 @@ import java.util.StringTokenizer;
 public class Fly_me_to_the_Alpha_Centauri {
 
     public static void main(String[] args) throws Exception {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader in = 
+            new BufferedReader(new InputStreamReader(System.in));
 
         int testCaseCount = Integer.parseInt(in.readLine());
         long[] answerArray = new long[testCaseCount];
