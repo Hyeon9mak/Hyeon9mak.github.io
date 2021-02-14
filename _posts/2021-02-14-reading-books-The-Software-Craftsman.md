@@ -8,8 +8,6 @@ toc_sticky: true
 toc_label: "소프트웨어 장인"
 ---
 
-![KakaoTalk_Photo_2021-02-14-12-44-21](https://user-images.githubusercontent.com/37354145/107867920-9e17c200-6ec2-11eb-9a81-663bff7a48aa.jpeg)
-
 ## 책을 읽기 전에
 나는 개인적으로 자기계발 서적을 좋아하지 않는다. 
 혹여나 읽게 된다면 굉장히 방어적이고, 비판적인 태도로 읽는다. 
