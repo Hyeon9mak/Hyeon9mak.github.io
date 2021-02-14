@@ -168,8 +168,9 @@ td > code {
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
   font-size: 0.8em;
-  color: #cc6666;
-  background: $code-background-color;
+  color: #ffffff;
+  //background: $code-background-color;
+  background: $text-color;
   border-radius: $border-radius;
 
   &:before,
