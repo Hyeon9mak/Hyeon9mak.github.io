@@ -5,7 +5,7 @@ tags:
     - Java
 toc: true
 toc_sticky: true
-toc_label: "Java package-private 과 protected"
+toc_label: "package-private 은 안쓰나요?"
 ---
 
 ## package-private 은 안쓰나요?
