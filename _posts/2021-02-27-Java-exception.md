@@ -2,8 +2,8 @@
 title: "Java Exception"
 date: 2021-02-27
 tags:
-- Java
-- 우아한테크코스
+    - Java
+    - 우아한테크코스
 toc: true
 toc_sticky: true
 toc_label: "Java Exception"

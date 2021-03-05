@@ -2,11 +2,11 @@
 title: "TDD와 단위 테스트는 서로 다르다"
 date: 2021-03-05
 tags:
-- Java
-- 우아한테크코스
-  toc: true
-  toc_sticky: true
-  toc_label: "TDD와 단위 테스트는 서로 다르다"
+    - Java
+    - 우아한테크코스
+toc: true
+toc_sticky: true
+toc_label: "TDD와 단위 테스트는 서로 다르다"
 ---
 
 ## 🧪 많이들 하는 착각

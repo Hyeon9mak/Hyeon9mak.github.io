@@ -2,7 +2,7 @@
 title: "깃 명령어 정리"
 date: 2021-02-28
 tags:
-- git
+    - git
 toc: true
 toc_sticky: true
 toc_label: "깃 명령어 정리"
