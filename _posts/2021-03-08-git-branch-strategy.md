@@ -153,11 +153,15 @@ merge 되면 사라지는 보조 브랜치 `feature`, `release`, `hotfix` 3가�
 
 git-flow 역시 그림을 따라가면서 개발 프로세스를 이해해보자.
 
+<br>
+
 ### 1. 신규 기능 개발
 ![1](https://user-images.githubusercontent.com/37354145/110271706-ea5ea980-800b-11eb-8403-16aba0345fd6.png)
 
 개발자는 `develop` 브랜치로부터 본인이 신규 개발할 기능을 위한 `feature` 브랜치를 생성한다. 
 `feature` 브랜치에서 기능을 완성하면 `develop` 브랜치에 merge를 진행하게 된다.
+
+<br>
 
 ### 2. 라이브 서버로 배포
 ![2](https://user-images.githubusercontent.com/37354145/110271716-eb8fd680-800b-11eb-9d53-67016448f9bf.png)
@@ -167,6 +171,8 @@ git-flow 역시 그림을 따라가면서 개발 프로세스를 이해해보자
 QA와 테스트를 모두 통과했다면, 배포를 위해 `release` 브랜치를 `master` 브랜치 쪽으로 merge하며, 
 만일 `release` 브랜치 내부에서 오류 수정이 진행되었을 경우 동기화를 위해 `develop` 브랜치 쪽에도 
 merge를 진행한다.
+
+<br>
 
 ### 3. 배포 후 관리
 ![3](https://user-images.githubusercontent.com/37354145/110271720-ecc10380-800b-11eb-9357-0d3929ac93dc.png)
@@ -189,8 +195,9 @@ merge를 진행한다.
 위 예시 그림들은 모두 공동(remote) 저장소의 상황을 표현한 것이고, 
 개발자 개인별 로컬에서는 `feature` 브랜치를 하나 땡겨와서 개발하는 등의 그림이 그려질 것이다.  
   
-**"그럼 git-flow 전략을 사용하면 CI?CD가 어려운가?"** 라는 궁금증이 생길 수 있다. 
+"그럼 git-flow 전략을 사용하면 CI/CD가 어려운가?" 라는 궁금증이 생길 수 있다. 
 이에 대한 웨지의 답변은 "Github-flow가 상대적으로 쉽다는 것이지, git-flow가 어려울 것은 없다."고 한다. 
+git-flow 에서도 충분히 CI/CD 적용이 가능하다!
 
 <br>
 
