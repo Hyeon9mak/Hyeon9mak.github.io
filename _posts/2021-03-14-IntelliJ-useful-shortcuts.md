@@ -23,6 +23,7 @@ toc_label: "IntelliJ 내가 자주 사용하는 단축키 정리"
 ## ⌨️ Action 검색
 - Mac: `Shift` + `Cmd`  + `A`
 - Windows: `Shift` + `Ctrl`  + `A`
+
 ---
 
 '이게 있을까?' 하고 궁금할 때 검색해서 사용할 수 있는 단축키.  
@@ -33,6 +34,7 @@ toc_label: "IntelliJ 내가 자주 사용하는 단축키 정리"
 ## ⌨️ 현재 컨텍스트를 수정
 - Mac: `Opt` + `Enter`
 - Windows : `Alt` + `Enter`
+
 ---
 
 현재 컨텍스트에 대한 액션을 표시하여 뭐든지 추가하거나 수정하는데 사용할 수 있다.
@@ -47,6 +49,7 @@ toc_label: "IntelliJ 내가 자주 사용하는 단축키 정리"
 ## ⌨️ 현재 라인 자동완성
 - Mac: `Shift` + `Cmd` + `Enter`
 - Windows: `Shift` + `Ctrl` + `Enter`
+
 ---
 
 현재 작성중이던 라인을 자동 완성시켜준다. 닫을 괄호가 잔뜩 남거나 했을 때 편리하게 사용한다.
@@ -57,6 +60,7 @@ toc_label: "IntelliJ 내가 자주 사용하는 단축키 정리"
 ## ⌨️ 호출중인 메서드의 파라미터 확인
 - Mac: `Cmd` + `p`
 - Windows : `Ctrl` + `p`
+
 ---
 
 현재 호출중인 메서드의 파라미터 타입을 곧장 확인할 수 있다.
@@ -66,6 +70,7 @@ toc_label: "IntelliJ 내가 자주 사용하는 단축키 정리"
 ## ⌨️ 단어, 문장 교체
 - Mac: `Cmd` + `r`
 - Windows : `Ctrl` + `r`
+
 ---
 
 `Cmd` + `f` 와 자주 혼용되는 그것.
@@ -75,6 +80,7 @@ toc_label: "IntelliJ 내가 자주 사용하는 단축키 정리"
 ## ⌨️ 자동완성(추천) 목록 확인
 - Mac: `Ctrl` + `Space`
 - Windows: `Ctrl` + `Space`
+
 ---
 
 가끔 자동완성 추천 목록이 보이지 않을 때 사용하게 되는 단축키
@@ -84,6 +90,7 @@ toc_label: "IntelliJ 내가 자주 사용하는 단축키 정리"
 ## ⌨️ 자동완성 (Generate)
 - Mac: `Cmd` + `n`
 - Windows: `Alt` + `Insert`
+
 ---
 
 getter, setter, constructor, test 등... 자동으로 만들고 싶은 것을을 모두 만들 수 있는 만능 단축키
@@ -93,6 +100,7 @@ getter, setter, constructor, test 등... 자동으로 만들고 싶은 것을을
 ## ⌨️ Override 메서드 자동완성 (Implement Methods)
 - Mac: `Ctrl` + `i` 또는 `Ctrl` + `o`
 - Windows: `Ctrl` + `i` 또는 `Ctrl` + `o`
+
 ---
 
 개인적으로 `Ctrl` + `o`를 더 자주 사용하게 되는 듯.
@@ -102,6 +110,7 @@ getter, setter, constructor, test 등... 자동으로 만들고 싶은 것을을
 ## ⌨️ 소스코드 서식 정렬
 - Mac: `Option` + `Cmd` + `L`
 - Windows : `Alt` + `Ctrl` + `L`
+
 ---
 
 현재 선택한 소스코드 파일의 서식을 자동으로 정렬한다.
@@ -111,6 +120,7 @@ getter, setter, constructor, test 등... 자동으로 만들고 싶은 것을을
 ## ⌨️ 모든 영역에서 검색
 - Mac: `Shift`, `shift`
 - Windows: `Shift`, `shift`
+
 ---
 
 현재 프로젝트에서 검색할게 있을 때.  
@@ -121,6 +131,7 @@ getter, setter, constructor, test 등... 자동으로 만들고 싶은 것을을
 ## ⌨️ 최근 실행했던 파일 목록 확인
 - Mac: `Cmd` + `E`
 - Windows: `Ctrl` + `E`
+
 ---
 
 최근 실행했던 파일 목록을 확인하고 선택해서 포커스를 이동 할 수 있다.
@@ -130,6 +141,7 @@ getter, setter, constructor, test 등... 자동으로 만들고 싶은 것을을
 ## ⌨️ 메서드가 정의된/사용중인 곳으로 포커스 이동
 - Mac: `Cmd` + `B`
 - Windows: `Ctrl` + `B`
+
 ---
 
 메서드가 정의되거나 사용중인 곳으로 포커스를 이동한다.
@@ -140,6 +152,7 @@ getter, setter, constructor, test 등... 자동으로 만들고 싶은 것을을
 ## ⌨️ 현재 메서드가 사용중인 곳 검색
 - Mac: `Opt` + `F7`
 - Windows: `Alt` + `F7`
+
 ---
 
 `Cmd` + `3` 단축키로 만날 수 있는 그 화면에 메서드가 사용중인 곳을 보여준다.
@@ -149,6 +162,7 @@ getter, setter, constructor, test 등... 자동으로 만들고 싶은 것을을
 ## ⌨️ 파일 목록으로 포커스 이동
 - Mac: `Cmd` + `1`
 - Windows: `Ctrl` + `1`
+
 ---
 
 한 번 누르면 포커스 이동. 잘쓰면 폼남. 다시 누르면 사라진다.
@@ -158,6 +172,7 @@ getter, setter, constructor, test 등... 자동으로 만들고 싶은 것을을
 ## ⌨️ 메서드가 사용중인 곳 확인
 - Mac: `Cmd` + `3`
 - Windows: `Ctrl` + `3`
+
 ---
 
 현재 메서드가 사용중인 곳을 확인할 수 있다. 다시 누르면 사라진다.
@@ -167,6 +182,7 @@ getter, setter, constructor, test 등... 자동으로 만들고 싶은 것을을
 ## ⌨️ 실행(빌드) 내역 확인
 - Mac: `Cmd` + `4`
 - Windows: `Ctrl` + `4`
+
 ---
 
 실행(빌드) 되었던(중인) 모습을 확인할 수 있는 창을 띄워준다. 다시 누르면 사라진다.
@@ -176,6 +192,7 @@ getter, setter, constructor, test 등... 자동으로 만들고 싶은 것을을
 ## ⌨️ 깃 커밋 로그 확인
 - Mac: `Cmd` + `9`
 - Windows: `Ctrl` + `9`
+
 ---
 
 모든 커밋 내역을 시각적으로 확인할 수 있는 창을 띄워준다. 다시 누르면 사라진다.
@@ -185,6 +202,7 @@ getter, setter, constructor, test 등... 자동으로 만들고 싶은 것을을
 ## ⌨️ 가장 최근 커밋 대비 변경된 파일이 변경된 영역 확인
 - Mac: `Cmd` + `0`
 - Windows: `Ctrl` + `0`
+
 ---
 
 커밋한지 오래되었고, 파일을 얼마나 수정했는지 헷갈릴 때 사용하면 좋은 단축키. 
