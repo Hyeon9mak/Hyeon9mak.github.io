@@ -42,6 +42,10 @@ MVC 패턴이 지켜지는 규칙을 알아보기 전에, MVC 패턴의 구조�
 
 MVC 패턴이 탄생하기 전엔 코드의 유지보수가 굉장히 어려웠다고 한다. 소프트웨어 산업이 발달 할수록 
 백지상태에서 새로운 코드를 작성하는 것보다 기존 레거시 코드를 보완하는 일이 더 많아지는데, 그게 어렵다!
+
+![image](https://user-images.githubusercontent.com/37354145/114358577-0545b000-9bae-11eb-916f-ddca46cebee3.png)
+
+
 이 때문에 개발자들은 끊임없이 유지보수가 용이한 코드 작성을 갈구했고, "이렇게 하다보니 유지보수가 편하더라"를 모아 
 [하나의 공식처럼 만들어서 논문으로 발표한게 바로 MVC 패턴](https://folk.universitetetioslo.no/trygver/themes/mvc/mvc-index.html)
 이다.
