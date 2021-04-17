@@ -50,7 +50,7 @@ URL 요청 경로를 지정한다.
 ---
 
 ### consumes
-요청 받는 타입의 종류 지정한다.
+요청 받는 타입의 종류를 헤더에 미리 지정한다.
 
 ```java
 @GetMapping(path = "/message", consumes = "application/json")
@@ -59,7 +59,7 @@ URL 요청 경로를 지정한다.
 ---
 
 ### produces
-반환 타입의 종류를 지정한다.
+반환 타입의 종류를 헤더에 미리 지정한다.
 
 ```java
 @PostMapping(path = "/message", produces = "application/json")
