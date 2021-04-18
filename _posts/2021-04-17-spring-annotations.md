@@ -115,6 +115,36 @@ public String messageForHeader() {
 
 <br>
 
+## @RequestBody
+http 요청 메세지의 body 영역을 객체로 변환. 주로 post 메서드와 함께 사용된다. 
+body 가 존재하지 않는 get 메서드로는 당연히 사용 할 수 없다.
+`json`이나 `xml` 형태의 데이터를 message converter를 통해 객체(DTO)로 바인딩한다.
+
+```
+###### HTTP Request ######
+POST /users/body HTTP/1.1
+Body:
+{
+    "id": null,
+    "name": "이름",
+    "email": "email@email.com"
+}
+```
+```java
+@PostMapping("/users/body")
+public ResponseEntity requestBody(@RequestBody UserDto userDto) {
+    User newUser = new User(1L, userDto.getName(), userDto.getEmail());
+    return ...
+}
+```
+
+> 확실하지 않음. get 메서드에도 body를 추가해서 보낸다면 동작이 가능한지 테스트 해봐야 한다.
+> get 메서드도 충분히 body를 가질 수 있다.
+> @RequestParam 에 preemtive 타입이 넘어올 경우 알아서 처리해준다는 이야기도 있다 - 제이슨 출처.
+> 이 부분에 대해서도 테스트햅고 정리해야할 듯.
+
+<br>
+
 ## 컨트롤러 메서드 private 접근 제한자
 어노테이션을 붇여서 사용하는 메서드들은 모두 reflaction 기법을 통해 재해석 되므로, 접근제한자가 무시된다. 
 때문에 `private` 접근제한자를 사용해도 정상적으로 웹 요청이 수행된다.
