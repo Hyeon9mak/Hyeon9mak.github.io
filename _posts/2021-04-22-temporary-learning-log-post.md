@@ -1,15 +1,12 @@
 ---
-title: "우아한테크코스 레벨1 학습로그 회고"
+title: "임시 학습 로그 회고 포스트"
 date: 2021-04-22
 tags:
-  - 우아한테크코스
+    - 우아한테크코스
 toc: true
 toc_sticky: true
-toc_label: "우아한테크코스 레벨1 학습로그 회고"
+toc_label: "임시 학습 로그 회고 포스트"
 ---
-
-우아한테크코스 레벨1 기간 동안 작성한 학습로그를 정리하고, 회고를 남겨보자.
-{: .notice}
 
 ## [로또 미션](https://hyeon9mak.github.io/우아한테크코스-로또-미션-회고/)
 ### 테스트 코드 우선 작성
@@ -24,21 +21,7 @@ toc_label: "우아한테크코스 레벨1 학습로그 회고"
 - https://gmlwjd9405.github.io/2018/07/06/strategy-pattern.html
 ```
 
-구현에 집중하다보면 설계 때 정했던 우선순위가 헝클어지기 마련이다. 그래서 구현 기능 목록을 먼저 작성한다.
-내가 구현 기능 목록을 먼저 작성하는건, 삼천포로 빠지지 않기 위함이다.  
-
-TDD는 개발 방법론이지 설계론이 아니다. 어떤 방식으로 구조를 나눌 것인지, 어떻게 합칠 것인지를 최대한 고민해서 
-탄탄한 설계를 마친 후에 TDD를 시작해 나가야 한다.
-
-TDD와 설계에 익숙하지 않다면, 객체를 테스트할 방법이 도저히 떠오르지 않는 경우가 있다. 객체의 복잡도가 너무 높아서 그렇다.
-예를 들자면 난수를 생성자 내부에서 생성하는 `LottoNumber` 객체다. 어떤 값이 나올지 몰라 테스트가 사실상 불가능하다. 
-이런 경우 난수를 생성자 외부에서 주입 받게 구조를 변경해야한다.
-
-어쩐지 TDD가 설계를 도와주는 것 같지 않은가? 이런 점 때문에 TDD를 설계론으로 착각하게 되는 것 같다. 
-그렇지만 이건 모두 **구현과정**에서 일어난 일이다. 설계과정이 아니다. 프로그래밍으로 비유하자면 컴파일 타임과 런타임의 차이다.
-명심하자. TDD는 런타임이다. 설계론이 컴파일 타임이다.
-
-<br>
+---
 
 ### 원시값 포장
 ```
@@ -51,14 +34,7 @@ TDD와 설계에 익숙하지 않다면, 객체를 테스트할 방법이 도저
 - https://manualz.kr/entry/JAVA-원시값-포장에-대해서-알아보록-하겠습니다
 ```
 
-원시값을 포장했을 때 장점은 명확하다. 비즈니스 로직에 맞게 해당 값을 검증함으로서 신뢰하고 사용 할 수 있고, 
-해당 값이 단순한 preemptive 타입의 값인지, 비즈니스 적으로 의미가 있는 값인지 고민 할 필요를 줄여준다.
-비즈니스 도메인을 신뢰하고 사용 할 수 있다는 건, 개발자의 퇴근 시간을 앞당겨 주는거나 다름 없다.
-
-토끼책을 1회독 하고 난 후 추가적인 장점이 보인다. 원시값을 포장한 객체를 의인화 할 수 있다. 원시 값에게 메세지를 보낼 수 있다.
-원시 값에게 메세지를 보낼 수 있게 되면, 명령을 더 추상화 할 수 있다. 명령을 추상화 하게 되면, 메세지를 주고 받는 객체간 결합도가 낮아진다.
-조금 더 객체지향스럽게 사용 할 수 있게 된다.
-
+---
 
 ### 일급 컬렉션
 ```
@@ -69,10 +45,6 @@ TDD와 설계에 익숙하지 않다면, 객체를 테스트할 방법이 도저
 ### 링크
 - https://jojoldu.tistory.com/412
 ```
-
-가나다라마바사 아자차카타파하.
-
-그렇다고 생각 할 수 있다.
 
 ---
 
@@ -86,32 +58,21 @@ TDD와 설계에 익숙하지 않다면, 객체를 테스트할 방법이 도저
 - https://inor.tistory.com/12
 ```
 
-이게 이렇게 되네.
-언제 다쓰냐 이걸
-하루 안에 다 쓸 수 있다고 믿는가?
-
 ---
 
 ### Stream API
 ```
 ## [JDK] Stream API - 3
 - `Rank` enum 클래스에서 Stream API의 filter를 적극 활용하여 `Rank` 상수 감별
-### 링크
-- https://github.com/woowacourse/java-lotto/pull/275/commits/723fe500538cc8339b60cae1193513472ac089b3
-```
-
-
-
-<br>
-
-```
-## [JDK] Stream - 3
-### 내용
 - 추가적인 Stream API 함수 학습 후 `LottoTickets`의 `joinLottoTickets` 메서드를 작성함
 ### 링크
+- https://github.com/woowacourse/java-lotto/pull/275/commits/723fe500538cc8339b60cae1193513472ac089b3
 - https://codechacha.com/ko/java8-stream-concat/
 ```
 
+---
+
+### 점진적 리팩토링
 ```
 ## [TDD] 점진적 리팩토링 - 2
 ### 내용
@@ -121,6 +82,9 @@ TDD와 설계에 익숙하지 않다면, 객체를 테스트할 방법이 도저
 - https://techcourse.woowahan.com/s/zmAj9jfu/ls/npw8YN4M
 ```
 
+---
+
+### 캐싱
 ```
 ## [OOP] 캐싱 - 4
 ### 내용
@@ -134,42 +98,70 @@ TDD와 설계에 익숙하지 않다면, 객체를 테스트할 방법이 도저
 <br>
 
 ## [블랙잭 미션](https://hyeon9mak.github.io/우아한테크코스-블랙잭-미션-회고/)
+
+---
+
+### Stream
 ```
 # [JDK] Stream - 1
 ## 내용
 - stream API로 나열중인 데이터들을 곧바로 조합해주는 `.collect(joining())` 메서드에 대해 학습 후 적용함
 ## 링크
 - https://codechacha.com/ko/java8-stream-collect/
+```
 
+---
+
+### 점진적 리팩토링
+```
 # [TDD] 점진적 리팩토링 - 3
 ## 내용
 - '우선 돌아가는 프로그램 상태를 유지하고, 조금씩 수정을 진행하라' 는 메세지를 지킴
 - 컴파일 에러를 최대한 회피하면서 점진적 리팩토링을 진행함
 ## 링크
 - https://techcourse.woowahan.com/s/zmAj9jfu/ls/npw8YN4M
+```
 
+---
+
+### 캐싱
+```
 # [OOP] 캐싱 - 2
 ## 내용
 - 중복되어 사용되는 52장의 `Card` 객체를 캐싱함
 - 최초에는 `CardGenerator` 객체를 생성해서 캐싱했으나, 인비와의 대화를 통해 `Card` 클래스에 직접 캐싱하는 것이 더 자연스럽다고 판단하여 `Card` 클래스 내부에 `static` 키워드를 통해 인스턴스 캐싱을 진행함
 ## 링크
 - https://github.com/Hyeon9mak/java-blackjack/commit/110209b6ba847aefb19e8c8cf73c5d5db4647d5d
+```
 
+---
+
+### Service layer, Dto
+```
 # [OOP] Service layer, Dto - 5
 ## 내용
 - `BlackjackManager` 객체를 서비스 레이어로 생각해보면서 Dto개념을 도입함
 ## 링크
 - https://umbum.dev/1066
 - https://github.com/Hyeon9mak/java-blackjack/commit/db5bd0c1847b67755e02823bc8d98aae577e86a4
+```
 
+---
 
+### 인터페이스와 추상 클래스
+```
 # [OOP] 인터페이스와 추상 클래스 - 5
 ## 내용
 - 유한상태머신 패턴에서 인터페이스와 추상 클래스가 혼용되는 이유에 의문을 가짐
 - 제이슨과의 대화를 통해 추상 클래스가 혼용되는 이유에 대한 이해를 가짐
 ## 링크
 - https://hyeon9mak.github.io/why-do-you-use-abstract-class
+```
 
+---
+
+### 메세지의 방향, 캡슐화
+```
 # [OOP] 메세지의 방향, 캡슐화 - 5
 ## 내용
 - 블랙잭 게임 상태별 배팅 반환 금액을 계산하기 위한 분기문을 줄이기 위해 유한상태머신 패턴을 적용함
@@ -178,10 +170,12 @@ TDD와 설계에 익숙하지 않다면, 객체를 테스트할 방법이 도저
 - 캡슐화와 메세지 방향 키워드를 통해 객체의 책임과 위치에 대한 기준을 선정하고 구현을 진행함
 ## 링크
 - https://hyeon9mak.github.io/우아한테크코스-블랙잭-미션-회고/
+```
 
+---
 
-
-
+### 은유와 객체
+```
 # [OOP] 은유와 객체 - 5
 ## 내용
 - 객체지향의 사실과 오해 책을 통해 "객체지향은 현실세계의 모방이다" 라는 도시전설에 대해 재해석하는 시간을 가짐
@@ -195,8 +189,13 @@ TDD와 설계에 익숙하지 않다면, 객체를 테스트할 방법이 도저
 - http://www.yes24.com/Product/Goods/18249021
 ```
 
+<br>
 
 ## [체스 미션](https://hyeon9mak.github.io/우아한테크코스-체스-미션-회고/)
+
+---
+
+### 커맨드 패턴
 ```
 # [OOP] 커맨드 패턴 - 5
 ## 내용
@@ -204,38 +203,62 @@ TDD와 설계에 익숙하지 않다면, 객체를 테스트할 방법이 도저
 ## 링크
 - https://gmlwjd9405.github.io/2018/07/07/command-pattern.html
 - https://github.com/Hyeon9mak/java-chess/commit/afb789dfe72eeb829e3ba5b411a5242dde4bc725
+```
 
+---
+
+### flatMap
+```
 # [JDK] flatMap - 3
 ## 내용
 - 페어 에드로부터 Stream API의 flatMap 메서드에 대해 배운 후 체스미션에 전반적으로 적용함
 ## 링크
 - https://github.com/Hyeon9mak/java-chess/commit/971c7eb1607b18a53ddf9a5827b651d5e6fa045a
+```
 
+---
+
+### 이벤트 소싱
+```
 # [OOP] 이벤트 소싱 - 5
 ## 내용
 - 이벤트 소싱 기법에 대해 학습한 후, 체스게임 명령을 기록하는 방식으로 데이터베이스를 구현함
 ## 링크
 - https://mjspring.medium.com/%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%86%8C%EC%8B%B1-event-sourcing-%EA%B0%9C%EB%85%90-50029f50f78c
 - https://github.com/woowacourse/java-chess/pull/240/files/5308f2fbc2149f2ccaf6db8a846b2f5e8669a02f#diff-bdbc4966c729e860f82b005ab3903fd146b59de79b1c7c168f8374b3381ada6e
+```
 
+---
+
+### 이벤트 버블링, 이벤트 캡처, 이벤트 위임
+```
 # [Javascript] 이벤트 버블링, 이벤트 캡처, 이벤트 위임 - 2
 ## 내용
 - Javascript의 이벤트 범위와 버블링, 캡처를 이해하고 이벤트를 위임하는 방식에 대해 학습 후 적용함
 ## 링크
 - https://joshua1988.github.io/web-development/javascript/event-propagation-delegation/
 - https://github.com/woowacourse/java-chess/pull/240/files/5308f2fbc2149f2ccaf6db8a846b2f5e8669a02f#diff-bdbc4966c729e860f82b005ab3903fd146b59de79b1c7c168f8374b3381ada6e
+```
 
+---
+
+### Custom Exception
+```
 # [Java] Custom Exception - 2
 ## 내용
 - `printStackTrace()` 사용에 대한 피드백을 받은 후 Custom Exception을 적용함
 ## 링크
 - https://github.com/woowacourse/java-chess/pull/240#discussion_r606782916
 - https://hyeon9mak.github.io/%EC%9A%B0%EC%95%84%ED%95%9C%ED%85%8C%ED%81%AC%EC%BD%94%EC%8A%A4-%EC%B2%B4%EC%8A%A4-%EB%AF%B8%EC%85%98-%ED%9A%8C%EA%B3%A0/#%EF%B8%8F-custom-exception
+```
 
+---
+
+### try-with-resources
+```
 # [Java] try-with-resources - 4
 ## 내용
 - 데이터베이스 연결 자원 자동 회수를 위한 try-with-resources 구분 사용법과 자원이 자동으로 회수되는 원리 (AutoCloseable 구현)를 학습하고 적용함
 ## 링크
 - https://hyeon9mak.github.io/%EC%9A%B0%EC%95%84%ED%95%9C%ED%85%8C%ED%81%AC%EC%BD%94%EC%8A%A4-%EC%B2%B4%EC%8A%A4-%EB%AF%B8%EC%85%98-%ED%9A%8C%EA%B3%A0/#%EF%B8%8F-try-with-resources
-
 ```
