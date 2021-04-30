@@ -11,7 +11,7 @@ toc_label: "재부팅 없이 EC2 저장장치 볼륨 늘리기"
 AWS EC2 인스턴스의 저장장치는 EBS(Elastic Block Store)로 구성할 수 있다.   
 EBS는 탄력적 저장장치로 볼륨을 자유롭게 키울 수 있는데, 재부팅 없이 볼륨을 키우는 방법에 대해 실습을 진행했다.
 
-## ☁️ EC2 관리 페이지에서 볼륨 확인
+## ☁️ 1. EC2 관리 페이지에서 볼륨 확인
 ![슬라이드1](https://user-images.githubusercontent.com/37354145/116637842-f3328280-a99f-11eb-9c6f-03f101a7d476.png)
 AWS EC2 관리 메뉴에서 `Elastic Block Store - 볼륨` 메뉴로 접근해보자.
 
@@ -28,7 +28,7 @@ AWS EC2 관리 메뉴에서 `Elastic Block Store - 볼륨` 메뉴로 접근해�
 
 <br>
 
-## ☁️ 인스턴스 터미널에서 볼륨 확인
+## ☁️ 2. 인스턴스 터미널에서 볼륨 확인
 ![슬라이드4](https://user-images.githubusercontent.com/37354145/116637850-f88fcd00-a99f-11eb-87c9-0399565789ad.png)
 `$ df`에 `-h(human)` 옵션을 추가해서 사람이 확인하기 편한 단위로 볼륨을 확인할 수 있었다.
 `/dev/xvda` 파일 시스템이 100G에 근접한 97G를 점유하고 있다. `/dev/xvda` 옆에 `1`은 파티션 번호를 의미한다.
@@ -43,7 +43,7 @@ AWS EC2 관리 메뉴에서 `Elastic Block Store - 볼륨` 메뉴로 접근해�
 
 <br>
 
-## ☁️ EC2 관리 페이지에서 볼륨 수정
+## ☁️ 3. EC2 관리 페이지에서 볼륨 수정
 ![슬라이드7](https://user-images.githubusercontent.com/37354145/116637857-f9c0fa00-a99f-11eb-9fa3-da7086aec821.png)
 다시 AWS EC2 `Elastic Block Store - 볼륨` 메뉴로 돌아와 인스턴스를 우클릭하고, `볼륨 수정`을 선택해보자.
 
@@ -57,7 +57,7 @@ AWS EC2 관리 메뉴에서 `Elastic Block Store - 볼륨` 메뉴로 접근해�
 
 <br>
 
-## ☁️ 인스턴스 터미널에서 볼륨 재할당
+## ☁️ 4. 인스턴스 터미널에서 볼륨 재할당
 ![슬라이드11](https://user-images.githubusercontent.com/37354145/116637865-fc235400-a99f-11eb-8da1-59fd1a83f21d.png)
 변경된 볼륨을 적용하기에 앞서, 정확한 파티션 번호를 다시 확인해보고 싶다면, `$ parted [파일시스템명] print` 명령을 이용하면 된다.
 
@@ -100,5 +100,5 @@ AWS EC2 관리 메뉴에서 `Elastic Block Store - 볼륨` 메뉴로 접근해�
 <br>
 
 ## References
-- https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html
+- [https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html](https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html)
   
