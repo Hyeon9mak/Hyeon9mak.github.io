@@ -8,7 +8,7 @@ toc_sticky: true
 toc_label: "패키지 구조는 어떻게 가져가는게 가장 좋을까?"
 ---
 
-## 레이어 우선
+## 📦 레이어 우선
 ```
 io.github.hyeon9mak.domain.modulename
 io.github.hyeon9mak.dao.modulename
@@ -26,7 +26,7 @@ io.github.hyeon9mak.web.modulename
 
 <br>
 
-### 모듈 우선
+## 📦 모듈 우선
 ```
 io.github.hyeon9mak.modulename.domain
 io.github.hyeon9mak.modulename.dao
@@ -47,9 +47,7 @@ io.github.hyeon9mak.modulename.web
 
 <br>
 
----
-
-<br>
+## 📦 개인적으로...
 
 개인적으로 개발 및 설계를 진행하는 입장에서 레이어를 우선하는 패키지 구조가 중복 코드도 적게 발생하고, 
 순환 참조가 발생하는지 계속 의식할 수 있어서 편리했다.
