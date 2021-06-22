@@ -332,10 +332,14 @@ public ResponseEntity requestBody(@RequestBody UserDto userDto) {
 }
 ```
 
-> 확실하지 않음. get 메서드에도 body를 추가해서 보낸다면 동작이 가능한지 테스트 해봐야 한다.
-> get 메서드도 충분히 body를 가질 수 있다.
-> @RequestParam 에 preemtive 타입이 넘어올 경우 알아서 처리해준다는 이야기도 있다 - 제이슨 출처.
-> 이 부분에 대해서도 테스트햅고 정리해야할 듯.
+> GET Method에서도 @RequestBody 어노테이션으로 데이터를 받아낼 수 있다. (즉, GET Method도 body를 가질 수 있다.)
+> 다만 POST와 GET은 각각 서로 @RequestBody로 넘어오는 데이터를 처리하는 방식이 다르다.
+>
+> POST Method는 JSON으로 넘어오는 데이터에 대해서 Jackson - ObjectMapper - reflection 을 통해 데이터를 처리하기 때문에 default constructor가 필요하며, setter는 필요가 없다.
+> 
+> GET Method는 JSON이 아닌 Query Parameter로 데이터가 넘어온다. 그리고 이에 따라 WebDataBinder를 사용한다. 
+> WebDataBinder는 reflection이 아닌 Java Bean 데이터 할당 방법을 사용하며, 이는 constructor가/Getter/Setter 를 가지는 객체를 의미한다. 
+> 즉, setter를 필요로 한다.
 
 <br>
 
@@ -344,8 +348,49 @@ public ResponseEntity requestBody(@RequestBody UserDto userDto) {
 - @RequestBody와 달리 default constructor가 없어도 된다. 
 - 다른 블로그에선 setter 메서드가 필요하다고 하는데, 실제 테스트해보니 setter 메서드 없이도 매핑 성공함
     - 스프링 버전 별로 차이가 있는거 같다.
+    
+```java
+// Controller Method
+  @PostMapping("/test/{name}")
+  public ResponseEntity<Void> test(@ModelAttribute TestRequestDto testRequestDto) {
+      System.out.println(testRequestDto.getName());
+      return ResponseEntity.ok().build();
+  }
+```
+```java
+// DTO
+public class TestRequestDto {
 
+    private String name;
 
+    public TestRequestDto(String name) {
+        this.name = name;
+    }
 
-primtive를 명시 받을 때, 아무것도 명시 안하면 requestParam을 붙여주고, references 타입 같은 거는 아무것도 명시 안하면 ModelAttribute를 붙여준다.
-Null을 처리 못해서 에러가 나고, ModelAttribute는 NULL도 처리하는 친구라서 뻑이 안나고 똥이 마려울 수 있다.
+    public String getName() {
+        return name;
+    }
+}
+```
+```java
+// 테스트 코드
+    @Test
+  void 테스트() {
+      RestAssured
+          .given().log().all()
+          .contentType(MediaType.TEXT_PLAIN_VALUE)
+          .when().post("/test/현구막")
+          .then().log().all()
+          .extract();
+
+  }
+```
+```
+// 결과
+현구막
+```
+
+<br>
+
+## References
+- [@Request Body에서는 Setter가 필요없다?](https://jojoldu.tistory.com/407)
