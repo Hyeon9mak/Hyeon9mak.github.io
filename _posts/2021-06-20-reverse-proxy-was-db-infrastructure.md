@@ -69,7 +69,7 @@ $ sudo cp /etc/letsencrypt/live/[도메인주소]/fullchain.pem ./
 $ sudo cp /etc/letsencrypt/live/[도메인주소]/privkey.pem ./
 ```
 
-`Dockerfile` 파일을 아래와 같이 작성한다. 이 때도 `[도메인주소]`에는 본인 서버의 도메인 이름을 기입니다.
+`Dockerfile` 파일을 아래와 같이 작성한다. 이 때도 `[도메인주소]`에는 본인 서버의 도메인 이름을 기입한다.
 
 ```
 # Dockerfile
