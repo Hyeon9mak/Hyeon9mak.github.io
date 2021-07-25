@@ -1,5 +1,5 @@
 ---
-title: "web-socket 연결 끊김 감지"
+title: "web-socket 연결 끊김 감지하기"
 date: 2021-07-25
 tags:
     - network
@@ -7,7 +7,7 @@ tags:
     - websocket
 toc: true
 toc_sticky: true 
-toc_label: "web-socket 연결 끊김 감지"
+toc_label: "web-socket 연결 끊김 감지하기"
 ---
 
 ## 🐧 Summary
@@ -70,7 +70,7 @@ javascript쪽 코드에서 `stompClient.connect`는 헤더에 클라이언트의
 
 <br>
 
-### 🐧 최초 연결 때 - ChannelInterceptor를 써보자
+## 🐧 최초 연결 때 - ChannelInterceptor를 써보자
 
 ```java
 @Configuration
