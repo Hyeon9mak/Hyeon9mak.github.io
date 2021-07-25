@@ -71,7 +71,7 @@ $ sudo cp /etc/letsencrypt/live/[도메인주소]/privkey.pem ./
 
 `Dockerfile` 파일을 아래와 같이 작성한다. 이 때도 `[도메인주소]`에는 본인 서버의 도메인 이름을 기입한다.
 
-```
+```Dockerfile
 # Dockerfile
 
 FROM nginx
@@ -87,7 +87,7 @@ COPY privkey.pem /etc/letsencrypt/live/[도메인주소]/privkey.pem
 
 (같은 계정의 인스턴스로 생성한 것이라면 private IP를 입력해도 무방하다.)
 
-```
+```conf
 # nginx.conf
 
 events {}
@@ -185,7 +185,7 @@ $ sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
 
 포트번호와 바인딩 주소 설정해준다.
 
-```
+```conf
 # mysqld.cnf
 
 -- 보안그룹에 허용되어있는 포트. 
@@ -212,7 +212,7 @@ $ sudo service mysql restart
 WAS용 EC2 인스턴스에서 서버 프로젝트 파일을 `$ git clone` 해서 가져온 후, 
 서버 관련 yml 파일을 편집한다. (대게 `src/main/resource/*.yml` 경로에 있다.)
 
-```
+```yml
 # application-prod.yml
 
 spring:
