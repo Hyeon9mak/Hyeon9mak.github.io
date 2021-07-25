@@ -9,6 +9,7 @@ toc_sticky: true
 toc_label: "NGINX 웹 소켓 프록시 설정"
 ---
 
+## 🥃 summary
 Nginx는 버전 1.3부터 ​​WebSocket을 지원하며, WebSocket의 로드 밸런싱 을 수행 할 수 있다. 
 
 HTTP에서 WebSocket으로 연결 전환시 HTTP의 Upgrade 및 Connection 헤더를 사용한다. 
@@ -32,8 +33,9 @@ proxy_set_header Connection "upgrade";
 proxy_set_header Host $host;
 ```
 
-실제로 적용한 모습
+<br>
 
+## 🥃 실제로 적용한 모습
 기존 구성해둔 `nginx.conf` 파일의 location 설정 부분에 웹 소켓 연결 요청을 위한 
 몇 가지 헤더값 설정만 진행해주면 된다.
 
