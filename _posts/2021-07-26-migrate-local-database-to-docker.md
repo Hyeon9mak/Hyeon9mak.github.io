@@ -32,7 +32,7 @@ $ pidof mariadb
 $ pidof db 
 
 // 성공
-$ pidof mysqld // 성공
+$ pidof mysqld
 ```
 
 동작 중인 mariadb(mysqld)를 종료하고 싶다면 `service mysql stop` 명령어를 사용한다.
@@ -122,7 +122,7 @@ services:
 $ sudo docker-compose up -d --build
 Creating [DB 컨테이너 이름] ... done
 ```
-```JSON
+```
 # HTTP GET 요청 찔러본 결과
 {
     "roomId": 3,
@@ -183,7 +183,7 @@ DBMS 툴로 직접 테이블을 조회한 경우에만 한글이 깨졌다. 즉,
 
 도커 볼륨 매핑을 위해 복제했던 로컬 디렉토리 `conf.d`의 `mysql.cnf` 파일에 한글 인코딩 설정을 추가한다.
 
-```cnf
+```
 # docker-volume/mariadb/conf.d/mysql.cnf
 
 [mysqld]
