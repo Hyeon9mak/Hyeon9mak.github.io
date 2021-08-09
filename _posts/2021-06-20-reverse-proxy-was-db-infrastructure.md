@@ -62,7 +62,8 @@ $ sudo docker run -it --rm --name certbot \
 제공된 레코드 값을 DNS 사이트에서 지원하는 TXT(SPF) 레코드로 추가한다.
 
 그 후 현재 경로로 인증서를 복제해온다. 복제된 인증서는 추후 도커 빌드에 사용되는데, 
-원본 인증서가 잘못될 가능성을 염두에 두고 복제된 인증서를 이용하기 위함이다.
+~~원본 인증서가 잘못될 가능성을 염두에 두고 복제된 인증서를 이용하기 위함이다.~~
+`Dockerfile`에서 `/etc/letsencrypt/live/[도메인주소]/`까지 접근할 권한이 없기 때문에(=접근할 수 없기 때문에) `sudo cp` 명령어를 통해 키를 현재 경로로 복제해둔다.
 
 ```
 $ sudo cp /etc/letsencrypt/live/[도메인주소]/fullchain.pem ./
