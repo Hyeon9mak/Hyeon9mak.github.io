@@ -8,14 +8,14 @@ toc_sticky: true
 toc_label: "macOS Big Sur JDK 설치 및 버전 변경"
 ---
 
-## summary
+## 🍺 summary
 신규 프로젝트를 로컬에서 동작 시켜보기 위해 **JDK 8** 버전이 필요했다. 
 기존 로컬에 설치되어 있던 버전은 **JDK 14** 였기 때문에 버전 변경이 필요했는데 
 버전 변경이 뜻대로 이루어지지 않아 반나절을 고생했다.
 
 <br>
 
-## Homebrew를 이용한 JDK 8 설치
+## 🍺 Homebrew를 이용한 JDK 8 설치
 JDK를 직접 다운로드 받아 설치할 경우 어떤 버전을, 어디에 설치했는지 관리가 어렵기 때문에 
 Homebrew를 통해 설치하길 희망했다.
 
@@ -34,7 +34,7 @@ $ brew install --cask adoptopenjdk8
 
 <br>
 
-## JDK 버전 변경
+## 🍺 JDK 버전 변경
 설치는 잘 진행됐지만, 여전히 로컬에 설치되어 있던 14버전을 사용 중이었다. 
 여러가지 블로그들을 참고 해보니 공통적으로 `.zshrc` 또는 `.bash_profile` 에 명령어를 추가하라데, 도통 먹힐 생각을 하지 않았다.
 

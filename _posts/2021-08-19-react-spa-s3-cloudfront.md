@@ -10,7 +10,7 @@ toc_sticky: true
 toc_label: "React S3, CloudFront에 배포하기"
 ---
 
-## summary
+## 💎 summary
 babble 팀 서비스를 배포한 후로 새로고침을 할 때나 초기 페이지를 거치지 않고 URL로 직접 페이지를 이동하는 경우
 계속해서 **403 FORBIDDEN** 에러를 마주쳤다. 왜 그런지 이유를 찾던 중, 얼핏 들었던 "React는 
 HTML 파일을 하나로만 구성해서 개발한다."가 떠올라서 React SPA에 대해 알아봤다.
@@ -29,7 +29,7 @@ AWS S3, CloudFront 에서는 별도의 **403 FORBIDDEN**, **404 NOT_FOUND** 에�
 
 <br>
 
-## S3 - 정적 웹 사이트 호스팅 설정
+## 💎 S3 - 정적 웹 사이트 호스팅 설정
 ![image](https://user-images.githubusercontent.com/37354145/129546614-2fa24a60-6702-4ab8-b287-42f377408223.png)
 
 우선 S3 Bucket 화면으로 이동한다. (아니나 다를까 `index.html` 파일 하나만 존재하는게 보인다.)
@@ -46,7 +46,7 @@ routing 되어 react-router-dom의 routing을 탈 수 있다고 한다.
 
 <br>
 
-## CloudFront - Error pages 설정
+## 💎 CloudFront - Error pages 설정
 ![image](https://user-images.githubusercontent.com/37354145/129546646-e0eb43a1-78e2-4d77-8861-739d26c22351.png)
 
 CloudFront Distribution의 `Error pages` 메뉴로 이동 후 `Create custom error response` 버튼을 클릭한다.
