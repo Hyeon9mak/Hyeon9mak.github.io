@@ -173,7 +173,7 @@ public class User {
 
 엔티티의 `@NotNull` 역시 깔끔하게 에러 메세지를 얻어낼 수 있게 되었다!
 
-> 엔티티의 `@NotNull` 어노테이션에 대해서는 [@NotNull vs @Column(nullable = false)](https://hyeon9mak.github.io/not-null-vs-column-nullable-false.md) 글을 참고하자.
+> 엔티티의 `@NotNull` 어노테이션에 대해서는 [@NotNull vs @Column(nullable = false)](https://hyeon9mak.github.io/not-null-vs-column-nullable-false) 글을 참고하자.
 
 최종적으로 `RumtimeException` 핸들링 메서드에 포함되지 않는 별도의 검증 어노테이션으로 `@NotNull`을 사용할 수 있게 되었다.
 

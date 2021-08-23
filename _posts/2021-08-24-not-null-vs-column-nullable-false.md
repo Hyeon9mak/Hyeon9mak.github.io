@@ -10,7 +10,7 @@ toc_sticky: true
 toc_label: "@NotNull vs @Column(nullable = false)"
 ---
 
-> 앞서 읽으면 좋은 글 - [@NotNull 어노테이션 예외처리 핸들링](https://hyeon9mak.github.io/not-null-annotation-exception-handling.md)
+> 앞서 읽으면 좋은 글 - [@NotNull 어노테이션 예외처리 핸들링](https://hyeon9mak.github.io/not-null-annotation-exception-handling)
 
 ## 📓 summary
 lombok에서 지원하는 `@NonNull` 어노테이션을 통해 엔티티의 필드를 검증하던 중, `javax.validation.constraints`의 `@NotNull` 어노테이션도 엔티티에 붙여 사용할 수 있음을 알게 되었다.
