@@ -53,7 +53,7 @@ spring.jpa.properties.hibernate.validator.apply_to_ddl=false
 > 
 > ---
 > 
-> `@NotEmpty`
+> `@NotEmpty`  
 > Checks whether the annotated element is not null nor empty
 >
 > Hibernate metadata impact  
@@ -61,7 +61,7 @@ spring.jpa.properties.hibernate.validator.apply_to_ddl=false
 > 
 > ---
 >
-> `@NotNull`
+> `@NotNull`  
 > Checks that the annotated value is not null
 >
 > Hibernate metadata impact  
