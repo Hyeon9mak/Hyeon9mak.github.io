@@ -30,15 +30,12 @@ Bastion을 통해 ssh 연결을 성공했다.
 <br>
 
 ## 🔌 private IP는 internet network에 연결 할 수 없나?
-IP 대역이 서로 다른 네트워크가 통신을 주고받으려면 둘 중 하나를 만족해야한다고 한다.
+인터넷 영역에서는 모두가 알고 있는 IP로 통신해야 하는데, 이 때 필요한게 Public IP(공인 IP) 이다.
 
-1. 서로 상대방의 IP 대역을 알고 있는 경우.  
-   가는 길을 알려줘야 하기 때문에 라우터(라우터 테이블)를 쓴다.  
-   (같은 네트워크 안에서 길을 알려주는 기능은 스위치라고 한다.)
-2. 어느 한쪽이 반대편의 대역으로 변환해서 통신을 시도하는 경우  
-   (상대방 IP로 변환하는 기능을 하는 것이 NAT 이다.)
+AWS VPC 환경에서 EC2 인스턴스가 인터넷 통신이 가능하도록 만들려면, 인스턴스의 private IP와 연결된 public IP가 있어야 한다. 사용자의 인스턴스는 기본적으로 VPC 및 서브넷 내부 private IP 주소들만 인식한다. 
+인터넷 게이트웨이가 EC2 인스턴스 IP를 대신해 논리적인 NAT(Network Address Translation)을 제공할 때 인터넷 게이트웨이의 IP주소 + EC2인스턴스의 privateIP를 결합한 무언가를 만드는게 아닌, EC2인스턴스와 1:1로 매칭되는 IP를 제공한다. 때문에 인터넷 상에서 회신 주소 필드를 채우기 위해선 유일한 IP주소값인 public IP 주소가 필요하다.
 
-인터넷 영역에서는 모두가 알고 있는 IP로 통신해야 한다. - 이 때 필요한게 Public IP
+> AWS에서 제공하는 VPC용 NAT 디바이스를 사용하면 public IP를 할당하지 않은 인스턴스도 인터넷 연결이 가능하다. 단 이 경우에는 외부 인터넷에서 EC2 인스턴스로 연결 요청을 보내는 인바운드는 거절되며, EC2 인스턴스에서 외부로 요청을 보내는 아웃바운드만 가능하다. 주로 보안 이슈를 해결하면서 소프트웨어 펌웨어 업데이트 등을 챙기려 할 때 좋은 방식이다.
 
 WAS, DataBase 인스턴스에게는 public IP가 존재하지 않았기 때문에 `sudo apt update` 명령을 통해 
 apt 측에 "최신 버전 apt 파일들을 내려주세요!" 라는 요청을 전송했지만, apt 측에서 답변을 받을 대상이 
@@ -65,8 +62,15 @@ IP 대역이 다른 네트워크에서 접근할 방법이 없는, 오로지 같
 
 앞으론 web-server와 bastion 인스턴스 쪽 보안에 집중하면 될 것 같다.
 
+---
+
+2021년 8월 25일 내용 추가.  
+VPC용 NAT 디바이스를 활용하면 WAS, DB 아웃바운드 인터넷 연결을 유지하면서 인바운드 연결은 거절하는 
+편리하고 안전한 EC2 구성도 가능할 것 같다.
+
 <br>
 
 ## References
 - [탄력적인 IP 주소 - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
 - [아마존 웹 서비스를 다루는 기술 6장 고정 IP를 제공하는 Elastic IP](http://pyrasis.com/book/TheArtOfAmazonWebServices/Chapter06)
+- [인터넷 게이트웨이 - Amazon Virtual Private Cloud 사용 설명서](https://docs.aws.amazon.com/ko_kr/vpc/latest/userguide/VPC_Internet_Gateway.html)
