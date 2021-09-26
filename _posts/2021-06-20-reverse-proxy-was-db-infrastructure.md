@@ -38,7 +38,7 @@ sudo chmod +x /usr/local/bin/docker-compose && \
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 
-도커 설치가 완료되면 자신이 개설한 서버의 도메인명과 함께 아래 SPF 생성 작업을 거친다.
+도커 설치가 완료되면 자신이 개설한 서버의 도메인명과 함께 아래 letsencrypt를 이용한 SPF 인증용 레코드 생성 작업을 거친다.
 
 > **SPF(Sender Policy Framework)**  
 > SPF는 DNS(Domain Name Service) 레코드의 한 유형으로, 스팸 발송자가 전자 메일 주소를 "스푸핑 (spoof)"하거나 도용하여 수백, 수천 또는 수백만 개의 전자 메일을 불법으로 보낼 수 있는 전자 메일 시스템의 허점을 방지하기 위해 2003년에 만들어졌다.  
@@ -59,7 +59,10 @@ $ sudo docker run -it --rm --name certbot \
 
 ![img](https://techcourse-storage.s3.ap-northeast-2.amazonaws.com/ad712ce0a1b943b18cef2cb255c2baf5)
 
-제공된 레코드 값을 DNS 사이트에서 지원하는 TXT(SPF) 레코드로 추가한다.
+제공된 레코드 값을 DNS 사이트에서 지원하는 TXT(SPF) 레코드에 기입해서 1회성 인증을 진행한다.
+인증이 완료된 것을 확인한다면 기입한 인증 값을 지워도 무방하다. 
+
+> `--manual --preferred-challenges dns ` 명령을 통해 'DNS를 이용한 인증을 진행하겠다.' 옵션을 지정했으므로 DNS 사이트에서 지원하는 TXT(SPF) 레코드를 통해 인증이 가능하게 된다. ([땡쓰 투 웨지](https://github.com/sihyung92))
 
 그 후 현재 경로로 인증서를 복제해온다. 복제된 인증서는 추후 도커 빌드에 사용되는데, 
 ~~원본 인증서가 잘못될 가능성을 염두에 두고 복제된 인증서를 이용하기 위함이다.~~
