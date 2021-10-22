@@ -89,7 +89,7 @@ $ sudo mysql -u root -p
 
 ## 🦖 IP 주소 허용 수정
 새로운 버전을 설치할 경우 기존 mariadb-server 설정 값이 모두 초기화 된다.
-bind-address 설정을 다시 바꾸기 위해 `/etc/mysql/mariadb.conf.d/50-server.conf` 에 접근한다.
+bind-address 설정을 다시 바꾸기 위해 `/etc/mysql/mariadb.conf.d/50-server.cnf` 에 접근한다.
 
 ```
 # Instead of skip-networking the default is now to listen only on
