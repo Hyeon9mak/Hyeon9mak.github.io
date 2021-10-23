@@ -63,8 +63,8 @@ Slave 서버는 자신이 발생시킨 이벤트로 간주해서 동기화를 �
 $ mysql -u root -p
 mysql> USE mysql;
 
-mysql> CREATE USER '{유저 이름}'@'{% 또는 Slave IP}' IDENTIFIED BY '{유저 비밀번호}';  
-mysql> GRANT REPLICATION SLAVE ON {* 또는 스키마 이름}.{* 또는 테이블 이름} TO '{유저 이름}'@'{% 또는 Slave IP}'; 
+mysql> CREATE USER '{유저 이름}'@'{ % 또는 Slave IP }' IDENTIFIED BY '{유저 비밀번호}';  
+mysql> GRANT REPLICATION SLAVE ON {* 또는 스키마 이름}.{* 또는 테이블 이름} TO '{유저 이름}'@'{ % 또는 Slave IP }'; 
 mysql> FLUSH PRIVILEGES;
 ```
 
