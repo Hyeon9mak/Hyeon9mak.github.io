@@ -15,33 +15,35 @@ toc_label: "EC2 내부 파일 SCP로 다운로드 받기"
 CU께서 수료일을 기점으로 모든 EC2 인스턴스를 삭제할 것이라 공지하셨기 때문이다.
 '언젠간 해야지'를 반복하며 차일피일 미루다가, 정말 일정이 얼마 남지 않아 황급하게 백업할 파일 목록을 뽑아냈다.
 
-> ### DB
-> - db
->   - SQL 덤프 파일 백업
-> - db-slave1
-> - db-slave2
->   - 별도로 옮길 파일 없음
-> 
-> ### Web-Server
-> - web-server
->   - `Dockerfile`
->   - `awslogs-agent-setup.py`
->   - `docker-compose.yml`
->   - `nginx.conf`
-> - test-web-server
->   - `Dockerfile`
->   - `docker-compose.yml`
->   - `nginx.conf`
-> 
-> ### WAS
-> - was-worker
-> - was-worker
-> - was-manager
->   - 별도로 백업할 내용 없음
-> - was-logs
->   - nfs를 이용한 로깅 설정 파일 `config.json`만 백업  
-> 
-> (... 생략 ...)
+```
+### DB
+- db
+  - SQL 덤프 파일 백업
+- db-slave1
+- db-slave2
+  - 별도로 옮길 파일 없음
+
+### Web-Server
+- web-server
+  - Dockerfile
+  - awslogs-agent-setup.py
+  - docker-compose.yml
+  - nginx.conf
+- test-web-server
+  - Dockerfile
+  - `ocker-compose.yml
+  - nginx.conf
+
+### WAS
+- was-worker
+- was-worker
+- was-manager
+  - 별도로 백업할 내용 없음
+- was-logs
+  - nfs를 이용한 로깅 설정 파일 `config.json`만 백업  
+
+(... 생략 ...)
+```
 
 '언제 다 다운로드 받으려나' 걱정이 앞섰지만, 막상 뽑아내니 크게 백업할 파일이 많지 않았다.
 대부분의 프로덕션 코드는 이미 깃허브에 저장되어 있었고, 네이티브하게 설치한 서버 프로그램들도 
