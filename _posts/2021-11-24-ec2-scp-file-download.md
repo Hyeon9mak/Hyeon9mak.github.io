@@ -74,5 +74,13 @@ $ sudo scp -r -i {KEY파일 위치} {EC2 Ubuntu 계정명}@{Public IP}:{다운�
 
 <br>
 
+## 🗄️ 결론
+![image](https://user-images.githubusercontent.com/37354145/143386448-023f71d9-35e1-43b7-b103-42a92d4c79a1.png)
+
+불필요한 파일은 최대한 배제하고, 버전관리를 진행하면 좋겠다 싶은 파일들만 7개로 추려서 저장소에 업로드 했다!
+
+<br>
+
 ## References
-- [서비스 이전을 위한 프로젝트 백업 진행 - 2021-babble](https://github.com/woowacourse-teams/2021-babble/issues/744)
+- [서비스 이전을 위한 프로젝트 백업 진행 - 2021-babble issue](https://github.com/woowacourse-teams/2021-babble/issues/744)
+- [feat: 인프라 구성요소 백업파일 추가 - 2021-babble PR](https://github.com/woowacourse-teams/2021-babble/pull/749)
