@@ -9,11 +9,18 @@ html {
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  color: $text-color;
-  font-family: $global-font-family;
-  line-height: 1.5;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+  
+
+  // margin: 0;
+  // padding: 0;
+  // color: $text-color;
+  // font-family: $global-font-family;
+  // line-height: 1.5;
 
   &.overflow--hidden {
     /* when primary navigation is visible, the content in the background won't scroll */
