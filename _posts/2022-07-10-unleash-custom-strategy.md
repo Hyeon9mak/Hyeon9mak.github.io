@@ -210,5 +210,6 @@ feature toggle 이름을 명시하고, UnleashContext Builder의 addProperty 체
 '지역별 필터링' 이라는 비즈니스가 명확한 필터링을 진행하고 싶어서 커스텀 전략을 별도로 지정했지만,
 꼭 그럴 필요가 없다면 Unleash에서 기본적으로 제공되는 5가지의 전략만 활용해도
 충분히 잘 동작하는 변수 필터 feature toggle을 만들 수 있다.
+(SDK Custom Strategy 구현을 완전히 생략할 수 있다.)
 
 만약 비즈니스에 핏한 필터링(혹은 그런 전략 이름)을 원한다면 custom strategy를 적극 활용해보자.
