@@ -2,9 +2,9 @@
 title: "JPA Envers 에러 트러블슈팅"
 date: 2022-08-01
 tags:
-  - jpa
-  - envers
-  - troubleshooting
+    - jpa
+    - envers
+    - troubleshooting
 toc: true
 toc_sticky: true
 toc_label: "JPA Envers 에러 트러블슈팅"

@@ -2,8 +2,8 @@
 title: "JPA Enum Table ID 전략 선택"
 date: 2022-07-28
 tags:
-  - jpa
-  - id-strategy
+    - jpa
+    - id-strategy
 toc: true
 toc_sticky: true
 toc_label: "JPA Enum Table ID 전략 선택"
