@@ -109,13 +109,24 @@ analytics:
 author:
   name             : "현구막"
   avatar           : "/assets/images/9vatar.png"
-  bio              : "단순하게, 보기좋게, 알기쉽게."
   location         : "Seoul/South Korea"
   email            : "jinha3507@gmail.com"
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/Hyeon9mak/"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+       url: "https://twitter.com/hyeon9mak"
+    - label: "Facebook"
+      icon: "fab fa-fw fa-facebook-square"
+       url: "https://facebook.com/Hyeon9mak"
+    - label: "LinkedIn"
+        icon: "fab fa-fw fa-linkedin-square"
+          url: "https://www.linkedin.com/in/hyeon9mak"
+    - label: "Careerly"
+       icon: "fas fa-fw fa-link"
+        url: "https://careerly.co.kr/profiles/489909"
 
 # Site Footer
 footer:
@@ -123,13 +134,18 @@ footer:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/Hyeon9mak/"
-    - label: "GitLab"
-      icon: "fab fa-fw fa-gitlab"
-      # url:
-    - label: "Bitbucket"
-      icon: "fab fa-fw fa-bitbucket"
-      # url:
-
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+        url: "https://twitter.com/hyeon9mak"
+    - label: "Facebook"
+      icon: "fab fa-fw fa-facebook-square"
+        url: "https://facebook.com/Hyeon9mak"
+    - label: "LinkedIn"
+        icon: "fab fa-fw fa-linkedin-square"
+          url: "https://www.linkedin.com/in/hyeon9mak"
+    - label: "Careerly"
+        icon: "fas fa-fw fa-link"
+          url: "https://careerly.co.kr/profiles/489909"
 
 # Reading Files
 include:
