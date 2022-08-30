@@ -28,10 +28,7 @@ GROUP BY
     이름,
     전화번호
 HAVING
-    COUNT (이름)
-     > 1
-   AND
-    COUNT (전화번호)
+    COUNT (*) > 1
 ```
 
 <img width="992" alt="image" src="https://user-images.githubusercontent.com/37354145/185736085-4b97ec2e-229b-4608-aae3-273054a477f7.png">
