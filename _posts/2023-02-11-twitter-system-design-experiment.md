@@ -307,7 +307,7 @@ redis 가 제공하는 LIST 자료구조를 사용해서 저장하고 `lrange` �
 라고 괴로워하면서 어떻게든 '정답'을 찾아내기 위해 많은 시간을 허비하곤 했는데,
 애플리케이션과 유저의 특성에 맞춰서 최적의 시스템을 선택하고 이를 혼용한 것이 인상 깊다.
 단점이 없는 완벽한 솔루션(이라는게 존재하긴 할까?)을 찾으려고 많은 시간을 소비하기보다, 
-문제상황을 최대한 작은 단위로 나누어 바라볼 수 있는 시야와,
+문제상황을 최대한 작은 단위로 나누어 바라볼 수 있는 시야와
 각각에 알맞는 시스템을 디자인하고 구현할 수 있는 능력을 길러야 할 것 같다.
 
 “특성에 맞춰 시스템을 구성한다.” 라는 관점에서 다시 한번 DDD의 바운디드 컨텍스트가 떠오른다. 
@@ -318,6 +318,6 @@ redis 가 제공하는 LIST 자료구조를 사용해서 저장하고 `lrange` �
 
 ## References
 
-- [트위터 시스템 디자인 실험 저장소](https://github.com/Hyeon9mak/twitter-system-design/)
-- [트위터 시스템 디자인 완전정복 | 1억 유저 처리의 비밀](https://www.youtube.com/watch?v=6QwqtdBx0oE)
-- [redis.io lrange command](https://redis.io/commands/lrange/)
+- [트위터 시스템 디자인 실험 저장소 - github.com/hyeon9mak/twitter-system-design](https://github.com/Hyeon9mak/twitter-system-design/)
+- [트위터 시스템 디자인 완전정복 / 1억 유저 처리의 비밀 유튜브 영상](https://www.youtube.com/watch?v=6QwqtdBx0oE)
+- [redis.io - lrange command](https://redis.io/commands/lrange/)
