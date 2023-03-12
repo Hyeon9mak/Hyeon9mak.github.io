@@ -387,7 +387,7 @@ IDE 의 도움을 받지 않으면 `name` 과 `age` 가 무엇을 의미하는�
 var name = "현구막"
 var age = 28
 
-hyeon9mak.run {
+hyeon9mak.also {
     this.name = name
     age = this.age
 }
@@ -636,7 +636,7 @@ val result = person.getNameLength() + 1
 
 ## 🔭 정리
 
-<img width="1067" alt="image" src="https://user-images.githubusercontent.com/37354145/224550037-2f502dbf-8a4d-4798-bd67-11d911c67274.png">
+<img width="1064" alt="image" src="https://user-images.githubusercontent.com/37354145/224556030-1ecd488e-c3e5-41fc-ae97-c40ce791bf54.png">
 
 의사 결정을 위한 플로우 차트는 위와 같지만, 결국 scope function 의 이름 뜻을 읽고 자연스럽게 느껴지는 대로 사용하면 되겠다.
 
