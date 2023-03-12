@@ -387,7 +387,7 @@ IDE 의 도움을 받지 않으면 `name` 과 `age` 가 무엇을 의미하는�
 var name = "현구막"
 var age = 28
 
-hyeon9mak.also {
+hyeon9mak.apply {
     this.name = name
     age = this.age
 }
