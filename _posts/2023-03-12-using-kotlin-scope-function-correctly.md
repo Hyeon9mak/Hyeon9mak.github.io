@@ -9,9 +9,7 @@ toc_label: "Kotlin Scope function 올바르게 사용하기"
 ---
 
 `let`, `also` 와 같은 Scope function 을 오래전부터 사용해왔지만 정확히 어떤 상황에 어떤 Scope function 을 사용하면 좋을지 감이 잘 안잡혔다.
-그러다 마침 Scope function 관련 질문도 받았었겠다, 각각의 Scope function 들에 대해 공부하고 어떤 상황에서 사용하면 좋을지 정리해보았다.
-
-<br>
+그러다 최근 Scope function 관련 질문도 받았었겠다, 각각의 Scope function 들에 대해 공부하고 어떤 상황에서 사용하면 좋을지 정리해보았다.
 
 ## 🔭 Scope function 소개
 
