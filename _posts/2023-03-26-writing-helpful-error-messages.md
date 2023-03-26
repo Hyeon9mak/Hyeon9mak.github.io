@@ -415,4 +415,4 @@ Google 문서도구에서 일시적으로 스프레드 시트를 로드할 수 �
 
 ## References
 
-- [Writing Helpful Error Messages | Technical Writing | Google Developers](https://developers.google.com/tech-writing/error-messages)
+- [Google Developers > Technical Writing > Writing Helpful Error Messages](https://developers.google.com/tech-writing/error-messages)
