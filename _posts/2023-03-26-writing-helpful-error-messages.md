@@ -77,7 +77,7 @@ toc_label: "구글에서 제안하는 오류 메세지 작성법"
 마땅한 기준을 찾지 못했다면 프로그래밍 언어 가이드의 오류 처리 관련 가이드 라인을 따르는 것도 좋은 방법이다.
 
 - [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
-- [Google Java Style Guide](https://google.github.io/styleguide/javaguide.htmlhttps://google.github.io/styleguide/javaguide.html)
+- [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
 - [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html) 
 - [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
 
