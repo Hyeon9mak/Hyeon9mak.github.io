@@ -124,7 +124,7 @@ class Book(
 ```
 
 때문에 개발자 눈에 보여지는 Kotlin constructor 공간이 
-사실 Java 코드로 치면 constructor이자, getter 이자, field 이자, getter 인 셈이다.
+사실 Java 코드로 치면 constructor 이자, getter 이자, field 인 셈이다.
 그리고 Kotlin data class 는 무조건 primary constructor 를 생략한 상태로 가지고 있다.
 
 ```kotlin
@@ -142,7 +142,7 @@ data class BookEnrollReq(
 ```
 
 Kotlin 입장에서는 `@NotBlank` 와 같은 annotation 이 명시되었을 때
-getter, field, getter 중 어떤 곳에 적용할지를 고민하게 된다.
+constructor, field, getter 중 어떤 곳에 적용할지를 고민하게 된다.
 Kotlin 은 기본적으로는 아래와 같은 순서로 적용을 결정한다.
 
 1. constructor getter(parameter)
