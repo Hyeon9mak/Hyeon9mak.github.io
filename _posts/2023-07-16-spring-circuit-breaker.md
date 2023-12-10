@@ -8,6 +8,8 @@ toc_sticky: true
 toc_label: "spring circuit breaker 이해 및 예제 정리"
 ---
 
+> 다음 글: https://hyeon9mak.github.io/spring-retry/
+
 circuit breaker 를 처음 접하게 되었을 때 retry 와 비슷한 기능을 하는 것 같아서 자주 헷갈렸다.
 특히 `@Retryable` 과 `@Recover` 를 조합하다보면 circuit breaker 와 정말 유사한 결과물을 만들 수 있다.
 그러나 기술의 컨셉을 이해하고 여러가지 테스트를 해보니 차이가 느껴진다.
