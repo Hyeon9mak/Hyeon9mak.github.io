@@ -9,7 +9,7 @@ toc_label: "spring retry 이해 및 예제 정리"
 ---
 
 
-> 이전 글: https://hyeon9mak.github.io/spring-circuit-breaker/
+> 이전 글: [spring circuit breaker 이해 및 예제 정리](https://hyeon9mak.github.io/spring-circuit-breaker)
 
 spring circuit breaker([Spring Cloud Circuit Breaker](https://docs.spring.io/spring-cloud-commons/reference/spring-cloud-circuitbreaker.html#page-title)) 에 대해 알아보았으니, 이번엔 Spring Retry 에 대해서 알아보자.
 우선 두 기술은 모두 fault-tolerance(장애허용)을 위해 사용하는 기술이다. 때문에 동작이 상당히 유사하다.
@@ -68,7 +68,7 @@ implementation 'org.springframework:spring-aspects'
 
 Spring Retry 를 활성화 시키기 위해선 `@EnableRetry` 어노테이션을 추가한다.
 
-```koltin
+```kotlin
 @EnableRetry
 @SpringBootApplication
 class SpringRetryTestApplication
