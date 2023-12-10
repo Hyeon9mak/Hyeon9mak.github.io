@@ -25,7 +25,7 @@ circuit breaker 는 요청 자체를 차단하는 것에, retry 는 다시 시�
 
 <br>
 
-## retry example
+## 🏁 retry example
 
 클라이언트가 고양이 사진을 요청하면, DB 로부터 고양이 사진을 가져와 응답해주는 서비스가 있다.
 클라이언트와 서버, DB 간 동작 순서를 간단히 나타내면 아래와 같다.
@@ -46,7 +46,7 @@ circuit breaker 는 요청 자체를 차단하는 것에, retry 는 다시 시�
 
 <br>
 
-## retry test
+## 🏁 retry test
 
 > 테스트에 사용된 코드는 https://github.com/Hyeon9mak/spring-retry-playground 를 참고하자.
 
@@ -132,13 +132,8 @@ class SpringRetryTestService {
 위 코드상에서는 고양이 이미지 호출시 `counter` 가 홀수면 `RuntimeException` 발생 1초 후 retry 가 일어나면서 정상적으로 고양이 이미지를 반환할 것이다.
 
 ```
-curl -X 'GET' 'http://localhost:8080/cats/1/image'
-
-cat_1_image.png
-```
-```
-2023-12-10T21:45:28.726+09:00  SpringRetryTestService : counter: 1
-2023-12-10T21:45:29.728+09:00  SpringRetryTestService : counter: 2
+21:45:28  SpringRetryTestService : counter: 1
+21:45:29  SpringRetryTestService : counter: 2
 ```
 
 ### `@recover` annotation
@@ -338,7 +333,7 @@ CatImageListener     : close
 
 <br>
 
-## when to use the retry
+## 🏁 when to use the retry
 
 - retry 는 서비스의 신뢰도를 높이기 위해 사용한다.
     - 잘 활용한다면 일시적인 장애 상황을 사용자에게 전달하지 않고, 서비스 이용을 성공할 수 있도록 도와준다.
