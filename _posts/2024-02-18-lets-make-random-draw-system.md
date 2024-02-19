@@ -173,6 +173,7 @@ class CardRandomDraw(
 // 랜덤 뽑기 등급별 범위
 @Embeddable  
 data class CardRandomDrawRangeByGrade(  
+  @Enumerated(EnumType.STRING)
   val grade: CardGrade,  
   val startRange: Int,  
   val endRange: Int,  
@@ -238,5 +239,5 @@ data class CardRandomDrawRangeByGrade(
 직접 구현해보니 생각보다 복잡하고 다양한 응용이 가능한 시스템이다. 
 물론 현재 수준은 간단히 테스트를 진행한 것이므로, 실제 비즈니스에서는 훨씬 더 복잡하고 다양한 요구사항이 존재할 것이다.
 
-그렇지만 역시나 "생각만 해보는 것과 직접 해보는 것은 다르다." 를 다시 한번 느끼게 해준 재밌는 경험.
+역시나 "생각만 해보는 것과 직접 해보는 것은 다르다." 를 다시 한번 느끼게 해준 재밌는 경험.
 항상 직접 손으로 만들어보는 습관을 들이자.
