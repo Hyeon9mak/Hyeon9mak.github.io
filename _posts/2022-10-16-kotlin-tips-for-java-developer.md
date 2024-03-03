@@ -12,7 +12,11 @@ toc_label: "Java 개발자가 보면 좋을 Kotlin 팁 모음"
 NEXTSTEP [TDD, 클린 코드 with Kotlin](https://edu.nextstep.camp/c/Z9QeJlCi) 강의를 통해 
 Kotlin 공부를 진행하면서 정리해둔 팁과 생각을 모아보았다.
 
-> 2022-10-18 range, asSequence, 관례, Kotlin 어노테이션 추가
+**[Kotlin tour](https://kotlinlang.org/docs/kotlin-tour-hello-world.html) 사이트를 함께 활용하면
+눈으로 보는 것보다 학습 효과가 더욱 뛰어나겠다.**
+
+> - 2024-03-03 Kotlin tour 사이트 링크 추가 (thanks to [웨지](https://github.com/sihyung92/))
+> - 2022-10-18 range, asSequence, 관례, Kotlin 어노테이션 추가
 
 ## 💬 Kotlin 기본 소개
 
