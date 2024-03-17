@@ -8,7 +8,11 @@ toc_sticky: true
 toc_label: "spring application properties 기본 값 설정을 주의해야하는 이유"
 ---
 
+간만에 spring application properties 덕분에 고생 좀 했다.
+정말 뼈저리게 고생했으니, 앞으로 까먹을 일은 없겠다.
+
 ## 요약
+
 ```yml
 aws:  
   s3:  
@@ -35,7 +39,7 @@ aws:
       port: 8111
 ```
 
-이 사실을 인지하지 못하고 있다가, 예상치 못한 오류를 만나 고생했던 이야기를 풀어본다.
+이 사실을 인지하지 못하고 있다가, 예상치 못한 오류를 만나 반나절을 고생했다.
 
 <br>
 
@@ -186,7 +190,7 @@ aws:
 ```
 
 오류가 발생하기 전까지만 해도, dev profile 의 spring application 은 
-application.yml 의 `spring.config.activate.on-profile: dev  ` 하위 영역만 
+application.yml 의 `spring.config.activate.on-profile: dev` 하위 영역만 
 spring application 이 읽고 해석을 진행할거라 생각중이었다.
 
 그런데 application.yml 파일은 그 특성상, 
@@ -337,4 +341,4 @@ aws:
 아예 실수할 여지를 없애버리자. 그게 진짜 실력이다.
 
 관련해서 읽어보면 좋은 글이 하나 있어 링크를 남긴다.
-https://devs0n.tistory.com/128
+[실수할 여지를 주지않기](https://devs0n.tistory.com/128)
