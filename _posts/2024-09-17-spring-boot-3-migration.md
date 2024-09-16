@@ -215,7 +215,7 @@ maven repository 에 `mysql-connector-java` 를 검색해보면 아래와 같이
 <img width="1191" alt="image" src="https://github.com/user-attachments/assets/fae849ae-d99e-4759-919d-19bd0c2b5d50">
 
 즉 상황을 정리해보면 MySQL 은 `8.0.31` 버전부터 `mysql-connector-j` 로 변경을 진행중이었고, 
-`8.0.33` 버전까지 `mysql-connector-j` 와 `mysql-connector-java` 의 버전을 동시에 관릴 및 지원 해주고 있었다.
+`8.0.33` 버전까지 `mysql-connector-j` 와 `mysql-connector-java` 의 버전을 동시에 관리 및 지원 해주고 있었다.
 
 Spring Boot 에서 `mysql-connector-java` 를 얄짤없이 제거하고 `mysql-connector-j` 만 사용하도록 강제한 것.
 상남자가 따로 없다.
@@ -371,6 +371,49 @@ spring:
 
 <br>
 
+## 🌱 HHH015007: Illegal argument on static metamodel field injection
+
+```
+o.h.metamodel.internal.MetadataContext   : HHH015007: Illegal argument on static metamodel field injection : org.hibernate.envers.DefaultRevisionEntity_#class_;
+    expected type :  org.hibernate.metamodel.model.domain.internal.EntityTypeImpl;
+        encountered type : jakarta.persistence.metamodel.MappedSuperclassType
+```
+
+[2024년 초 이슈라이징 되었으나 아직까지 해결되지 않은 하이버네이트 공식 이슈](https://hibernate.atlassian.net/browse/HHH-17612).
+이슈 링크를 타고 이동해보면 "이거 아직도 해결 안됨?" 라는 댓글이 지금까지도 달리고 있다.
+
+재밌는 건 ERROR 레벨의 로그만 찍힐 뿐, 실제 애플리케이션 동작에 영향을 주진 않는다는 것.
+해당 에러의 출처인 [hibernate/hibernate-orm 코드](https://github.com/hibernate/hibernate-orm/blob/main/hibernate-core/src/main/java/org/hibernate/metamodel/internal/MetadataContext.java)를 
+까보면 예외 발생 직후 ERROR 수준의 로그만 찍을 뿐, 그 외 별다른 동작은 하지 않는 걸 확인할 수 있다.
+
+<img width="1039" alt="image" src="https://github.com/user-attachments/assets/32557b8a-ec8f-4426-a9bb-f92f742894f8">
+<img width="937" alt="image" src="https://github.com/user-attachments/assets/b55edcf6-cf8f-4220-9222-523e388b5691">
+
+지금까지 확인된 문제가 없기 때문에 로그를 무시하고 넘어가도 괜찮은데, 로그가 ERROR 레벨이기 때문에
+대부분의 모니터링 시스템에 계속해서 알림을 울리게 만든다.
+
+잠재적인 이슈가 언제 어떤 문제를 일으킬지 예상할 수 없기 때문에 계속해서 ERROR 로그를 살려두고
+주기적으로 이슈를 확인하는 것이 올바르겠으나... 애플리케이션이 새로 부팅될 때마다 울리는 ERROR 알림이 은근 스트레스다.
+
+때문에 우리 팀에서는 아래와 같이 로그백 필터에 키워드를 추가하여 특정 에러를 무시하도록 설정했다.
+
+```kotlin
+class LogbackFilter : Filter<ILoggingEvent>() {
+  override fun decide(event: ILoggingEvent): FilterReply {
+    // https://hibernate.atlassian.net/browse/HHH-17612 참고
+    if (event.message.contains("HHH015007")) {
+      return FilterReply.DENY
+    }
+    return FilterReply.ACCEPT
+  }
+}
+```
+
+이런 방법은 이슈가 정말로 문제를 일으켰을 때 즉각 인지하기가 어렵다. 최대한 지양하자.
+필터를 걸었다면 주기적으로 하이버네이트 이슈 링크를 확인해서 팔로업하도록 하자.
+
+<br>
+
 ## 🌱 마치며
 
 개인적으로 아쉬웠 던 점은 Java 버전을 소극적으로 채택한 것.
@@ -402,3 +445,5 @@ spring:
 - [Vlad Mihalcea 의 블로그](https://vladmihalcea.com/hibernate-types-hypersistence-utils/)
 - [https://github.com/vladmihalcea/hypersistence-utils](https://github.com/vladmihalcea/hypersistence-utils)
 - [spring-security#authentication-password-storage-dpe](https://docs.spring.io/spring-security/reference/features/authentication/password-storage.html#authentication-password-storage-dpe)
+- [DefaultRevisionEntity: Illegal argument on static metamodel field injection](https://hibernate.atlassian.net/browse/HHH-17612)
+- [https://github.com/hibernate/hibernate-orm](https://github.com/hibernate/hibernate-orm/blob/main/hibernate-core/src/main/java/org/hibernate/metamodel/internal/MetadataContext.java)
