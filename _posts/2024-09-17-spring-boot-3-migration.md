@@ -26,7 +26,7 @@ Spring Boot 2 -> Spring Boot 3 마이그레이션은 메이저 버전 변경임�
 3. 해당 라이브러리는 Spring Boot 버전에 대한 의존을 갖고 있어 Spring Boot 버전도 업그레이드해야 했다.
 4. `Spring Boot 2.6.x` 에서 `Spring Boot 3.3.1` 로 올리고자 했다.
 5. [Spring Boot 3.0 Migration Guide](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.0-Migration-Guide) 를 참고해서 `Spring Boot 2.7.x` 까지 업그레이드 후 `3.x` 마이그레이션을 시도했다.
-6. [Maven Repository](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot) 를 참고했을 떄 `2.7.18` 버전이 최신이라, `2.7.18` 버전으로 업그레이드를 선행했다.
+6. [Maven Repository](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot) 를 참고했을 때 `2.7.18` 버전이 최신이라, `2.7.18` 버전으로 업그레이드를 선행했다.
 7. Java 버전을 `11` 에서 `17` 로 업그레이드했다. 
 8. `2.7.18` 버전 업그레이드 후 1차적으로 발생하는 라이브러리 버전 충돌에 대해 해결했다.
 9. 버전 충돌 문제 해결 이후 당시 기준 최신 버전이었던 `3.3.1` 버전으로 마이그레이션을 진행했다.
@@ -87,12 +87,12 @@ feign:
         readTimeout: 시간
 ```
 
-> `org.springframework.cloud.openfeign.FeignClientProperties` 클래스의
-> `setConnectTimeout`, `setReadTimeout` 등 매핑 메서드에 break point 를 걸어 부팅 시점에 제대로 값이 매핑되는지 확인해볼 수 있다. 
-> 
-> ![image](https://github.com/user-attachments/assets/a88ce31c-0a5a-4986-b902-538ac6772b9c)
-> 
-> 만약 부팅 시점에 각 메서드 호출되지 않는다면 매핑이 진행되지 않는 것이다.
+`org.springframework.cloud.openfeign.FeignClientProperties` 클래스의
+`setConnectTimeout`, `setReadTimeout` 등 매핑 메서드에 break point 를 걸어 부팅 시점에 제대로 값이 매핑되는지 확인해볼 수 있다. 
+
+![image](https://github.com/user-attachments/assets/a88ce31c-0a5a-4986-b902-538ac6772b9c)
+
+만약 부팅 시점에 각 메서드 호출되지 않는다면 매핑이 진행되지 않는 것이다.
 
 [Common application properties 문서](https://docs.spring.io/spring-cloud-openfeign/docs/current/reference/html/appendix.html) 에 
 변경된 내용을 참고하여 설정 값을 변경하여 기입해주자.
@@ -109,8 +109,8 @@ spring:
             read-timeout: 시간
 ```
 
-> 마찬가지로 `org.springframework.cloud.openfeign.FeignClientProperties` 클래스의 매핑 메서드에 break point 를 걸어
-> 부팅 시점에 제대로 값이 매핑되는지 확인해볼 수 있다.
+마찬가지로 `org.springframework.cloud.openfeign.FeignClientProperties` 클래스의 매핑 메서드에 break point 를 걸어
+부팅 시점에 제대로 값이 매핑되는지 확인해볼 수 있다.
 
 <br>
 
