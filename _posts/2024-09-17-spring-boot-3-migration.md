@@ -13,7 +13,10 @@ Spring Boot 2 -> Spring Boot 3 마이그레이션은 메이저 버전 변경임�
 
 이번 글에서는 내가 Spring Boot 2 에서 Spring Boot 3 마이그레이션을 진행하면서, 
 그리고 마이그레이션 이후 운영 중에 겪었던 문제들과 해결 방법을 정리해보았다.
-누군가는 이 글을 읽으며 시간을 절약할 수 있기를 바란다.
+
+기본적인 마이그레이션은 [Spring Boot 3.0 Migration Guide](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.0-Migration-Guide) 
+문서를 따라가면서, '이게 뭐지?' 싶은 상황에 봉착했을 때 이 글을 한번씩 참고하자.
+이 글을 통해 많은 시간을 절약할 수 있기를 기대한다.
 
 <br>
 
@@ -52,6 +55,7 @@ import jakarta.persistence.Entity
 ```
 
 컴파일 타임에 에러를 확인하면서 변경할 수 있기 때문에 크게 어렵지 않다.
+IntelliJ IDE 를 사용하는 환경이라면 `Cmd + Shift + R` 단축키를 통해 빠르고 편하게 패키지 변경을 진행할 수 있다.
 
 [엔티티 사용 편의를 위해 `allOpen` 설정](https://hyeon9mak.github.io/kotlin-jpa-essentials/#-kotlin-entity-all-open)을 해둔 Kotlin 프로젝트라면
 `allOpen` 설정도 놓치지 말고 변경해주어야 한다.
