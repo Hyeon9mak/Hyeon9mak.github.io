@@ -68,7 +68,29 @@ implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
 
 <br>
 
-## 👨‍🚀 원인 탐구
+## 👨‍🚀 잠깐, 그래서 맹글링이 뭔데?
+
+맹글링(Mangling)은 컴파일러가 프로그래밍 언어의 소스 코드에서 정의된 이름(변수명, 함수명)을 내부적으로 변환하여
+고유한 식별자로 활용하기 위해 준비 과정이다. 
+Java, C++ 같이 객체를 다루는 언어에서는 함수 오버로딩이나 네임스페이스 충돌을 방지하기 위해 사용되고, Python 등 다른 언어에서도 찾아볼 수 있다. 
+
+가령 Java 에서는 아래와 같은 예시를 확인할 수 있겠다.
+
+```java
+public class Outer {
+    public class Inner {
+        public void innerMethod() {}
+    }
+}
+```
+
+위 코드에서 `Outer` 클래스의 `Inner` 클래스의 `innerMethod` 메서드는 `$` 기호를 활용해 `Outer$Inner.innerMethod` 로 맹글링 된다.
+
+> 반대 개념으로 디맹글링(Demangling) 또한 존재한다.
+
+<br>
+
+## 👨‍🚀 맹글링이 진행된 원인 탐구
 
 Kotlin value class 는 JVM 에 의해 byte code 로 compile 될 때 wrapping 한 value class 를 제거하고, 내부 property 로 대체한다.
 (이 때문에 기본적인 성능 최적화 또한 챙길 수 있다.)
