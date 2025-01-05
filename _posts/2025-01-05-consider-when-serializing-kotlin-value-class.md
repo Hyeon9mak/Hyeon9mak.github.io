@@ -74,7 +74,19 @@ implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
 고유한 식별자로 활용하기 위해 준비 과정이다. 
 Java, C++ 같이 객체를 다루는 언어에서는 함수 오버로딩이나 네임스페이스 충돌을 방지하기 위해 사용되고, Python 등 다른 언어에서도 찾아볼 수 있다. 
 
-가령 Java 에서는 아래와 같은 예시를 확인할 수 있겠다.
+JPA(Hibernate) 가 사용하는 SQL 쿼리도 맹글링의 한 예시라고 볼 수 있다.
+
+```sql
+select
+    student0_.id as id1_0_,
+    student0_.name as name2_0_,
+    student0_.age as age3_0_
+from
+    student student0_
+;
+```
+
+또 Java 에서는 아래와 같은 예시를 확인할 수 있겠다.
 
 ```java
 public class Outer {
