@@ -165,6 +165,8 @@ spring context 초기화 과정에서 `OrderedCharacterEncodingFilter` 가 먼�
 
 <img width="608" alt="Image" src="https://github.com/user-attachments/assets/2760b411-683f-44b5-8d08-a2a723f76b22" />
 
+덕분에 가장 최진입점부터 `OPTION /` 요청을 차단하고 알림지옥으로부터 탈출 할 수 있었다!
+
 <br>
 
 ## 👮‍♂️ 번외. filter 중복 호출 방지
