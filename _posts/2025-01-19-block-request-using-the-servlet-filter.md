@@ -14,6 +14,7 @@ toc_label: "servlet filter 를 활용해 불필요한 요청 원천 차단하기
 애플리케이션 서버(스프링 등)로 요청이 전달 되기 전 웹 서버(Nginx, AWS GW 등)에서 미리 차단을 할 수 있다.
 
 이번에 들어온 스팸 요청도 `OPTION /`(HTTP OPTION method + root path) 라는 패턴을 갖고 있었다.
+계속해서 `NoHandlerFoundException` 이 발생하면서 에러 알림 지옥에 빠져있는 상태였다.
 앞서 말했듯 웹 서버에서 미연에 차단하는게 베스트겠지만, 이번에는 스프링 애플리케이션을 통해 차단해보고자 아래와 같은 고민들을 해보았다.
 
 <br>
@@ -68,7 +69,7 @@ filter chain 은 여러개의 filter 들이 연결된 구조로, 각 filter 들�
 core 패키지 내부 `ApplicationFilterChain` 클래스 `internalDoFilter` 메서드를 확인해보면
 요청이 전달될 때 어떤 필터들을 거치는지 확인해볼 수 있다.
 
-자세히 살펴보면 4번째 인덱스에 `SpringSecurityFilterChain` 의 ` DelegatingFilterProxy` 필터가 눈에 들어온다.
+자세히 살펴보면 4번째 인덱스에 `SpringSecurityFilterChain` 의 `DelegatingFilterProxy` 필터가 눈에 들어온다.
 spring security 역시도 filter chain 사이에 껴서 chain 중 하나로 연결되었다는 것을 알 수 있다.
 
 <img width="2117" alt="Image" src="https://github.com/user-attachments/assets/23a8f49c-61bf-4ac2-a579-892262eb188e" />
@@ -130,7 +131,7 @@ servlet filter chain 전체에서 가장 첫 번째로 수행되는 filter 를 �
 
 <img width="784" alt="Image" src="https://github.com/user-attachments/assets/5f739694-48be-4e02-b2de-2440c93a8de0" />
 
-이미 spring boot 에서 기본 filter 에 최우선 순위를 할당해두었는데, 어떻게 `CharacterEncodingFilter` 앞에 `OrderedCharacterEncodingFilter` 를 위치시킬 수 있을까?
+이미 spring boot 에서 기본 filter 에 최우선 순위를 할당해두었는데, 어떻게 `CharacterEncodingFilter` 앞에 `OptionsMethosRootPathRequestFilter` 를 위치시킬 수 있을까?
 
 <br>
 
@@ -144,24 +145,24 @@ servlet filter chain 전체에서 가장 첫 번째로 수행되는 filter 를 �
 어떻게 동일한 최우선 순위를 주어도 `CharacterEncodingFilter` 보다 앞에 `OrderedCharacterEncodingFilter` 를 위치시킬 수 있을까?
 
 spring 은 사용자가 명시한 custom bean 에 대해 먼저 등록을 진행하고, 이후 auto configuration 등을 통해 선언된 bean 을 등록한다.
-spring context 초기화 과정에서 `OrderedCharacterEncodingFilter` 가 먼저 등록되고, 이후 `CharacterEncodingFilter` 가 등록된다.
-그 후 `order` 를 기반으로 우선 순위 정렬을 진행하지만, `OrderedCharacterEncodingFilter` 와 `CharacterEncodingFilter` 는 서로 값이 같기 때문에 순서 변경이 일어나지 않는다.
+spring context 초기화 과정에서 `OptionsMethosRootPathRequestFilter` 가 먼저 등록되고, 이후 `CharacterEncodingFilter` 가 등록된다.
+그 후 `order` 를 기반으로 우선 순위 정렬을 진행하지만, `OptionsMethosRootPathRequestFilter` 와 `CharacterEncodingFilter` 는 서로 값이 같기 때문에 순서 변경이 일어나지 않는다.
 
 <img width="1400" alt="Image" src="https://github.com/user-attachments/assets/9b67c978-8e93-429d-9d52-1b5f599a8018" />
 
-실제로 `OrderedCharacterEncodingFilter` 의 우선 순위를 `Integer.MIN_VALUE` 로 주느냐, `Integer.MIN_VALUE + 1` 로 주느냐에 따라
-`OrderedCharacterEncodingFilter` 와 `CharacterEncodingFilter` 간 순서가 달라진다.
+실제로 `OptionsMethosRootPathRequestFilter` 의 우선 순위를 `Integer.MIN_VALUE` 로 주느냐, `Integer.MIN_VALUE + 1` 로 주느냐에 따라
+`OptionsMethosRootPathRequestFilter` 와 `CharacterEncodingFilter` 간 순서가 달라진다.
 
 <br>
 
 ## 👮‍♂️ 6. 결과
 
-`OrderedCharacterEncodingFilter` 등록을 마친 후 `OPTION /` 요청을 보내면 
-`ApplicationFilterChain#internalDoFilter` 에서 `OrderedCharacterEncodingFilter` 가 먼저 동작하는 걸 확인할 수 있게 된다.
+`OptionsMethosRootPathRequestFilter` 등록을 마친 후 `OPTION /` 요청을 보내면 
+`ApplicationFilterChain#internalDoFilter` 에서 `OptionsMethosRootPathRequestFilter` 가 먼저 동작하는 걸 확인할 수 있게 된다.
 
 <img width="1316" alt="Image" src="https://github.com/user-attachments/assets/2608dd8c-772b-4019-b55b-9857e05a8d5d" />
 
-그리고 `OrderedCharacterEncodingFilter` 에 설정해두었 듯, `405 Method Not Allowed` 상태 코드를 응답이 돌아오는 걸 확인할 수 있다.
+그리고 `OptionsMethosRootPathRequestFilter` 에 설정해두었 듯, `405 Method Not Allowed` 상태 코드를 응답이 돌아오는 걸 확인할 수 있다.
 
 <img width="608" alt="Image" src="https://github.com/user-attachments/assets/2760b411-683f-44b5-8d08-a2a723f76b22" />
 
@@ -171,7 +172,7 @@ spring context 초기화 과정에서 `OrderedCharacterEncodingFilter` 가 먼�
 
 ## 👮‍♂️ 번외. filter 중복 호출 방지
 
-여기까지 오고 나면 `OrderedCharacterEncodingFilter` 와 같은 filter 들도 모두 spring bean 으로 이루어진 것을 알 수 있다.
+여기까지 오고 나면 `OptionsMethosRootPathRequestFilter` 와 같은 filter 들도 모두 spring bean 으로 이루어진 것을 알 수 있다.
 간편하게 `@Component` 어노테이션을 통해 bean 으로 등록해도 될 것 같은데, 굳이 번거롭게 `OncePerRequestFilter()` 를 상속하는 이유는 무엇일까?
 
 크게 2가지 이유가 있다.
