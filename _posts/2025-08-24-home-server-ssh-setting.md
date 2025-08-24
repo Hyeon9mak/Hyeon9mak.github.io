@@ -58,8 +58,11 @@ HDD 수명 다 해서 한 차례 날려먹고, 데이터 다중화 필요성 느
 
 <img width="777" height="182" alt="Image" src="https://github.com/user-attachments/assets/d811caba-253f-4e77-ad8e-383718045bee" />
 
-커피 한 잔 가격으로 64GB USB 를 2개나 구매할 수 있다. 심지어 하나만 구매하고 싶은데 그럴 방법도 없다.  
-공CD 3개에 나눠서 Linux Fedora OS 이미지를 굽던 시절이 있었는데... 라떼는 2GB USB 하나에 3만원이 넘었었는데...  
+커피 한 잔 가격으로 64GB USB 를 2개나 구매할 수 있다. 심지어 하나만 구매하고 싶은데 그럴 방법도 없다.
+
+공CD 3개에 나눠서 Linux Fedora OS 이미지를 굽던 시절이 있었는데...  
+라떼는 2GB USB 하나에 3만원이 넘었었는데...  
+
 격세지감을 느끼며 USB 를 준비했다면 [https://ubuntu.com/download/server](https://ubuntu.com/download/server) 에서 ISO 파일을 다운로드 받고, `disktutil` 등 명령어 통해 부팅 가능한 USB 를 만들면 된다.  
 (내가 설치할 때 기준 Ubuntu Server 24.04.2 LTS 가 최신 버전이었다.)
 
@@ -124,7 +127,8 @@ $ sudo systemctl restart sshd
 집이 아닌 사무실이나 외부 환경에서도 홈 서버에 SSH 접속을 하기 위해선 공유기 설정을 변경해주어야 한다.
 
 우선 각자 환경의 공유기 모델을 확인하고, 그 특성을 파악해야한다.  
-각 공유기 모델마다 지원하는 기능과 범위가 다 다르기 때문. 나는 ipTIME A2003MU 모델을 사용하고 있다.
+각 공유기 모델마다 지원하는 기능과 범위가 다 다르기 때문.   
+나는 **ipTIME A2003MU** 모델을 사용하고 있다.
 
 <img width="360" height="360" alt="Image" src="https://github.com/user-attachments/assets/bd43f4d0-f02b-4202-a4b8-e475df686e8e" />
 
@@ -160,7 +164,7 @@ $ ssh {ID}@{외부-IP}
 
 외부 IP 를 활용해 SSH 접속이 가능하지만, 숫자로 구성된 IP 를 항상 외우고 다니는 건 너무 미련한 짓이다.
 그래서 도메인을 구매하고, 구매한 도메인과 외부 IP 를 연결해줄 수 있는데,
-IPTIME 공유기에서는 DDNS(Dynamic Domain Name System) 라는 자체 DNS 를 제공하고 있다.
+ipTIME 공유기에서는 DDNS(Dynamic Domain Name System) 라는 자체 DNS 를 제공하고 있다.
 
 `고급 설정 > 특수기능 > DDNS 설정` 메뉴로 진입하여 DDNS 설정을 진행한다.
 
