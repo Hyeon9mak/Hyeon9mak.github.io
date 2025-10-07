@@ -1,6 +1,6 @@
 ---
 title: "홈 서버 구축기 - CI/CD 파이프라인 구축"
-date: 2025-08-24
+date: 2025-09-09
 toc: true
 toc_sticky: true
 toc_label: "홈 서버 구축기 - CI/CD 파이프라인 구축"
