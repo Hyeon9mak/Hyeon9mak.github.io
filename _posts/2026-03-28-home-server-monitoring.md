@@ -1,9 +1,9 @@
 ---
-title: "홈 서버 구축기 - Prometheus, Grafana, Loki로 모니터링 환경 구축하기"
+title: "홈 서버 구축기 - 모니터링 환경 구축하기"
 date: 2026-03-28
 toc: true
 toc_sticky: true
-toc_label: "홈 서버 구축기 - Prometheus, Grafana, Loki로 모니터링 환경 구축하기"
+toc_label: "홈 서버 구축기 - 모니터링 환경 구축하기"
 ---
 
 ## 💾 홈 서버 구축 목표
