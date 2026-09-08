@@ -1,0 +1,19 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+sitemap: false
+---
+
+@charset "utf-8";
+
+/* ---- Typography: zoomkoding 시스템 폰트 스택 (So Simple !default 변수 override) ---- */
+$sans-serif-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+$serif-font-family: $sans-serif-font-family; /* title/desc/meta 의 Lora 제거 */
+$monospace-font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+
+$base-font-family: $sans-serif-font-family;
+$headline-font-family: $sans-serif-font-family;
+$title-font-family: $sans-serif-font-family;
+$description-font-family: $sans-serif-font-family;
+$meta-font-family: $sans-serif-font-family;
+
+@import "so-simple";
