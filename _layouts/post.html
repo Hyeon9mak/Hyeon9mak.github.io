@@ -19,13 +19,15 @@ layout: default
         </p>
       </header>
 
-      <div class="page-sidebar">
-        {% include page-tags.html %}
-      </div>
+      {% if page.toc %}{% include post-toc.html %}{% endif %}
 
       <div class="page-content">
         <div class="e-content">
           {{ content }}
+        </div>
+
+        <div class="page-footer-tags">
+          {% include page-tags.html %}
         </div>
 
         {% if page.share %}
