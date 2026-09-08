@@ -1,0 +1,83 @@
+<nav class="post-toc" id="post-toc" aria-label="Table of contents">
+  <p class="post-toc__title">Contents</p>
+  <ul class="post-toc__list" id="post-toc-list"></ul>
+</nav>
+
+<script>
+(function () {
+  function initTOC() {
+    var content = document.querySelector('.e-content');
+    var nav = document.getElementById('post-toc');
+    var list = document.getElementById('post-toc-list');
+    if (!content || !nav || !list) return;
+
+    var headings = content.querySelectorAll('h2, h3');
+    if (!headings.length) { nav.style.display = 'none'; return; }
+
+    function slugify(t) {
+      return t.toLowerCase().trim()
+        .replace(/[^\wÀ-￿\- ]/g, '')
+        .replace(/\s+/g, '-');
+    }
+
+    var map = [];
+    var used = {};
+
+    headings.forEach(function (h) {
+      var id = h.id;
+      if (!id) {
+        id = slugify(h.textContent) || 'section';
+        if (used[id]) { used[id]++; id = id + '-' + used[id]; } else { used[id] = 1; }
+        h.id = id;
+      }
+      var li = document.createElement('li');
+      li.className = 'post-toc__item post-toc__item--' + h.tagName.toLowerCase();
+      var a = document.createElement('a');
+      a.className = 'post-toc__link';
+      a.href = '#' + id;
+      a.textContent = h.textContent;
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        h.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', '#' + id);
+      });
+      li.appendChild(a);
+      list.appendChild(li);
+      map.push({ id: id, el: h, link: a });
+    });
+
+    // 현재 읽는 섹션 = 뷰포트 상단(offset 130px) 위로 지나간 마지막 헤딩
+    function setActive() {
+      var offset = 130;
+      var current = map[0];
+      for (var i = 0; i < map.length; i++) {
+        if (map[i].el.getBoundingClientRect().top - offset <= 0) {
+          current = map[i];
+        } else {
+          break;
+        }
+      }
+      map.forEach(function (m) {
+        m.link.classList.toggle('is-active', m.id === current.id);
+      });
+    }
+
+    // 스크롤 시 rAF throttle 로 재계산 (IntersectionObserver 의 gap 취약점 회피)
+    var ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () { setActive(); ticking = false; });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    setActive();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTOC);
+  } else {
+    initTOC();
+  }
+})();
+</script>

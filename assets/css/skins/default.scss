@@ -277,3 +277,98 @@ pre, pre.highlight, div.highlighter-rouge pre.highlight { font-size: 14px; }
   }
   .page-date + .read-time::before { content: "\2022"; padding: 0 0.5em; }
 }
+
+/* ==========================================================================
+   Custom: post 단일 컬럼 정렬 (So Simple 2단 grid override) + 하단 태그
+   _page.scss L221-280 이 grid 175px 1fr 로 제목/본문 좌측을 어긋나게 함 →
+   단일 컬럼으로 접어 제목·메타·본문이 한 좌측선/폭 공유.
+   ========================================================================== */
+.layout--post {
+  .page-wrapper {
+    display: block;
+    max-width: 820px;   /* zoomkoding 좁은 본문 */
+  }
+
+  .page-header,
+  .page-content {
+    grid-column: auto;
+    float: none;
+    width: auto;
+    margin: 0;
+    min-width: 0;
+  }
+
+  /* 하단 가로 태그 리스트 (사이드바에서 이동) */
+  .page-footer-tags {
+    clear: both;
+    margin: 2em 0 0;
+    padding-top: 1em;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    font-size: 14px;
+
+    .page-taxonomies-title {
+      display: inline-block;
+      margin: 0 0.5em 0 0;
+      padding: 0;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #a8a8a8;
+    }
+    .page-taxonomies { display: inline; margin: 0; padding: 0; }
+    .page-taxonomy {
+      display: inline;
+      a { color: #a8a8a8; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+    }
+  }
+}
+
+/* ==========================================================================
+   Custom: 동적 우측 TOC (스크롤 스파이) — 1300px 이상에서만 표시
+   ========================================================================== */
+.post-toc { display: none; }
+
+@media (min-width: 1300px) {
+  .post-toc {
+    display: block;
+    position: fixed;
+    top: 120px;
+    right: max(1rem, calc((100vw - 820px) / 2 - 260px));
+    width: 240px;
+    max-height: calc(100vh - 160px);
+    overflow-y: auto;
+    padding-left: 1em;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .post-toc__title {
+    margin: 0 0 0.75em;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #a8a8a8;
+  }
+
+  .post-toc__list { margin: 0; padding: 0; list-style: none; }
+  .post-toc__item { margin: 0; }
+  .post-toc__item--h3 { padding-left: 1em; }
+
+  .post-toc__link {
+    display: block;
+    padding: 0.25em 0 0.25em 0.6em;
+    color: #a8a8a8;
+    text-decoration: none;
+    border-bottom: 0;
+    border-left: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .post-toc__link:hover { color: rgb(55, 53, 47); }
+  .post-toc__link.is-active {
+    color: rgb(55, 53, 47);
+    font-weight: 600;
+    border-left-color: rgb(55, 53, 47);
+  }
+}
