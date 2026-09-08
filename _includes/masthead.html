@@ -1,0 +1,43 @@
+{%- assign author = site.author -%}
+{%- if author.picture -%}
+  {%- if author.picture contains "://" -%}
+    {%- assign author_picture = author.picture -%}
+  {%- else -%}
+    {%- assign author_picture = author.picture | relative_url -%}
+  {%- endif -%}
+{%- endif -%}
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-author h-card">
+      {%- if author_picture -%}
+        <a href="{{ '/' | relative_url }}" class="site-logo" rel="home" title="{{ site.title }}">
+          <img src="{{ author_picture }}" class="site-logo-img u-photo animated fadeInDown" alt="{{ site.title }}">
+        </a>
+      {%- endif -%}
+
+      {%- if site.title -%}
+        {%- if page.url == '/' -%}
+          <h1 class="site-title animated fadeIn"><a href="{{ '/' | relative_url }}" rel="home">{{ site.title }}</a></h1>
+        {%- else -%}
+          <div class="site-title animated fadeIn"><a href="{{ '/' | relative_url }}" rel="home">{{ site.title }}</a></div>
+        {%- endif -%}
+      {%- endif -%}
+
+      {%- if author.links -%}
+        <ul class="author-links animated fadeIn">
+          {%- for link in author.links -%}
+            {%- if link.url contains "://" -%}
+              {%- assign url = link.url -%}
+            {%- else -%}
+              {%- assign url = link.url | relative_url -%}
+            {%- endif -%}
+            <li class="author-link">
+              <a class="u-url" rel="me" href="{{ url }}"><i class="{{ link.icon | default: 'fas fa-link' }} fa-lg" title="{{ link.title }}"></i></a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</header><!-- /.masthead -->

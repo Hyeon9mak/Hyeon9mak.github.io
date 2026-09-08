@@ -1,0 +1,159 @@
+---
+---
+
+@charset "utf-8";
+
+@import "so-simple/functions";
+@import "so-simple/variables";
+@import "so-simple/notices";
+
+/* Colors */
+$base-color: #000 !default;
+$text-color: #000 !default;
+$accent-color: #34374C !default;
+$nav-color: #fff !default;
+$background-color: #fff !default;
+$nav-background-color: #000 !default;
+$code-background-color: tint($base-color, 95%) !default;
+$border-color: tint($base-color, 80%) !default;
+
+$primary-color: #000 !default;
+$success-color: #62c462 !default;
+$warning-color: #f89406 !default;
+$danger-color: #ee5f5b !default;
+$info-color: #52adc8 !default;
+
+/* Syntax highlighting (base16) — Prism "Tomorrow" (dark) approximation */
+$base00: #2d2d2d !default; /* 코드블록 배경 */
+$base01: #393939 !default;
+$base02: #515151 !default;
+$base03: #999999 !default;
+$base04: #999999 !default; /* 주석 / gutter */
+$base05: #cccccc !default; /* 기본 텍스트 */
+$base06: #3a3a3a !default; /* 라인 하이라이트 */
+$base07: #ffffff !default;
+$base08: #f2777a !default;
+$base09: #f99157 !default;
+$base0a: #ffcc66 !default;
+$base0b: #7ec699 !default; /* 문자열 */
+$base0c: #66cccc !default;
+$base0d: #6699cc !default;
+$base0e: #cc99cd !default; /* 키워드 */
+$base0f: #d27b53 !default;
+
+@import "so-simple/skin";
+
+/* ==========================================================================
+   Custom: author-centric masthead
+   ========================================================================== */
+
+.masthead-author {
+  .site-title {
+    margin-top: 0.5em;
+  }
+
+  /* 사이드바용 author-links 는 large 미만에서 숨겨지므로 masthead 에서는 항상 노출 */
+  .author-links {
+    display: block;
+    margin: 0.75em 0 0;
+  }
+
+  .author-link {
+    display: inline-block;
+
+    a {
+      color: $accent-color;
+    }
+  }
+}
+
+/* ==========================================================================
+   Custom: zoomkoding typography port
+   ========================================================================== */
+
+body {
+  font-weight: 500;
+  color: rgb(55, 53, 47);
+  letter-spacing: normal;
+  word-break: keep-all;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.e-content {
+  /* 본문에만 적용 — masthead / nav 보호 */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: normal;
+  }
+  h1 { font-size: 2em; }
+  h2 { font-size: 1.5em; }
+  h3 { font-size: 1.25em; }
+  h4 { font-size: 1em; }
+  h5 { font-size: 0.875em; }
+  h6 { font-size: 0.85em; color: #6a737d; }
+
+  strong, b { font-weight: 700; }
+
+  a {
+    color: rgb(55 53 47 / 70%);
+    text-decoration: none;
+    border-bottom: 0.05em solid;
+  }
+  a:hover { color: rgb(55, 53, 47); }
+
+  blockquote {
+    padding: 0 1em;
+    color: #6a737d;
+    background-color: transparent;
+    border-left: 0.25em solid #dfe2e5;
+  }
+
+  /* 이미지 캡션 (이미지 바로 뒤 / 단독 em) — 실제 글 HTML 로 검증 후 조정 */
+  img + em,
+  p > img + em,
+  p > em:only-child {
+    display: block;
+    text-align: center;
+    font-style: italic;
+    font-size: 15px;
+    color: #6a737d;
+  }
+
+  hr {
+    height: 0.25em;
+    padding: 0;
+    background-color: #e1e4e8;
+    border: 0;
+  }
+
+  /* 제목 밑줄바 (GitHub markdown 스타일) */
+  h1, h2 {
+    padding-bottom: 0.3em;
+    border-bottom: 3px solid #e1e4e8;
+  }
+}
+
+/* 인라인 코드: 핑크 on 반투명 (base16 다크 매핑을 인라인만 덮음) */
+code.highlighter-rouge {
+  color: #EB5757;
+  background-color: rgba(135, 131, 120, 0.15);
+  font-size: 85%;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+/* So Simple 제목 italic / 음수 자간 리셋 */
+.page-title {
+  letter-spacing: normal;
+  font-style: normal;
+}
+.entry-title {
+  letter-spacing: normal;
+  font-style: normal;
+}
+.taxonomy-title {
+  padding-bottom: 0.3em;
+  border-bottom: 3px solid #e1e4e8;
+}
