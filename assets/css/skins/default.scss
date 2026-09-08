@@ -375,3 +375,66 @@ pre, pre.highlight, div.highlighter-rouge pre.highlight { font-size: 14px; }
     border-left-color: rgb(55, 53, 47);
   }
 }
+
+/* ==========================================================================
+   Custom: /search/ 결과 스타일 (#results — .entries-list 카드 스코프 밖)
+   ========================================================================== */
+
+.search-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.6em 0.2em;
+  font-size: 20px;
+  border: 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  background: transparent;
+
+  &:focus { outline: none; border-bottom-color: rgb(55, 53, 47); }
+}
+
+#results {
+  max-width: 720px;
+  margin: 1.5em auto 0;
+
+  .results__found {
+    font-size: 14px;
+    color: #a8a8a8;
+    margin: 0 0 1em;
+  }
+
+  .results__none {
+    font-size: 15px;
+    color: #6a737d;
+    margin: 1em 0;
+  }
+
+  .entry {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .entry-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0 0 6px;
+
+    a { color: rgb(55, 53, 47); text-decoration: none; border-bottom: 0; }
+    a:hover { text-decoration: underline; }
+  }
+
+  .entry-excerpt {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: rgb(55, 53, 47);
+
+    p { margin: 0; }
+  }
+
+  .entry-excerpt mark {
+    background-color: #fff3b0;
+    color: inherit;
+    padding: 0 1px;
+    border-radius: 2px;
+  }
+}

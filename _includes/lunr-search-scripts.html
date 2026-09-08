@@ -1,0 +1,153 @@
+{%- assign lang = site.locale | slice: 0,2 | default: "en" -%}
+  {%- case lang -%}
+    {%- when "da" -%}{%- assign lang = "da" -%}
+    {%- when "de" -%}{%- assign lang = "de" -%}
+    {%- when "du" -%}{%- assign lang = "du" -%}
+    {%- when "es" -%}{%- assign lang = "es" -%}
+    {%- when "fi" -%}{%- assign lang = "fi" -%}
+    {%- when "fr" -%}{%- assign lang = "fr" -%}
+    {%- when "hu" -%}{%- assign lang = "hu" -%}
+    {%- when "it" -%}{%- assign lang = "it" -%}
+    {%- when "ja" -%}{%- assign lang = "ja" -%}
+    {%- when "jp" -%}{%- assign lang = "jp" -%}
+    {%- when "no" -%}{%- assign lang = "no" -%}
+    {%- when "pt" -%}{%- assign lang = "pt" -%}
+    {%- when "ro" -%}{%- assign lang = "ro" -%}
+    {%- when "ru" -%}{%- assign lang = "ru" -%}
+    {%- when "sv" -%}{%- assign lang = "sv" -%}
+    {%- when "tr" -%}{%- assign lang = "tr" -%}
+    {%- else -%}{%- assign lang = "en" -%}
+  {%- endcase -%}
+  <script src="{{ '/assets/js/lunr/lunr.min.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/search-data.js' | relative_url }}"></script>
+  {%- unless lang == "en" -%}
+    <script src="{{ '/assets/js/lunr/lunr.stemmer.support.min.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/lunr/lunr.' | append: lang | append: '.min.js' | relative_url }}"></script>
+  {%- endunless %}
+  <script>
+    var idx = lunr(function () {
+      {% unless lang == "en" %}this.use(lunr.{{ lang }});{% endunless %}
+      this.field('title');
+      this.field('excerpt');
+      this.field('categories');
+      this.field('tags');
+      this.ref('id');
+      this.pipeline.remove(lunr.trimmer);
+      for (var item in store) {
+        this.add({
+          title: store[item].title,
+          excerpt: store[item].excerpt,
+          categories: (store[item].categories || []).join(' '),
+          tags: (store[item].tags || []).join(' '),
+          id: item
+        });
+      }
+    });
+
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    // 매칭 위치 중심 스니펫 + <mark> 하이라이트
+    function buildSnippet(text, query) {
+      text = text || '';
+      var lower = text.toLowerCase();
+      var pos = query ? lower.indexOf(query) : -1;
+      var WINDOW = 120;
+      var snippet, prefix = '', suffix = '';
+      if (pos === -1) {
+        snippet = text.slice(0, WINDOW * 2);
+        if (text.length > WINDOW * 2) suffix = '…';
+      } else {
+        var start = Math.max(0, pos - WINDOW);
+        var end = Math.min(text.length, pos + query.length + WINDOW);
+        snippet = text.slice(start, end);
+        if (start > 0) prefix = '…';
+        if (end < text.length) suffix = '…';
+      }
+      var safe = escapeHtml(snippet);
+      if (query) {
+        var q = escapeHtml(query).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        safe = safe.replace(new RegExp(q, 'gi'), function (m) { return '<mark>' + m + '</mark>'; });
+      }
+      return prefix + safe + suffix;
+    }
+
+    $(document).ready(function () {
+      $('input#search').on('keyup', function () {
+        var resultdiv = $('#results');
+        var raw = $(this).val();
+        var query = raw.toLowerCase().trim();
+        resultdiv.empty();
+
+        if (query.length === 0) { return; }
+
+        // (a) lunr: 영어 stemming/fuzzy + 타이핑 중 trailing wildcard
+        var lunrHits = [];
+        try {
+          lunrHits = idx.query(function (q) {
+            query.split(lunr.tokenizer.separator).forEach(function (term) {
+              if (term === '') return;
+              q.term(term, { boost: 100 });
+              if (raw.lastIndexOf(' ') != raw.length - 1) {
+                q.term(term, { usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 });
+              }
+              // fuzzy 는 4글자 이상 term 에만 — 짧은(특히 한글) term 에선 오탐 폭증 방지
+              if (term.length >= 4) {
+                q.term(term, { usePipeline: false, editDistance: 1, boost: 1 });
+              }
+            });
+          });
+        } catch (e) { lunrHits = []; }
+
+        // (b) 한글 substring 폴백
+        var subHits = [];
+        for (var i = 0; i < store.length; i++) {
+          var d = store[i];
+          var hay = (
+            (d.title || '') + ' ' +
+            (d.excerpt || '') + ' ' +
+            ((d.categories || []).join(' ')) + ' ' +
+            ((d.tags || []).join(' '))
+          ).toLowerCase();
+          if (hay.indexOf(query) !== -1) subHits.push(String(i));
+        }
+
+        // (c) 병합 + 중복제거 (lunr 순위 먼저, substring-only 뒤)
+        var ordered = [];
+        var seen = {};
+        for (var j = 0; j < lunrHits.length; j++) {
+          var r = lunrHits[j].ref;
+          if (!seen[r]) { seen[r] = true; ordered.push(r); }
+        }
+        for (var k = 0; k < subHits.length; k++) {
+          var s = subHits[k];
+          if (!seen[s]) { seen[s] = true; ordered.push(s); }
+        }
+
+        resultdiv.prepend('<p class="results__found">' + ordered.length +
+          ' {{ site.data.text[site.locale].results_found | default: "Result(s) found" }}</p>');
+        if (ordered.length === 0) {
+          resultdiv.append('<p class="results__none">검색 결과가 없습니다.</p>');
+          return;
+        }
+
+        // (d) 렌더
+        for (var m = 0; m < ordered.length; m++) {
+          var ref = ordered[m];
+          var post = store[ref];
+          var snippet = buildSnippet(post.excerpt, query);
+          var searchitem =
+            '<article class="entry">' +
+              '<h3 class="entry-title">' +
+                '<a href="' + post.url + '">' + escapeHtml(post.title) + '</a>' +
+              '</h3>' +
+              '<div class="entry-excerpt"><p>' + snippet + '</p></div>' +
+            '</article>';
+          resultdiv.append(searchitem);
+        }
+      });
+    });
+  </script>
