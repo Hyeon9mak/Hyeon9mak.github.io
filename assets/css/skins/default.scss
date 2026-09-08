@@ -440,29 +440,41 @@ pre, pre.highlight, div.highlighter-rouge pre.highlight { font-size: 14px; }
 }
 
 /* ==========================================================================
-   Custom: /search/ 태그 클라우드 (검색창 위)
+   Custom: /search/ — 검색창 최상단 + 태그 클라우드 접기(details)
    ========================================================================== */
+
+/* .page-content 순서 재배치: 검색창(form) 위, 태그, 결과 순 */
+.layout--search .page-content {
+  display: flex;
+  flex-direction: column;
+}
+.layout--search form { order: 1; }
+.layout--search .search-tags { order: 2; }
+.layout--search #results { order: 3; }
 
 .search-tags {
   max-width: 720px;
-  margin: 0 auto 1.5em;
+  margin: 1em auto 0;
 
-  .search-tags__title {
+  .search-tags__summary {
+    cursor: pointer;
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: #a8a8a8;
-    margin: 0 0 0.75em;
-    padding: 0;
-    border: 0;
+    list-style: revert; /* disclosure triangle 유지 */
+
+    &:hover { color: rgb(55, 53, 47); }
   }
+
+  .search-tags__count { color: #a8a8a8; font-weight: 400; }
 
   .search-tags__list {
     display: flex;
     flex-wrap: wrap;
     gap: 6px 8px;
-    margin: 0;
+    margin: 0.75em 0 0;
     padding: 0;
     list-style: none;
 
@@ -482,8 +494,5 @@ pre, pre.highlight, div.highlighter-rouge pre.highlight { font-size: 14px; }
     }
   }
 
-  .search-tags__count {
-    color: #a8a8a8;
-    font-size: 11px;
-  }
+  .search-tags__tagcount { color: #a8a8a8; font-size: 11px; }
 }
