@@ -263,3 +263,17 @@ code.highlighter-rouge {
 
 /* 코드블록 */
 pre, pre.highlight, div.highlighter-rouge pre.highlight { font-size: 14px; }
+
+/* 글 제목 하단 메타 (날짜 · read-time) — zoomkoding post-header 스타일 */
+.page-meta {
+  margin: 0.5em 0 0;
+  font-size: 14px;
+  color: #a8a8a8;
+
+  .page-date, .read-time {
+    color: #a8a8a8;
+
+    a { color: inherit; text-decoration: none; border-bottom: 0; }
+  }
+  .page-date + .read-time::before { content: "\2022"; padding: 0 0.5em; }
+}
