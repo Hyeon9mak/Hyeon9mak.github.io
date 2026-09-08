@@ -266,7 +266,7 @@ pre, pre.highlight, div.highlighter-rouge pre.highlight { font-size: 14px; }
 
 /* 글 제목 하단 메타 (날짜 · read-time) — zoomkoding post-header 스타일 */
 .page-meta {
-  margin: 0.5em 0 0;
+  margin: 0.25em 0 2.5em;
   font-size: 14px;
   color: #a8a8a8;
 
@@ -297,6 +297,9 @@ pre, pre.highlight, div.highlighter-rouge pre.highlight { font-size: 14px; }
     margin: 0;
     min-width: 0;
   }
+
+  /* 본문 첫 요소의 상단 margin 제거 → .page-meta 아래 여백이 collapse 없이 적용 */
+  .e-content > :first-child { margin-top: 0; }
 
   /* 하단 가로 태그 리스트 (사이드바에서 이동) */
   .page-footer-tags {
