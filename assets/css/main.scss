@@ -16,4 +16,8 @@ $title-font-family: $sans-serif-font-family;
 $description-font-family: $sans-serif-font-family;
 $meta-font-family: $sans-serif-font-family;
 
+/* ---- Root scale: html 14px 고정 (So Simple fluid 16-18px → 14px 상수) ---- */
+$min-font-size: 14px;
+$max-font-size: 14px;
+
 @import "so-simple";

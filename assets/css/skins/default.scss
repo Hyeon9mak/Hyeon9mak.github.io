@@ -72,6 +72,8 @@ $base0f: #d27b53 !default;
    ========================================================================== */
 
 body {
+  font-size: 16px;   /* root 14px 위에서 본문은 16px */
+  line-height: 1.5;
   font-weight: 500;
   color: rgb(55, 53, 47);
   letter-spacing: normal;
@@ -157,3 +159,107 @@ code.highlighter-rouge {
   padding-bottom: 0.3em;
   border-bottom: 3px solid #e1e4e8;
 }
+
+/* ==========================================================================
+   Custom: zoomkoding boxed post cards (list layout only)
+   ========================================================================== */
+
+.entries-list {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .entry {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    min-height: 150px;
+    margin-bottom: 10px;
+    padding: 15px;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    box-shadow: none;
+  }
+
+  .entry:hover .entry-title a { text-decoration: underline; }
+
+  /* order: title -> excerpt -> meta(bottom). 크기는 root(14px) 기준 rem 스케일 */
+  .entry-title {
+    order: 1;
+    font-size: 1.15rem;   /* ~16.1px */
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 8px;
+
+    a { text-decoration: none; }
+  }
+
+  .entry-excerpt {
+    order: 2;
+    font-size: 0.9rem;    /* ~12.6px */
+    line-height: 1.45;
+    color: rgb(55, 53, 47);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 10px;
+
+    > * { font-size: 0.9rem; line-height: 1.45; margin: 0; }
+    p { display: inline; }
+    a {
+      position: relative;
+      z-index: 10;
+      color: inherit;
+      border-bottom: 0;
+      text-decoration: none;
+    }
+  }
+
+  .entry-meta {
+    order: 3;
+    margin-top: auto;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 1rem;   /* ~14px */
+    color: #a8a8a8;
+
+    .entry-date, .read-time { font-style: normal; color: #a8a8a8; }
+    .entry-date + .read-time::before { content: "\2022"; padding: 0 0.5em; }
+
+    .entry-tags { display: inline-flex; flex-wrap: wrap; }
+    .entry-tag {
+      position: relative;
+      z-index: 10;
+      margin-left: 4px;
+      color: #a8a8a8;
+      text-decoration: none;
+
+      &:hover { text-decoration: underline; }
+    }
+  }
+
+  .entry-image { order: 0; margin-bottom: 10px; }
+}
+
+/* ==========================================================================
+   Custom: root 14px 스케일 보정 (fluid/rem 이 root 축소에 안 맞물리는 요소)
+   ========================================================================== */
+
+/* 글 제목: _page.scss 하드 fluid(48-60px) → 32px */
+.page-title { font-size: 32px; font-weight: 600; line-height: 1.3; }
+
+/* masthead 사이트 타이틀: _global.scss fluid(~27.6px) → 24px */
+.site-title { font-size: 24px; }
+
+/* nav: 0.75rem 이 root 14px 에서 10.5px 로 작아짐 → 15px 보정 */
+.site-nav li { font-size: 15px; }
+
+/* 글 사이드바(작성자/날짜/read-time): 0.75rem → 14px 보정 */
+.page-sidebar { font-size: 14px; }
+
+/* 코드블록 */
+pre, pre.highlight, div.highlighter-rouge pre.highlight { font-size: 14px; }

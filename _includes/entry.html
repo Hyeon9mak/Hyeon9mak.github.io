@@ -1,0 +1,35 @@
+{% if entry.id %}{% assign title = entry.title | markdownify | strip_html %}{% else %}{% assign title = entry.title %}{% endif %}
+<article class="entry h-entry">
+  <header class="entry-header">
+    <h3 class="entry-title p-name">
+      {% if entry.link %}
+        <a class="u-bookmark-of" href="{{ entry.link }}">{{ title }}</a> <a href="{{ entry.url | relative_url }}" rel="bookmark"><span class="link-arrow">&rarr;</span></a>
+      {% else %}
+        <a href="{{ entry.url | relative_url }}" rel="bookmark">{{ title }}</a>
+      {% endif %}
+    </h3>
+    {% if entry.image.thumbnail %}
+      {% assign entry_image = entry.image.thumbnail %}
+      {% unless entry_image contains '://' %}{% assign entry_image = entry_image | relative_url %}{% endunless %}
+      <img class="entry-image u-photo" src="{{ entry_image | escape }}" alt="">
+    {% endif %}
+  </header>
+  {% unless page.show_excerpts == false %}
+    {% comment %} 카드 발췌: 본문 전체에서 HTML/헤딩 제거 후 앞부분만 (CSS 3줄 clamp 로 마무리) {% endcomment %}
+    {% assign card_summary = entry.content | strip_html | normalize_whitespace | truncate: 200 %}
+    <div class="entry-excerpt p-summary">{{ card_summary }}</div>
+  {% endunless %}
+  {% if site.read_time or entry.date and page.layout != 'collection' %}
+    <footer class="entry-meta">
+      <span class="entry-meta-left">
+        {% if entry.date %}{% include entry-date.html %}{% endif %}
+        {% if site.read_time %}{% include read-time.html %}{% endif %}
+      </span>
+      {% if entry.tags and entry.tags != empty %}
+        <span class="entry-tags">
+          {% for tag in entry.tags %}{% assign tag_slug = tag | slugify %}<a class="entry-tag" href="{{ '/tags/' | relative_url }}#{{ tag_slug }}" rel="tag">{{ tag }}</a>{% endfor %}
+        </span>
+      {% endif %}
+    </footer>
+  {% endif %}
+</article>
