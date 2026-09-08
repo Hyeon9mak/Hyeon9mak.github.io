@@ -438,3 +438,52 @@ pre, pre.highlight, div.highlighter-rouge pre.highlight { font-size: 14px; }
     border-radius: 2px;
   }
 }
+
+/* ==========================================================================
+   Custom: /search/ 태그 클라우드 (검색창 위)
+   ========================================================================== */
+
+.search-tags {
+  max-width: 720px;
+  margin: 0 auto 1.5em;
+
+  .search-tags__title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #a8a8a8;
+    margin: 0 0 0.75em;
+    padding: 0;
+    border: 0;
+  }
+
+  .search-tags__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li { margin: 0; }
+
+    a {
+      display: inline-block;
+      padding: 3px 10px;
+      font-size: 13px;
+      color: rgb(55, 53, 47);
+      background: rgba(0, 0, 0, 0.04);
+      border-radius: 999px;
+      text-decoration: none;
+      border-bottom: 0;
+
+      &:hover { background: rgba(0, 0, 0, 0.09); }
+    }
+  }
+
+  .search-tags__count {
+    color: #a8a8a8;
+    font-size: 11px;
+  }
+}
